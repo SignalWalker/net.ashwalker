@@ -13,6 +13,10 @@
     font-family: "Inconsolata", sans-serif;
 }
 
+a {
+    color: var(--hl);
+}
+
 body {
     background-color: var(--bg0);
     color: var(--fg);
@@ -82,7 +86,7 @@ body {
     justify-content: center;
     word-wrap: break-word;
     text-align: center;
-    overflow-x: hidden
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
