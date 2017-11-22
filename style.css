@@ -80,7 +80,7 @@ body {
     padding: 2em;
     border: 1px solid var(--bg2);
     border-radius: 1em;
-    margin: 2em;
+    margin: 1em;
     width: calc(75%);
     max-width: 18em;
     justify-content: center;
