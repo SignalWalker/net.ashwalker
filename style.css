@@ -1,0 +1,104 @@
+:root {
+    --bg0:#2e2e2e;
+	  --bg1:#3f3f3f;
+	  --bg2:#505050;
+	  --fg:#dcdccc;
+	  --hl:#60b48a;
+    --debug:#ff0000;
+}
+
+@import url(<link href="https://fonts.googleapis.com/css?family=Inconsolata");
+
+* {
+    font-family: "Inconsolata", sans-serif;
+}
+
+body {
+    background-color: var(--bg0);
+    color: var(--fg);
+    margin: 0px;
+}
+
+.background {
+    position: fixed;
+    bottom: -12%;
+    left: -10%;
+    z-index: -1;
+    width: 125%;
+    height: 125%;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+}
+
+.smLogo {
+    max-height: 2em;
+}
+
+.navBar {
+    top: 0px;
+    position: fixed;
+    border-bottom: 1px solid var(--bg2);
+    background-color: inherit;
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.navButtonContainer {
+    display: inline-block;
+}
+
+.navButton {
+    display: inline-block;
+    padding: 8px;
+    border-bottom: 1px solid var(--bg2);
+    text-align: center;
+    margin-bottom: -1px;
+    color: var(--fg);
+}
+
+.navButton:hover,
+.navButton[active="true"] {
+    border-bottom: 1px solid var(--hl);
+    color: var(--hl);
+}
+
+.contentBox {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.card {
+    background-color: var(--bg0);
+    display: inline-block;
+    padding: 2em;
+    border: 1px solid var(--bg2);
+    border-radius: 1em;
+    margin: 2em;
+    width: calc(75%);
+    max-width: 18em;
+    justify-content: center;
+    word-wrap: break-word;
+    text-align: center;
+    overflow-x: hidden
+    overflow-y: auto;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 50%;
+    border: 1px solid var(--bg2);
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.card img {
+    max-width: 100%;
+}
+
+.title {
+    color: var(--hl);
+}
