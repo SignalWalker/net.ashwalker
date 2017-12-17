@@ -1,9 +1,9 @@
 :root {
-    --bg0:#2e2e2e;
-	  --bg1:#3f3f3f;
-	  --bg2:#505050;
-	  --fg:#dcdccc;
-	  --hl:#60b48a;
+    --bg0:#2f373f;
+	  --bg1:#404850;
+	  --bg2:#626a72;
+	  --fg:#959da5;
+	  --hl:#3dedbb;
     --debug:#ff0000;
 }
 
@@ -90,6 +90,11 @@ body {
     overflow-y: auto;
 }
 
+.card:hover {
+    background-color: var(--bg1);
+    border: 1px solid var(--hl);
+}
+
 .image {
     max-width: 100%;
     max-height: 50%;
@@ -97,10 +102,12 @@ body {
     justify-content: center;
     text-align: center;
     margin-bottom: 2em;
+
 }
 
 .card img {
     max-width: 100%;
+    /*border-radius: 0.5em;*/
 }
 
 .title {
