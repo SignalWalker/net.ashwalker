@@ -3,6 +3,7 @@
 	  --bg1:#404850;
 	  --bg2:#626a72;
 	  --fg:#959da5;
+    --fg2:#a6aeb6;
 	  --hl:#3dedbb;
     --debug:#ff0000;
 }
@@ -88,9 +89,12 @@ body {
     text-align: center;
     overflow-x: hidden;
     overflow-y: auto;
+    color: var(--fg);
+    text-decoration: none;
 }
 
 .card:hover {
+    color: var(--fg2);
     background-color: var(--bg1);
     border: 1px solid var(--hl);
 }
@@ -112,4 +116,8 @@ body {
 
 .title {
     color: var(--hl);
+}
+
+.title[cardLink="true"] {
+    text-decoration: underline;
 }
