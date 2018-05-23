@@ -1,14 +1,16 @@
 :root {
-    --bg0:#2f373f;
-	  --bg1:#404850;
-	  --bg2:#626a72;
-	  --fg:#959da5;
-    --fg2:#a6aeb6;
-	  --hl:#3dedbb;
+    --shadow_color:#141b24; 
+    --bg_color:#2f373f;
+	--bg_hl:#363E46;
+	--border_color:#626a72;
+	--text_color:#959da5;
+    --text_hl:#8d95a2;
+    --emph_color:#1fba91;
+    --hl:#3dedbb;
     --debug:#ff0000;
 }
 
-@import url(<link href="https://fonts.googleapis.com/css?family=Inconsolata");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
 
 * {
     font-family: "Inconsolata", sans-serif;
@@ -18,9 +20,13 @@ a {
     color: var(--hl);
 }
 
+b, strong, h1, h2, h3, h4, h5, h6 {
+    color: var(--emph_color);
+}
+
 body {
-    background-color: var(--bg0);
-    color: var(--fg);
+    background-color: var(--bg_color);
+    color: var(--text_color);
     margin: 0px;
 }
 
@@ -36,17 +42,23 @@ body {
 }
 
 .smLogo {
+    display: inline-block;
+}
+
+.smLogo > img {
     max-height: 2em;
+    padding: 0.5em;
 }
 
 .navBar {
     top: 0px;
     position: fixed;
-    border-bottom: 1px solid var(--bg2);
+    border-bottom: 1px solid var(--border_color);
     background-color: inherit;
     width: 100%;
     margin: 0px auto;
     text-align: center;
+    box-shadow: 0px 2px var(--shadow_color);
 }
 
 .navButtonContainer {
@@ -56,10 +68,10 @@ body {
 .navButton {
     display: inline-block;
     padding: 8px;
-    border-bottom: 1px solid var(--bg2);
+    border-bottom: 1px solid var(--border_color);
     text-align: center;
     margin-bottom: -1px;
-    color: var(--fg);
+    color: var(--text_color);
 }
 
 .navButton:hover,
@@ -72,52 +84,41 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 3em;
 }
 
 .card {
-    background-color: var(--bg0);
+    background-color: var(--bg_color);
     display: inline-block;
     padding: 2em;
-    border: 1px solid var(--bg2);
-    border-radius: 1em;
     margin: 1em;
-    width: calc(75%);
+    border: 1px solid var(--border_color);
+    box-shadow: 3px 3px var(--shadow_color);
     max-width: 18em;
-    justify-content: center;
     word-wrap: break-word;
     text-align: center;
     overflow-x: hidden;
     overflow-y: auto;
-    color: var(--fg);
+    color: var(--text_color);
+}
+
+a.card {
     text-decoration: none;
 }
 
-.card:hover {
-    color: var(--fg2);
-    background-color: var(--bg1);
+a.card:hover, a.smLogo:hover {
+    color: var(--text_hl);
+    background-color: var(--bg_hl);
     border: 1px solid var(--hl);
+    box-shadow: 0px 0px;
 }
 
-.image {
+.card > img, .smLogo {
     max-width: 100%;
-    max-height: 50%;
-    border: 1px solid var(--bg2);
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 2em;
-
+    border: 1px solid var(--border_color);
+    box-shadow: 3px 3px var(--shadow_color);
 }
 
-.card img {
-    max-width: 100%;
-    /*border-radius: 0.5em;*/
-}
-
-.title {
-    color: var(--hl);
-}
-
-.title[cardLink="true"] {
+.card *[cardLink="true"] {
     text-decoration: underline;
 }
