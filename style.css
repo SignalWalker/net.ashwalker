@@ -94,6 +94,7 @@ body {
     padding: 2em;
     margin: 1em;
     border: 1px solid var(--border_color);
+    border-radius: 1em;
     box-shadow: 3px 3px var(--shadow_color);
     max-width: 18em;
     word-wrap: break-word;
@@ -118,6 +119,7 @@ a.card:hover, a.smLogo:hover {
     max-width: 100%;
     border: 1px solid var(--border_color);
     box-shadow: 3px 3px var(--shadow_color);
+    border-radius: 0.5em;
 }
 
 .card *[cardLink="true"] {
