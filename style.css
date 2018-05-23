@@ -1,12 +1,13 @@
 :root {
-    --shadow_color:#141b24; 
-    --bg_color:#2f373f;
-	--bg_hl:#363E46;
-	--border_color:#626a72;
-	--text_color:#959da5;
-    --text_hl:#8d95a2;
-    --emph_color:#1fba91;
-    --hl:#3dedbb;
+    --shadow_color:#0C1935; 
+    --bg_color:#202c3f;
+    --card_color: #253244;
+	--card_hl:#2F3C4E;
+	--border_color:#576476;
+	--text_color:#7D8C9E;
+    --text_hl:#8796A8;
+    --emph_color:#4CB39C;
+    --hl:#4CB39C;
     --debug:#ff0000;
 }
 
@@ -88,7 +89,7 @@ body {
 }
 
 .card {
-    background-color: var(--bg_color);
+    background-color: var(--card_color);
     display: inline-block;
     padding: 2em;
     margin: 1em;
@@ -108,7 +109,7 @@ a.card {
 
 a.card:hover, a.smLogo:hover {
     color: var(--text_hl);
-    background-color: var(--bg_hl);
+    background-color: var(--card_hl);
     border: 1px solid var(--hl);
     box-shadow: 0px 0px;
 }
