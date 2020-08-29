@@ -1,9 +1,9 @@
 :root {
-    --shadow_color:#0C1935; 
-    --bg_color:#202c3f;
-    --card_color: #253244;
-	--card_hl:#2F3C4E;
-	--border_color:#576476;
+    --shadow_color:#0C1935;
+    --bg_color:#000a;
+    --card_color: #000a;
+	--card_hl:#3c3c3caa;
+	--border_color:#555c;
 	--text_color:#7D8C9E;
     --text_hl:#8796A8;
     --emph_color:#4CB39C;
@@ -31,17 +31,32 @@ body {
     margin: 0px;
 }
 
+/* BG Img */
+
+img.bg_img {
+    position: fixed;
+    top: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #000;
+    filter: blur(1px) brightness(0.4);
+    z-index: -1;
+    background-image: url("images/bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 /* Nav Bar */
 
 .navBar {
     top: 0px;
     position: fixed;
     border-bottom: 1px solid var(--border_color);
-    background-color: inherit;
+    background-color: #000b;
     width: 100%;
     margin: 0px auto;
     text-align: center;
-    box-shadow: 0px 2px var(--shadow_color);
+    /* box-shadow: 0px 2px var(--shadow_color); */
 }
 
 .navButtonContainer {
@@ -55,6 +70,7 @@ body {
     text-align: center;
     margin-bottom: -1px;
     color: var(--text_color);
+    text-decoration-line: none;
 }
 
 .navButton:hover,
@@ -89,25 +105,26 @@ body {
 }
 
 a.card {
-    text-decoration: none;
-}
-
-.card *[cardLink="true"] {
-    text-decoration: underline;
+    text-decoration-line: none;
 }
 
 /* Shadow Lvl 1 */
 
-.card, .card > img {
-    /* box-shadow: 3px 3px var(--shadow_color); */
+/* .card, .card > img {
+    /* box-shadow: 3px 3px var(--shadow_color);
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.24);
+} */
+
+.card > img[small="true"] {
+    box-sizing: border-box;
+    padding: 8px;
 }
 
 /* Shadow Lvl 2 (Interactive) */
 
 a.card, a.smLogo {
     /* box-shadow: 3px 3px var(--shadow_color); */
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
@@ -118,7 +135,7 @@ a.card:hover, a.smLogo:hover {
     border: 1px solid var(--hl);
     box-shadow: 5px 5px var(--shadow_color); */
     background-color: var(--card_hl);
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
 }
 
 /* Card Img */
@@ -141,12 +158,12 @@ a.card:hover, a.smLogo:hover {
 
 /* Rounding Lvl 1 */
 
-.card > img, .smLogo {
+/* .card > img, .smLogo {
     border-radius: 0.5em;
-}
+} */
 
 /* Rounding Lvl 2 */
 
-.card {
+/* .card {
     border-radius: 1em;
-}
+} */

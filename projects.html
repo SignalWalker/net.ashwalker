@@ -1,37 +1,43 @@
 <!DOCTYPE !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html lang="en_US" xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="images/icon.svg">
-        <title>Ash Walker</title>
-    </head>
 
-    <body>
-        <div class="navBar">
-            <div class="navButtonContainer">
-                <a href="index.html"><div class="navButton">About</div></a><a href="projects.html"><div class="navButton" active="true">Projects</div></a>
-            </div>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>Ash Walker</title>
+</head>
+
+<body>
+    <img class="bg_img" />
+    <header class="navBar">
+        <nav class="navButtonContainer">
+            <a class="navButton" href="index.html">About</a><a class="navButton" active="true"
+                href="projects.html">Projects</a>
+        </nav>
+    </header>
+    <div class="contentBox">
+        <a class="card" href="https://gitlab.com/SignalWalker/vaal">
+            <img src="images/content/projects/vaal/lighting.png" alt="Screenshot of a lighting bug in Vaal" />
+            <h2>Vaal</h2>
+            <p>A 3D game engine in Rust.</p>
+            <p><b>Status:</b> In Progress</p>
+        </a>
+        <div class="card">
+            <img src="images/content/projects/photography/MountainSheep2.jpg"
+                alt="Photograph of a Bighorn Sheep between two trees" />
+            <h2>This Cool Picture of a Bighorn Sheep</h2>
+            <p>I almost ran into it because I was looking at some rocks, but, instead of that, I took this picture.</p>
         </div>
-        <div class="contentBox">
-            <a class="card" href="https://github.com/SignalWalker/Mint.git">
-                <h2 cardlink="true">Mint</h2>
-                <p>An Entity-Component System in C#. This actually mostly works right now, so, theoretically, you could use it if you wanted to.</p>
-                <p><b>Status:</b> In Progress</p>
-            </a>
-            <div class="card">
-                    <img src="images/content/projects/photography/MountainSheep2.jpg" alt="Photograph of a Bighorn Sheep between two trees"/>
-                    <h2>This Cool Picture of a Bighorn Sheep</h2>
-                    <p>I almost ran into it because I was looking at some rocks, but, instead of that, I took this picture.</p>
-            </div>
-            <div class="card">
-                <img src="images/content/projects/apprentice/editor.jpg" alt="Screenshot of Apprentice's map editor"/>
-                <h2>Apprentice</h2>
-                <p>Some sort of roguelike-ish thing where you're a 
-wizard's apprentice or something. That's a screenshot of the map editor,
- and it's the only picture I could find on my computer.</p>
-                <p><b>Status:</b> Incomplete Indefinitely</p>
-            </div>
+        <div class="card">
+            <img src="images/content/projects/apprentice/editor.jpg" alt="Screenshot of Apprentice's map editor" />
+            <h2>Apprentice</h2>
+            <p>Some sort of roguelike-ish thing where you're a
+                wizard's apprentice or something. That's a screenshot of the map editor,
+                and it's the only picture I could find on my computer.</p>
+            <p><b>Status:</b> Incomplete Indefinitely</p>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
