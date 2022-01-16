@@ -35,12 +35,6 @@
     nixosModule = ({ config, pkgs, lib, ... }: {
       options.signal.services.ashwalker-net = with lib; {
         enable = mkEnableOption "personal static website";
-        #repo = mkOption rec {
-        #  type = types.str;
-        #  default = "gitlab.com:SignalWalker/ashwalker.net";
-        #  example = default;
-        #  description = "Repo from which to clone the static site files";
-        #};
         vhost = {
           enable = mkEnableOption "personal website nginx vhost";
           name = mkOption rec {
@@ -57,7 +51,7 @@
           "${cfg.vhost.name}" = {
             enableACME = cfg.vhost.forceSSL;
             forceSSL = cfg.vhost.forceSSL;
-            root = pkgs.ashwalker-net;
+            root = syspkgs.ashwalker-net;
             locations."/".index = "index.html";
           };
         };
