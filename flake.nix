@@ -1,16 +1,15 @@
 {
   description = "static personal website";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
   outputs = { self, nixpkgs, flake-utils }: let
-    systems = ["x86_64-linux"];
     utils = flake-utils.lib;
-    lib = nixpkgs.lib;
-    syspkgs = lib.genAttrs systems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
-  in rec {
-    overlay = final: prev: {
+  in utils.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system: let
+    pkgs = import nixpkgs { inherit system; overlays = [ self.overlays.${system} ]; };
+  in {
+    overlays = final: prev: {
       ashwalker-net = (final.stdenv.mkDerivation {
         name = "ashwalker-net";
         version = "1.0.0";
@@ -28,11 +27,9 @@
         };
       });
     };
-    packages = lib.genAttrs systems (system: {
-      inherit (syspkgs.${system}) ashwalker-net;
-    });
-    defaultPackage = lib.genAttrs systems (system: self.packages.${system}.ashwalker-net);
-    nixosModule = ({ config, pkgs, lib, ... }: {
+    packages = { inherit (pkgs) ashwalker-net; };
+    defaultPackage = self.packages.${system}.ashwalker-net;
+    nixosModules = ({ config, pkgs, lib, ... }: {
       options.signal.services.ashwalker-net = with lib; {
         enable = mkEnableOption "personal static website";
         vhost = {
@@ -46,16 +43,16 @@
           forceSSL = mkEnableOption "ssl + acme";
         };
       };
-      config = let cfg = config.signal.services.ashwalker-net; in lib.mkIf cfg.enable rec {
+      config = let cfg = config.signal.services.ashwalker-net; in lib.mkIf cfg.enable {
         services.nginx.virtualHosts = lib.mkIf cfg.vhost.enable {
           "${cfg.vhost.name}" = {
             enableACME = cfg.vhost.forceSSL;
             forceSSL = cfg.vhost.forceSSL;
-            root = syspkgs.ashwalker-net;
+            root = self.packages.${system}.ashwalker-net;
             locations."/".index = "index.html";
           };
         };
       };
     });
-  };
+  });
 }
