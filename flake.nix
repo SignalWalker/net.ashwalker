@@ -21,7 +21,7 @@
       lib,
       ...
     }: {
-      options.services."ashwalker.net" = with lib; {
+      options.services."ashwalker-net" = with lib; {
         enable = mkEnableOption "nginx vhost for ashwalker.net";
         name = mkOption rec {
           type = types.str;
