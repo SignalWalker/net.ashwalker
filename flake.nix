@@ -29,8 +29,10 @@
           description = "The name of the nginx virtual host to generate for this site";
         };
         ssl = {
-          enable = mkEnableOption "ssl";
-          force = mkEnableOption "force ssl";
+          enable = mkOption {
+		    type = types.either types.bool (types.enum [ "force" ]);
+			default = false;
+		  };
         };
       };
       config = let
@@ -39,9 +41,9 @@
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts = {
             "${cfg.name}" = {
-              enableACME = cfg.ssl.enable || cfg.ssl.force;
-              addSSL = cfg.ssl.enable || cfg.ssl.force;
-              forceSSL = cfg.ssl.force;
+              enableACME = cfg.ssl.enable != false;
+              addSSL = cfg.ssl.enable == true;
+              forceSSL = cfg.ssl.enable == "force";
               root = ./src;
               locations."/".root = ./src;
             };
