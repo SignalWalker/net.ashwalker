@@ -30,9 +30,13 @@
           description = "The name of the nginx virtual host to generate for this site";
         };
         forceSSL = mkEnableOption "ssl + acme";
+		letsEncryptEmail = mkOption {
+			type = types.nullOr types.str;
+			default = null;
+		};
       };
       config = let
-        cfg = config.signal.services.ashwalker-net;
+        cfg = config.services.ashwalker-net;
       in
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts = {
@@ -43,6 +47,9 @@
               locations."/".index = "index.html";
             };
           };
+		  security.acme.certs = lib.mkIf (cfg.letsEncryptEmail != null) {
+		  	${cfg.name}.email = cfg.letsEncryptEmail;
+		  };
         };
     };
   };
