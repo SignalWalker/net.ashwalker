@@ -29,11 +29,14 @@
           example = default;
           description = "The name of the nginx virtual host to generate for this site";
         };
-        forceSSL = mkEnableOption "ssl + acme";
-		letsEncryptEmail = mkOption {
-			type = types.nullOr types.str;
-			default = null;
-		};
+        ssl = {
+          enable = mkEnableOption "ssl";
+          force = mkEnableOption "force ssl";
+          autoRenewEmail = mkOption {
+            type = types.nullOr types.str;
+            default = null;
+          };
+        };
       };
       config = let
         cfg = config.services.ashwalker-net;
@@ -41,15 +44,16 @@
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts = {
             "${cfg.name}" = {
-              enableACME = cfg.forceSSL;
-              forceSSL = cfg.forceSSL;
+              enableACME = cfg.ssl.autoRenewEmail != null;
+              addSSL = cfg.ssl.enable;
+              forceSSL = cfg.ssl.force;
               root = ./src;
               locations."/".index = "index.html";
             };
           };
-		  security.acme.certs = lib.mkIf (cfg.letsEncryptEmail != null) {
-		  	${cfg.name}.email = cfg.letsEncryptEmail;
-		  };
+          security.acme.certs = lib.mkIf (cfg.ssl.autoRenewEmail != null) {
+            ${cfg.name}.email = cfg.ssl.autoRenewEmail;
+          };
         };
     };
   };
