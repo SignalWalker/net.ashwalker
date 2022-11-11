@@ -10,7 +10,7 @@
   outputs = {
     self,
     nixpkgs,
-    alejandra
+    alejandra,
   }: let
     std = nixpkgs.lib;
   in {
