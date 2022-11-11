@@ -31,10 +31,6 @@
         ssl = {
           enable = mkEnableOption "ssl";
           force = mkEnableOption "force ssl";
-          autoRenewEmail = mkOption {
-            type = types.nullOr types.str;
-            default = null;
-          };
         };
       };
       config = let
@@ -43,14 +39,12 @@
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts = {
             "${cfg.name}" = {
-              enableACME = cfg.ssl.autoRenewEmail != null;
-              addSSL = cfg.ssl.enable;
+              enableACME = cfg.ssl.enable || cfg.ssl.force;
+              addSSL = cfg.ssl.enable || cfg.ssl.force;
               forceSSL = cfg.ssl.force;
               root = ./src;
+              locations."/".root = ./src;
             };
-          };
-          security.acme.certs = lib.mkIf (cfg.ssl.autoRenewEmail != null) {
-            ${cfg.name}.email = cfg.ssl.autoRenewEmail;
           };
         };
     };
