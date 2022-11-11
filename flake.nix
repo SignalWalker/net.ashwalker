@@ -48,7 +48,6 @@
               addSSL = cfg.ssl.enable;
               forceSSL = cfg.ssl.force;
               root = ./src;
-              locations."/".index = "index.html";
             };
           };
           security.acme.certs = lib.mkIf (cfg.ssl.autoRenewEmail != null) {
