@@ -25,8 +25,7 @@
         enable = mkEnableOption "nginx vhost for ashwalker.net";
         name = mkOption rec {
           type = types.str;
-          default = "ashwalker.net";
-          example = default;
+          default = config.networking.fqdn;
           description = "The name of the nginx virtual host to generate for this site";
         };
         ssl = {
