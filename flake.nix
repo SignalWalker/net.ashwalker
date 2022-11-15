@@ -33,7 +33,7 @@
         cfg = config.services.ashwalker-net;
       in
         lib.mkIf cfg.enable {
-          services.nginx.additionalModules = [pkgs.nginxModules.set-misc];
+          services.nginx.additionalModules = [pkgs.nginxModules.develkit pkgs.nginxModules.set-misc];
           services.nginx.virtualHosts."${cfg.domain}" = let
             wfPath = "/well-known/webfinger.json";
           in {
