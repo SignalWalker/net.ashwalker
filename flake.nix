@@ -33,7 +33,7 @@
         cfg = config.services.ashwalker-net;
       in
         lib.mkIf cfg.enable {
-          services.nginx.additionalModules = [pkgs.nginxModules.lua];
+          services.nginx.additionalModules = [pkgs.nginxModules.set-misc];
           services.nginx.virtualHosts."${cfg.domain}" = let
             wfPath = "/well-known/webfinger.json";
           in {
@@ -42,7 +42,7 @@
             locations."/.well-known/webfinger" = {
               extraConfig = ''
                 if ($request_method !~ ^(GET|HEAD)$) { return 405; }
-                set_by_lua $resource 'return ngx.unescape_uri(ngx.req.get_uri_args()["resource"])';
+                set_unescape_uri $resource $resource;
                 if ($resource = "") { return 400; }
                 if ($resource = "acct:ash@ashwalker.net")   { rewrite .* ${wfPath} last; }
                 if ($resource = "mailto:ash@ashwalker.net") { rewrite .* ${wfPath} last; }
