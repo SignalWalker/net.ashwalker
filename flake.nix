@@ -56,9 +56,6 @@
                 add_header Access-Control-Allow-Origin "*";
               '';
             };
-            locations."/.well-known" = {
-              root = ./src/well-known;
-            };
           };
         };
     };
