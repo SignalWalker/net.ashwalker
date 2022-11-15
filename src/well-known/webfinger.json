@@ -1,0 +1,27 @@
+{
+  "subject": "acct:Ash@social.ashwalker.net",
+  "aliases": [
+    "https://social.ashwalker.net/users/Ash"
+  ],
+  "links": [
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://social.ashwalker.net/users/Ash"
+    },
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://social.ashwalker.net/users/Ash"
+    },
+    {
+      "rel": "self",
+      "type": "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"",
+      "href": "https://social.ashwalker.net/users/Ash"
+    },
+    {
+      "rel": "http://ostatus.org/schema/1.0/subscribe",
+      "template": "https://social.ashwalker.net/ostatus_subscribe?acct={uri}"
+    }
+  ]
+}
