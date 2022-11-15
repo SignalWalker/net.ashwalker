@@ -42,7 +42,7 @@
             locations."/.well-known/webfinger" = {
               extraConfig = ''
                 if ($request_method !~ ^(GET|HEAD)$) { return 405; }
-                set_unescape_uri $resource $resource;
+                set_unescape_uri $resource;
                 if ($resource = "") { return 400; }
                 if ($resource = "acct:ash@ashwalker.net")   { rewrite .* ${wfPath} last; }
                 if ($resource = "mailto:ash@ashwalker.net") { rewrite .* ${wfPath} last; }
