@@ -37,7 +37,6 @@
             wfPath = "/well-known/webfinger.json";
           in {
             root = ./src;
-            serverAliases = ["www.ashwalker.net"];
             # webfinger (see https://willnorris.com/2014/07/webfinger-with-static-files-nginx/)
             locations."/.well-known/webfinger" = {
               extraConfig = ''
