@@ -1,22 +1,31 @@
 {
-  "subject": "acct:Ash@social.ashwalker.net",
+  "subject": "acct:ash@ashwalker.net",
   "aliases": [
+	"mailto:ash@ashwalker.net",
+	"https://ashwalker.net/",
+	"https://ashwalker.net/@ash",
+    "https://social.ashwalker.net/@Ash",
     "https://social.ashwalker.net/users/Ash"
   ],
   "links": [
     {
+      "rel": "http://webfinger.net/rel/avatar",
+      "type": "image/png",
+      "href": "https://ashwalker.net/images/ash.png"
+    },
+    {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
-      "href": "https://social.ashwalker.net/users/Ash"
+      "href": "https://ashwalker.net/"
+    },
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://social.ashwalker.net/@Ash"
     },
     {
       "rel": "self",
       "type": "application/activity+json",
-      "href": "https://social.ashwalker.net/users/Ash"
-    },
-    {
-      "rel": "self",
-      "type": "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"",
       "href": "https://social.ashwalker.net/users/Ash"
     },
     {
