@@ -23,28 +23,19 @@
     }: {
       options.services."ashwalker-net" = with lib; {
         enable = mkEnableOption "nginx vhost for ashwalker.net";
-        name = mkOption rec {
+        domain = mkOption rec {
           type = types.str;
           default = config.networking.fqdn;
           description = "The name of the nginx virtual host to generate for this site";
-        };
-        ssl = {
-          enable = mkOption {
-            type = types.either types.bool (types.enum ["force"]);
-            default = false;
-          };
         };
       };
       config = let
         cfg = config.services.ashwalker-net;
       in
         lib.mkIf cfg.enable {
-          services.nginx.virtualHosts."${cfg.name}" = let
+          services.nginx.virtualHosts."${cfg.domain}" = let
             wfPath = "/well-known/webfinger.json";
           in {
-            enableACME = cfg.ssl.enable != false;
-            addSSL = cfg.ssl.enable == true;
-            forceSSL = cfg.ssl.enable == "force";
             root = ./src;
             serverAliases = ["www.ashwalker.net"];
             # webfinger (see https://willnorris.com/2014/07/webfinger-with-static-files-nginx/)
