@@ -33,7 +33,6 @@
         cfg = config.services.ashwalker-net;
       in
         lib.mkIf cfg.enable {
-          services.nginx.additionalModules = [pkgs.nginxModules.develkit pkgs.nginxModules.set-misc];
           services.nginx.virtualHosts."${cfg.domain}" = let
             wfPath = "/well-known/webfinger.json";
           in {
@@ -42,12 +41,11 @@
             locations."/.well-known/webfinger" = {
               extraConfig = ''
                 if ($request_method !~ ^(GET|HEAD)$) { return 405; }
-                set_unescape_uri $resource;
                 if ($resource = "") { return 400; }
-                if ($resource = "acct:ash@ashwalker.net")   { rewrite .* ${wfPath} last; }
-                if ($resource = "mailto:ash@ashwalker.net") { rewrite .* ${wfPath} last; }
-                if ($resource = "https://ashwalker.net")    { rewrite .* ${wfPath} last; }
-                if ($resource = "https://ashwalker.net/")   { rewrite .* ${wfPath} last; }
+                if ($resource = "acct%3Aash%40${cfg.domain}")   { rewrite .* ${wfPath} last; }
+                if ($resource = "mailto%3Aash%40${cfg.domain}") { rewrite .* ${wfPath} last; }
+                if ($resource = "https%3A%2F%2F${cfg.domain}")    { rewrite .* ${wfPath} last; }
+                if ($resource = "https%3A%2F%2F${cfg.domain}%2F")   { rewrite .* ${wfPath} last; }
               '';
             };
             locations."${wfPath}" = {
