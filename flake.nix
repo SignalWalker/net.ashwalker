@@ -33,27 +33,8 @@
         cfg = config.services.ashwalker-net;
       in
         lib.mkIf cfg.enable {
-          services.nginx.virtualHosts."${cfg.domain}" = let
-            wfPath = "/well-known/webfinger.json";
-          in {
+          services.nginx.virtualHosts."${cfg.domain}" = {
             root = ./src;
-            # webfinger (see https://willnorris.com/2014/07/webfinger-with-static-files-nginx/)
-            locations."/.well-known/webfinger" = {
-              extraConfig = ''
-                if ($request_method !~ ^(GET|HEAD)$) { return 405; }
-                if ($resource = "") { return 400; }
-                if ($resource = "acct%3Aash%40${cfg.domain}")   { rewrite .* ${wfPath} last; }
-                if ($resource = "mailto%3Aash%40${cfg.domain}") { rewrite .* ${wfPath} last; }
-                if ($resource = "https%3A%2F%2F${cfg.domain}")    { rewrite .* ${wfPath} last; }
-                if ($resource = "https%3A%2F%2F${cfg.domain}%2F")   { rewrite .* ${wfPath} last; }
-              '';
-            };
-            locations."${wfPath}" = {
-              extraConfig = ''
-                types { application/jrd+json json; }
-                add_header Access-Control-Allow-Origin "*";
-              '';
-            };
           };
         };
     };
