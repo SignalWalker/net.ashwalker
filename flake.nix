@@ -1,9 +1,9 @@
 {
   description = "static personal website";
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     alejandra = {
-      url = github:kamadorueda/alejandra;
+      url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -23,10 +23,16 @@
     }: {
       options.services."ashwalker-net" = with lib; {
         enable = mkEnableOption "nginx vhost for ashwalker.net";
-        domain = mkOption rec {
+        domain = mkOption {
           type = types.str;
           default = config.networking.fqdn;
           description = "The name of the nginx virtual host to generate for this site";
+        };
+        favicon = mkOption {
+          type = types.path;
+          readOnly = true;
+          default = ./src/favicon.ico;
+          description = "Nix store path to the favicon used for this site. Immutable.";
         };
       };
       config = let
