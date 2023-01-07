@@ -1,10 +1,11 @@
-<!DOCTYPE !DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 <html lang="en_US" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="32x32"/>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any"/>
     <title>Ash Walker</title>
 </head>
 
@@ -12,32 +13,32 @@
     <img class="bg_img" />
     <header class="navBar">
         <nav class="navButtonContainer">
-            <a class="navButton" href="index.html">About</a><a class="navButton" active="true"
-                href="projects.html">Projects</a>
+            <a class="navButton" href="index.html">About</a
+            ><a class="navButton" active="true" href="projects.html">Projects</a
+            >
         </nav>
     </header>
-    <div class="contentBox">
-        <a class="card" href="https://gitlab.com/SignalWalker/vaal">
-            <img src="images/content/projects/vaal/lighting.png" alt="Screenshot of a lighting bug in Vaal" />
-            <h2>Vaal</h2>
-            <p>A 3D game engine in Rust.</p>
-            <p><b>Status:</b> In Progress</p>
-        </a>
-        <div class="card">
-            <img src="images/content/projects/photography/MountainSheep2.jpg"
-                alt="Photograph of a Bighorn Sheep between two trees" />
-            <h2>This Cool Picture of a Bighorn Sheep</h2>
-            <p>I almost ran into it because I was looking at some rocks, but, instead of that, I took this picture.</p>
-        </div>
-        <div class="card">
-            <img src="images/content/projects/apprentice/editor.jpg" alt="Screenshot of Apprentice's map editor" />
-            <h2>Apprentice</h2>
-            <p>Some sort of roguelike-ish thing where you're a
-                wizard's apprentice or something. That's a screenshot of the map editor,
-                and it's the only picture I could find on my computer.</p>
-            <p><b>Status:</b> Incomplete Indefinitely</p>
-        </div>
-    </div>
+    <main>
+        <article>
+            <img src="images/content/projects/eightfold/logo.svg" avoid-tangents="true" alt="Eightfold logo; a cube divided into color-coded octants." />
+            <h1>Eightfold</h1>
+            <p><b>Status:</b> Near 1.0.0</p>
+            <p>A library for partitioning 3D data.</p>
+            <nav>
+                <a href="https://github.com/SignalWalker/Eightfold" rel="external"><img src="images/logos/github.svg" alt="Github"/></a>
+                <a href="https://crates.io/crates/eightfold" rel="external"><img src="https://crates.io/favicon.ico" alt="Crates.io"/></a>
+            </nav>
+        </article>
+        <article>
+            <img src="favicon.svg" alt="No image available." avoid-tangents="true" />
+            <h1>Rexa</h1>
+            <p><b>Status:</b> Researching</p>
+            <p>A Rust implementation of <a href="https://github.com/ocapn/ocapn" rel="external">object-capability networks</a>.</p>
+            <nav>
+                <a href="https://github.com/SignalWalker/Rexa" rel="external"><img src="images/logos/github.svg" alt="Github"/></a>
+            </nav>
+        </article>
+    </main>
 </body>
 
 </html>
