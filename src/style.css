@@ -59,9 +59,8 @@ img {
 
 /* Nav Bar */
 
-.navBar {
+header {
     top: 0px;
-    position: fixed;
     border-bottom: 1px solid var(--border_color);
     background-color: #000b;
     width: 100%;
@@ -70,11 +69,11 @@ img {
     /* box-shadow: 0px 2px var(--shadow_color); */
 }
 
-.navButtonContainer {
+header > nav {
     display: inline-block;
 }
 
-.navButton {
+header > nav > a {
     display: inline-block;
     padding: 8px;
     border-bottom: 1px solid var(--border_color);
@@ -84,8 +83,8 @@ img {
     text-decoration-line: none;
 }
 
-.navButton:hover,
-.navButton[active="true"] {
+header > nav > a:hover,
+header > nav > a[active="true"] {
     border-bottom: 1px solid var(--hl);
     color: var(--hl);
 }
@@ -96,7 +95,6 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-top: 3em;
 }
 
 /* Card */
@@ -113,9 +111,8 @@ article {
     background-color: var(--card_color);
     padding: 2em;
     margin: 1em;
-    min-width: 18em;
-    width: 33%;
-    max-width: 22em;
+    width: 24em;
+    max-width: 84%;
     word-wrap: break-word;
     display: grid;
 }
