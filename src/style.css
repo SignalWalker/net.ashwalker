@@ -167,14 +167,11 @@ article img {
 article > img {
     width: 100%;
     aspect-ratio: 1;
+    padding: 2%;
 }
 
 article > img, article nav > a {
     border: 1px solid var(--border_color);
-}
-
-img[avoid-tangents="true"] {
-    padding: 2%;
 }
 
 /* smLogo */
