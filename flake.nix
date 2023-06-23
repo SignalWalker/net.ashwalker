@@ -42,7 +42,7 @@
           services.nginx.virtualHosts."${cfg.domain}" = {
             root = ./src;
             locations."/resume" = {
-              return = "301 $scheme://signalwalker.github.io/meta.resume$request_uri";
+              return = "301 $scheme://signalwalker.github.io/meta.resume";
             };
           };
         };
