@@ -41,7 +41,7 @@
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts."${cfg.domain}" = {
             root = ./src;
-            locations."~ =/resume" = {
+            locations."/resume" = {
               proxyPass = "https://signalwalker.github.io";
               extraConfig = ''
                 proxy_redirect default;
