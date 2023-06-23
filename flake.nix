@@ -41,13 +41,13 @@
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts."${cfg.domain}" = {
             root = ./src;
-            locations."/resume" = {
-              # proxyPass = "https://signalwalker.github.io";
-              # proxy_redirect default;
-              extraConfig = ''
-                rewrite ^(.*) https://signalwalker.github.io/meta.resume permanent;
-              '';
-            };
+            # locations."=/resume" = {
+            #   proxyPass = "https://signalwalker.github.io";
+            #   extraConfig = ''
+            #     proxy_redirect default;
+            #     rewrite ^/resume?$ /meta.resume permanent;
+            #   '';
+            # };
           };
         };
     };
