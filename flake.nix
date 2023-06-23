@@ -41,7 +41,7 @@
         lib.mkIf cfg.enable {
           services.nginx.virtualHosts."${cfg.domain}" = {
             root = ./src;
-            locations."=/resume" = {
+            locations."~ =/resume" = {
               return = "301 $scheme://signalwalker.github.io/meta.resume";
             };
           };
