@@ -42,7 +42,11 @@
           services.nginx.virtualHosts."${cfg.domain}" = {
             root = ./src;
             locations."~ =/resume" = {
-              return = "301 $scheme://signalwalker.github.io/meta.resume";
+              proxyPass = "https://signalwalker.github.io";
+              extraConfig = ''
+                proxy_redirect default;
+                rewrite /resume$ /meta.resume break;
+              '';
             };
           };
         };
