@@ -1,0 +1,8 @@
+{
+	"primary_nav": {
+		"About": "/",
+		"Projects": "/projects/",
+		"Blog": "/blog/",
+		"Resumé": "/resume/"
+	}
+}

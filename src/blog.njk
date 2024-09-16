@@ -1,0 +1,24 @@
+---
+title: Blog
+layout: layout/main.njk
+pagination:
+  data: collections.publicPosts
+  size: 12
+---
+
+{%- for post in pagination.items -%}
+<article class="{{ post.data.tags | join(" ") }}">
+	{% postHeader post %}
+	<div class="post-content">
+		{{ post.content | safe }}
+	</div>
+	{% postFooter post %}
+</article>
+{%- endfor -%}
+<nav class="pagination">
+	<ol>
+		{%- for entry in pagination.pages -%}
+		<li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+		{%- endfor -%}
+	</ol>
+</nav>

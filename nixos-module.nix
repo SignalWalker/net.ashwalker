@@ -30,10 +30,10 @@ in {
           readOnly = true;
           default = "/var/lib/${site.user}";
         };
-        cache = mkOption {
+        runtime = mkOption {
           type = types.str;
           readOnly = true;
-          default = "/var/cache/${site.user}";
+          default = "/run/${site.user}";
         };
       };
       domain = mkOption {
@@ -54,13 +54,14 @@ in {
   config = lib.mkIf site.enable {
     nixpkgs.overlays = [overlay];
     systemd.services = {
-      "ashwalker-net-build" = {
+      "ashwalker-net" = {
         path = [site.eleventy];
         serviceConfig = {
           Type = "simple";
-          ExecStart = "${site.eleventy}/bin/eleventy --input=${site.dirs.state} --output=${site.dirs.cache} --config=${site.src}/.eleventy.js";
+          ExecStart = "${site.eleventy}/bin/eleventy --output=${site.dirs.runtime} --watch";
+          WorkingDirectory = site.dirs.state;
           StateDirectory = site.user;
-          CacheDirectory = site.user;
+          RuntimeDirectory = site.user;
         };
       };
     };

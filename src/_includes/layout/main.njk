@@ -1,0 +1,13 @@
+---
+layout: 'layout/meta.njk'
+mainClass: []
+---
+
+<header id="sidebar">
+    {% include 'sidebar.njk' %}
+</header>
+<div id="main-display">
+    <main class="{{ mainClass | join(" ") }}">
+        {{ content | safe }}
+    </main>
+</div>

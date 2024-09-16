@@ -1,0 +1,290 @@
+/*@font-face {*/
+/*	font-family: "Latitude";*/
+/*	src: local("Latitude Regular"), url("/assets/fonts/degheest/woff/Latitude-Regular.woff2") format("woff2")*/
+/*		url("/assets/fonts/degheest/woff/Latitude-Regular.woff") format("woff");*/
+/*}*/
+
+{% include 'style/reset.css' %}
+
+:root {
+	--empty-bg: #ffe4c4;
+	--interface-bg: #ffffff;
+	--interface-shadow: 4px 4px rgba(0, 0, 0, 0.5) inset;
+	--interface-label-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+	--interface-border-bg: white;
+	--label-bg: white;
+	--channel-bg: white;
+	--channel-bg-img: url("/res/img/bg.jpg");
+	--channel-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+	--msg-bg: white;
+	--msg-shadow: var(--channel-shadow);
+
+	--link-fg: #993d6d;
+	--link-visited-fg: #2d1320;
+}
+
+* {
+	image-rendering: pixelated;
+}
+
+{% include 'style/widgets.css' %}
+
+html {
+	background-color: var(--interface-border-bg);
+	border: double;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	max-height: 100vh;
+	overscroll-behavior: contain;
+}
+
+body {
+	--interface-gap: 0.5em;
+
+	display: flex;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: var(--interface-gap);
+	background-color: var(--empty-bg);
+	gap: var(--interface-gap);
+	/*background-image: radial-gradient(black 1px, transparent 0);*/
+}
+
+{% include 'style/sidebar.css' %}
+{% include 'style/main.css' %}
+
+{% include 'style/tag-gallery.css' %}
+
+{% include 'style/post.css' %}
+
+{% include 'style/pagination.css' %}
+
+.about {
+	--about-padding: 0.5em;
+
+	/* box shadow trick */
+	position: relative;
+
+	flex-grow: 1;
+	box-sizing: border-box;
+
+	border: double;
+	padding: var(--about-padding);
+
+	background-color: white;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.about::before {
+	content: "";
+	position: absolute;
+	inset: 0px;
+
+	pointer-events: none;
+
+	box-shadow: var(--channel-shadow) inset;
+}
+
+.about > h1 {
+	border: double;
+	box-shadow: var(--channel-shadow);
+
+	width: fit-content;
+	height: fit-content;
+
+	margin: 0px;
+	padding: 0.5em;
+}
+
+.channel {
+	--channel-padding: 0.5em;
+
+	/* this allows the box-shadow trick */
+	position: relative;
+
+	flex-grow: 1;
+	box-sizing: border-box;
+
+	display: flex;
+	flex-direction: column;
+
+	border: double;
+	padding: 0px var(--channel-padding) var(--channel-padding);
+
+	background-color: var(--channel-bg);
+	background-image: var(--channel-bg-img);
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+/* this is to allow the inset shadow to display over the inner content, so it looks nice when scrolling */
+.channel::before {
+	content: "";
+	position: absolute;
+	inset: 0px;
+	pointer-events: none;
+
+	box-shadow: var(--channel-shadow) inset;
+
+}
+
+.channel-info {
+	height: fit-content;
+	width: fit-content;
+	max-width: 16em;
+
+	float: right;
+	position: absolute;
+	top: var(--channel-padding);
+	right: var(--channel-padding);
+	z-index: 1;
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.channel-info > * {
+	padding: 1em;
+
+	box-shadow: var(--channel-shadow);
+	border-style: double;
+	background-color: var(--label-bg);
+}
+
+.channel-info > header > h1 {
+	margin: 0px;
+}
+
+.channel-info > .peer-list > :first-child {
+	margin-top: 0px;
+}
+
+.channel-info > .peer-list > :last-child {
+	margin-bottom: 0px;
+}
+
+.channel-content {
+	flex-grow: 1;
+	min-height: 0px;
+
+	padding: 2em 0px;
+
+
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+	overflow: scroll;
+}
+
+.message {
+	--message-gap: 0.5em;
+
+	box-sizing: border-box;
+	width: fit-content;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	gap: var(--message-gap);
+
+	max-width: 48em;
+}
+
+.message.system {
+	font-style: italic;
+}
+
+.message > address {
+	box-sizing: border-box;
+
+	display: block flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: end;
+
+	min-width: 0px;
+	min-height: 0px;
+	width: fit-content;
+	height: fit-content;
+	margin: 0px;
+}
+
+.message > address > * {
+	/* border: double; */
+	box-shadow: var(--msg-shadow);
+	background-color: var(--msg-bg);
+}
+
+.message > address > h1 {
+	width: fit-content;
+	height: fit-content;
+	margin: 0px;
+	padding: 0.5em;
+
+	text-align: center;
+
+	border-style: double double double none;
+}
+
+.message.system > address > h1 {
+	border-style: double;
+}
+
+.message > address > img {
+	box-sizing: border-box;
+	max-width: 4em;
+	height: 4em;
+	padding: 2px;
+
+	object-fit: contain;
+
+	border: double;
+}
+
+.message > .message-content {
+	box-sizing: border-box;
+	border: double;
+
+	padding: 0px 1em;
+
+	width: fit-content;
+	height: fit-content;
+
+	overflow: scroll;
+
+	box-shadow: var(--msg-shadow);
+	background-color: var(--msg-bg);
+}
+
+.message-content {
+	contain: content;
+	content-visibility: auto
+}
+
+.channel-input {
+	box-sizing: border-box;
+
+	display: block flex;
+	justify-content: end;
+
+	box-shadow: var(--msg-shadow);
+}
+
+.channel-input textarea, .channel-input input[type="text"] {
+	width: 100%;
+
+	resize: none;
+
+	border-radius: 0px;
+	border-style: double;
+	border-width: medium;
+	background-color: var(--interface-bg);
+}

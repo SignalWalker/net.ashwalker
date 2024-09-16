@@ -39,6 +39,74 @@
         "type": "github"
       }
     },
+    "eleventy-img": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722527753,
+        "narHash": "sha256-YgrEXZ+ntrlzFaAdDVKpC88Xsk8uxZDhFXGL0DQIl/Y=",
+        "owner": "11ty",
+        "repo": "eleventy-img",
+        "rev": "9a422e1c0bba15c5fae14557a9636a16a55c2c4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "11ty",
+        "ref": "v5.0.0-beta.10",
+        "repo": "eleventy-img",
+        "type": "github"
+      }
+    },
+    "eleventy-navigation": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660924656,
+        "narHash": "sha256-mCUSaQ0XpW7oMXXz8GSHTZpV0My07RUOf5AcVOixUus=",
+        "owner": "11ty",
+        "repo": "eleventy-navigation",
+        "rev": "249a4bc94375089f91ac9eeb4c90e274d506a038",
+        "type": "github"
+      },
+      "original": {
+        "owner": "11ty",
+        "ref": "v0.3.5",
+        "repo": "eleventy-navigation",
+        "type": "github"
+      }
+    },
+    "eleventy-plugin-rss": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720816841,
+        "narHash": "sha256-YM/WvqH9LqgduNTiQE7ZgJylHNGodALNPdgEckAmr4w=",
+        "owner": "11ty",
+        "repo": "eleventy-plugin-rss",
+        "rev": "76d452a847322d25c525d17dceb83eb07e9b9793",
+        "type": "github"
+      },
+      "original": {
+        "owner": "11ty",
+        "ref": "v2.0.2",
+        "repo": "eleventy-plugin-rss",
+        "type": "github"
+      }
+    },
+    "eleventy-plugin-syntaxhighlight": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681333385,
+        "narHash": "sha256-b6dlicm3rt4SV7cVX7e2cOZA2kAmSCSmA2c9y3lmil4=",
+        "owner": "11ty",
+        "repo": "eleventy-plugin-syntaxhighlight",
+        "rev": "75d33c56ff2cdc68b9148e0280726d976661c27a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "11ty",
+        "ref": "v5.0.0",
+        "repo": "eleventy-plugin-syntaxhighlight",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -77,6 +145,23 @@
         "type": "github"
       }
     },
+    "markdown-it": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710803430,
+        "narHash": "sha256-RMkAON9QheNx5tMbkmrCcj5V1AJcyCwshE5btU4v8dI=",
+        "owner": "markdown-it",
+        "repo": "markdown-it",
+        "rev": "0fe7ccb4b7f30236fb05f623be6924961d296d3d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "markdown-it",
+        "ref": "14.1.0",
+        "repo": "markdown-it",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1726206720,
@@ -97,6 +182,11 @@
       "inputs": {
         "alejandra": "alejandra",
         "eleventy": "eleventy",
+        "eleventy-img": "eleventy-img",
+        "eleventy-navigation": "eleventy-navigation",
+        "eleventy-plugin-rss": "eleventy-plugin-rss",
+        "eleventy-plugin-syntaxhighlight": "eleventy-plugin-syntaxhighlight",
+        "markdown-it": "markdown-it",
         "nixpkgs": "nixpkgs"
       }
     },

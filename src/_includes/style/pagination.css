@@ -1,0 +1,16 @@
+.pagination {
+	justify-self: end;
+}
+
+.pagination > ol {
+	list-style: none;
+	padding: 0px;
+}
+
+.pagination > ol a {
+	box-sizing: border-box;
+	border: double black;
+	box-shadow: var(--channel-shadow);
+	background-color: white;
+	padding: var(--interface-gap);
+}

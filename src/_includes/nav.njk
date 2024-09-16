@@ -1,0 +1,5 @@
+<nav aria-labelledby="primary-navigation">
+	{% for title, url in site_meta.primary_nav %}
+	<a href="{{ url }}"{% if page.url == url %} aria-current="page"{% endif %}>{{ title }}</a>
+	{% endfor %}
+</nav>
