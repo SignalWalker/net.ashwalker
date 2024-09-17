@@ -14,7 +14,7 @@
 	--interface-border-bg: white;
 	--label-bg: white;
 	--channel-bg: white;
-	--channel-bg-img: url("/res/img/bg.jpg");
+	--channel-bg-img: url("/img/bg.jpg");
 	--channel-shadow: 4px 4px rgba(0, 0, 0, 0.5);
 	--msg-bg: white;
 	--msg-shadow: var(--channel-shadow);
@@ -60,7 +60,10 @@ body {
 
 {% include 'style/post.css' %}
 
+{% include 'style/project.css' %}
+
 {% include 'style/pagination.css' %}
+
 
 .about {
 	--about-padding: 0.5em;

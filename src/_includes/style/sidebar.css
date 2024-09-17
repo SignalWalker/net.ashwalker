@@ -57,11 +57,8 @@
 	padding: 0px;
 }
 
-#sidebar aside > img {
+#sidebar aside > picture {
 	max-width: 100%;
-
-	box-sizing: border-box;
-	object-fit: contain;
 
 	border: double;
 	box-shadow: var(--interface-shadow);
@@ -70,14 +67,15 @@
 	padding: var(--interface-gap);
 }
 
-#sidebar aside > nav {
-	display: block flex;
+nav.icon-nav, section.project > nav {
+	display: flex;
 	flex-direction: row;
 	gap: var(--interface-gap);
 	justify-content: center;
+	/*align-items: stretch;*/
 }
 
-#sidebar aside > nav > * {
+nav.icon-nav > *, section.project > nav > * {
 	border: double black;
 	box-shadow: var(--interface-label-shadow);
 	background-color: var(--interface-bg);
@@ -85,16 +83,16 @@
 	height: 4em;
 	width: 4em;
 	padding: 4px;
-	box-sizing: border-box;
 }
 
-#sidebar aside > nav img {
+nav.icon-nav img, section.project > nav img {
 	box-sizing: border-box;
 	object-fit: contain;
 	display: block;
 
 	max-width: 100%;
 	height: 100%;
+	width: 100%;
 	margin: auto;
 }
 

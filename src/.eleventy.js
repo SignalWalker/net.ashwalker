@@ -1,14 +1,46 @@
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const eleventyRssPlugin = require("@11ty/eleventy-plugin-rss");
-const eleventySyntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
+const Image = require("@11ty/eleventy-img");
 const markdownIt = require("markdown-it");
+const markdownItFootnote = require("markdown-it-footnote");
+const lightningcss = require('lightningcss');
 
 function dateToTimeTag(date) {
 	return `<time datetime="${date.toISOString()}">${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}</time>`;
 }
 
 module.exports = function (eleventyConfig) {
-	eleventyConfig.addPlugin(eleventyNavigationPlugin);
+	eleventyConfig.setQuietMode(true);
+	eleventyConfig.addPlugin(directoryOutputPlugin);
+	eleventyConfig.addPlugin(feedPlugin, {
+		type: 'atom',
+		outputPath: 'feed.xml',
+		collection: {
+			name: "article",
+			limit: 0
+		},
+		metadata: {
+			language: "en",
+			title: "Signal Garden",
+			subtitle: "Ash Walker's blog",
+			base: "https://ashwalker.net/",
+			author: {
+				name: "Ash Walker",
+				email: "ashurstwalker@gmail.com"
+			}
+		}
+	});
+	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+		extensions: "html",
+		formats: ["avif", "webp", "svg"],
+		svgShortCircuit: true,
+		widths: ["auto"],
+		defaultAttributes: {
+			loading: "lazy",
+			decoding: "async"
+		},
+	});
 
 	eleventyConfig.setNunjucksEnvironmentOptions({
 		throwOnUndefined: true,
@@ -19,15 +51,16 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.setLibrary("md", markdownIt({
 		html: true,
 		xhtmlOut: true
-	}));
+	}).use(markdownItFootnote));
 
 	eleventyConfig.addWatchTarget("**/*.css");
 
 	eleventyConfig.addPassthroughCopy(".well-known");
 	eleventyConfig.addPassthroughCopy("favicon.ico");
 	eleventyConfig.addPassthroughCopy("favicon.svg");
-	eleventyConfig.addPassthroughCopy("res");
-	eleventyConfig.addPassthroughCopy("**/*.png");
+	eleventyConfig.addPassthroughCopy("img");
+	//eleventyConfig.addPassthroughCopy("res");
+	//eleventyConfig.addPassthroughCopy("**/*.png");
 
 	// all posts tagged with either `article` or `post`
 	eleventyConfig.addCollection("publicPosts", function (collectionApi) {
@@ -49,13 +82,18 @@ module.exports = function (eleventyConfig) {
 		});
 	});
 
-	eleventyConfig.addShortcode("postHeader", function(post) {
-		if (!Object.hasOwn(post.data, 'title')) {
+	eleventyConfig.addFilter("debug", function(value) {
+		console.log(value);
+		return "";
+	})
+
+	eleventyConfig.addShortcode("postHeader", function(title, url) {
+		if (title === undefined) {
 			return "";
 		}
 		return `
 		<header>
-			<h1><a href="${post.url}">${post.data.title}</a></h1>
+			<h1><a href="${url}">${title}</a></h1>
 		</header>
 		`;
 	});
@@ -64,14 +102,14 @@ module.exports = function (eleventyConfig) {
 		return dateToTimeTag(date);
 	});
 
-	eleventyConfig.addShortcode("postFooter", function(post) {
-		var tagList = post.data.tags.filter(function (tag) {
+	eleventyConfig.addShortcode("postFooter", function(tags, url, date) {
+		var tagStr = "";
+		var tagList = tags.filter(function (tag) {
 			return tag != "post";
 		});
-		var tagStr = "";
 		if (tagList.length > 0) {
 			tagStr = tagList.map(function (tag) {
-				return `<a href="/blog/tag/${tag}/">#${tag}</a>`;
+				return `<a href="/post/tag/${tag}/">#${tag}</a>`;
 			}).join("\n");
 			//tagStr = `
 			//	${tagStr}
@@ -79,10 +117,30 @@ module.exports = function (eleventyConfig) {
 		}
 		return `
 		<footer>
-			<a href="${post.url}">#</a>
-			${dateToTimeTag(post.date)}
+			<a href="${url}">#</a>
+			${dateToTimeTag(date)}
 			${tagStr}
 		</footer>
 		`;
+	});
+
+	eleventyConfig.addFilter("postTitle", function(post) {
+		if (!Object.hasOwn(post.data, 'title')) {
+			return post.fileSlug;
+		} else {
+			return post.data.title;
+		}
+	});
+
+	eleventyConfig.addTransform("minify-css", async function (content) {
+		if (!(this.page.outputPath || "").endsWith(".css")) {
+			return content;
+		}
+		var { code, map } = lightningcss.transform({
+			filename: this.page.outputPath,
+			code: Buffer.from(content),
+			minify: true
+		});
+		return code;
 	});
 };

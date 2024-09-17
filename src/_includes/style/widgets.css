@@ -38,3 +38,13 @@ input:is([type="button"], [type="submit"], [type="reset"]):active, input[type="f
 video {
 	width: 32em;
 }
+
+picture {
+	object-fit: contain;
+}
+
+picture > img {
+	height: 100%;
+	max-width: 100%;
+	object-fit: contain;
+}

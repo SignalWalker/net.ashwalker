@@ -1,0 +1,29 @@
+{
+	"layout": "layout/project.njk",
+	"projects": {
+		"eightfold": {
+			"title": "Eightfold",
+			"image": {
+				"src": "/res/img/content/project/eightfold/logo.svg",
+				"alt": "Eightfold logo; a cube divided into color-coded octants."
+			},
+			"description": "A library for partitioning 3D data.",
+			"links": [
+				{
+					"href": "https://github.com/SignalWalker/Eightfold",
+					"image": {
+						"src": "/res/img/logos/git.svg",
+						"alt": "Github"
+					}
+				},
+				{
+					"href": "https://crates.io/crates/eightfold",
+					"image": {
+						"src": "https://crates.io/favicon.ico",
+						"alt": "crates.io"
+					}
+				}
+			]
+		}
+	}
+}

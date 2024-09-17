@@ -5,6 +5,9 @@
 .pagination > ol {
 	list-style: none;
 	padding: 0px;
+	display: flex;
+	flex-direction: row;
+	gap: var(--interface-gap);
 }
 
 .pagination > ol a {

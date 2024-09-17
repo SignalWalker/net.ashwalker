@@ -1,8 +1,8 @@
 {
 	"primary_nav": {
 		"About": "/",
-		"Projects": "/projects/",
-		"Blog": "/blog/",
+		"Projects": "/project/",
+		"Posts": "/post/",
 		"Resumé": "/resume/"
 	}
 }

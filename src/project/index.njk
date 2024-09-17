@@ -1,0 +1,13 @@
+---
+title: Projects
+layout: layout/main.njk
+permalink: "/project/"
+---
+
+<div class="project-gallery">
+	{%- for project in collections.project -%}
+	<section class="project">
+		{{ project.content | safe }}
+	</section>
+	{%- endfor -%}
+</div>

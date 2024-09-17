@@ -1,0 +1,13 @@
+---
+layout: layout/main.njk
+tags: []
+---
+
+<article class="{{ tags | join(" ") }}">
+	{%- postHeader title, page.url -%}
+	<div class="post-content">
+		{{ content | safe }}
+	</div>
+	{% postFooter tags, page.url, page.date %}
+</article>
+

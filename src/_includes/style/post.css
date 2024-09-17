@@ -93,7 +93,41 @@ main > .post:first-child {
 	content-visibility: auto;
 }
 
-.post > .post-content > * {
+.post-content {
+	--img-width: 32em;
+	--aside-width: 32em;
+}
+
+.post-content > * {
 	max-width: 100%;
 	max-height: 100%;
+}
+
+.post-content aside {
+	/*margin-top: var(--interface-gap);*/
+	/*margin-bottom: var(--interface-gap);*/
+	box-shadow: var(--msg-shadow);
+	border: double black;
+	background-color: var(--msg-bg);
+	float: inline-end;
+}
+
+.post-content aside.end {
+	width: var(--aside-width);
+}
+
+/*.post-content aside.start {*/
+/*	width: var(--aside-width);*/
+/*	float: inline-start;*/
+/*}*/
+
+.post-content aside[role='note'] {
+	width: fit-content;
+	max-width: var(--aside-width);
+	padding: var(--interface-gap);
+	box-shadow: var(--interface-shadow);
+}
+
+.post-content picture > img {
+	width: var(--img-width);
 }

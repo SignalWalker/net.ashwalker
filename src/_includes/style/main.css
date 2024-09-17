@@ -6,6 +6,18 @@
 
 	flex-grow: 1;
 	height: 100%;
+
+	position: relative;
+}
+
+/* this is to allow the inset shadow to display over the inner content, so it looks nice when scrolling */
+#main-display::before {
+	content: "";
+	position: absolute;
+	inset: 0px;
+	pointer-events: none;
+
+	box-shadow: var(--channel-shadow) inset;
 }
 
 
@@ -15,8 +27,6 @@ main {
 
 	overflow-y: scroll;
 
-	position: relative;
-
 	background-color: var(--channel-bg);
 	background-image: var(--channel-bg-img);
 	background-size: cover;
@@ -24,16 +34,6 @@ main {
 	background-position: center;
 
 	padding: 0px var(--interface-gap) var(--interface-gap);
-}
-
-/* this is to allow the inset shadow to display over the inner content, so it looks nice when scrolling */
-main::before {
-	content: "";
-	position: absolute;
-	inset: 0px;
-	pointer-events: none;
-
-	box-shadow: var(--channel-shadow) inset;
 }
 
 main {
@@ -48,6 +48,13 @@ main {
 main.center {
 	justify-content: center;
 	align-items: center;
+}
+
+main > h1.not-found {
+	border: double black;
+	box-shadow: var(--msg-shadow);
+	background-color: var(--msg-bg);
+	padding: var(--interface-gap);
 }
 
 /*main > section {*/

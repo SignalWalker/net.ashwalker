@@ -1,0 +1,27 @@
+---
+title: {{ tag }}
+layout: layout/main.njk
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - ephemera
+    - publicPosts
+    - post
+    - project
+permalink: /post/tag/{{ tag }}/
+mainClass:
+  - "center"
+---
+
+<section class="post-list">
+	<h1><a href="/post/tag/{{ tag }}" aria-current="page">#{{ tag }}</h1>
+	<ol role="list">
+		{% set posts = collections[ tag ] %}
+		{%- for post in posts -%}
+		<li><a href="{{ post.url }}">{{ post | postTitle }}</a>{{ post.date | toTimeTag | safe }}</li>
+		{%- endfor -%}
+	</ol>
+</section>
