@@ -4,11 +4,11 @@
   "description": "Ash Walker's personal website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "eleventy --input=src --config=src/.eleventy.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://git.ashwalker.net/net.ashwalker"
+    "url": "https://git.ashwalker.net/ashwalker.net"
   },
   "author": "Ash Walker",
   "dependencies": {

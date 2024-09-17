@@ -1,4 +1,4 @@
-{overlay}: {
+{self}: {
   config,
   pkgs,
   lib,
@@ -15,7 +15,11 @@ in {
         type = types.path;
         default = ./src;
       };
-      eleventy = mkPackageOption pkgs "eleventy" {};
+      buildScript = mkOption {
+        type = types.package;
+        readOnly = true;
+        default = self.packages.${pkgs.system}."ashwalker.net-build-script";
+      };
       user = mkOption {
         type = types.str;
         default = "ashwalker-net";
@@ -25,15 +29,15 @@ in {
         default = "ashwalker-net";
       };
       dirs = {
-        state = mkOption {
+        configuration = mkOption {
           type = types.str;
           readOnly = true;
-          default = "/var/lib/${site.user}";
+          default = "/etc/${site.user}";
         };
-        runtime = mkOption {
+        cache = mkOption {
           type = types.str;
           readOnly = true;
-          default = "/run/${site.user}";
+          default = "/var/cache/${site.user}";
         };
       };
       domain = mkOption {
@@ -52,21 +56,45 @@ in {
   disabledModules = [];
   imports = [];
   config = lib.mkIf site.enable {
-    nixpkgs.overlays = [overlay];
-    systemd.services = {
-      "ashwalker-net" = {
-        path = [site.eleventy];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${site.eleventy}/bin/eleventy --output=${site.dirs.runtime} --watch";
-          WorkingDirectory = site.dirs.state;
-          StateDirectory = site.user;
-          RuntimeDirectory = site.user;
-        };
-      };
+    users.users.${site.user} = {
+      isSystemUser = true;
+      group = site.group;
     };
-    services.nginx.virtualHosts."${cfg.domain}" = {
-      root = ./src;
+    users.groups.${site.group} = {};
+    # environment.etc."${site.user}" = {
+    #   user = site.user;
+    #   group = site.group;
+    #   source = site.src;
+    # };
+    # systemd.services = {
+    #   "ashwalker-net-build" = {
+    #     # partOf = ["ashwalker-net-watcher.path"];
+    #     wantedBy = ["multi-user.target"];
+    #     serviceConfig = {
+    #       Type = "oneshot";
+    #       ExecStartPre = "${pkgs.coreutils}/bin/rm -rf ${site.dirs.cache}/*";
+    #       ExecStart = "${site.buildScript}/bin/build-ashwalker-net --output=${site.dirs.cache}";
+    #       WorkingDirectory = site.dirs.configuration;
+    #       ConfigurationDirectory = site.user;
+    #       CacheDirectory = site.user;
+    #       User = site.user;
+    #       Group = site.group;
+    #     };
+    #   };
+    # };
+    # systemd.paths = {
+    #   "ashwalker-net-watcher" = {
+    #     wantedBy = ["multi-user.target"];
+    #     pathConfig = {
+    #       PathModified = site.dirs.configuration;
+    #       Unit = "ashwalker-net-build.service";
+    #       MakeDirectory = true;
+    #       TriggerLimitIntervalSec = "1m";
+    #     };
+    #   };
+    # };
+    services.nginx.virtualHosts."${site.domain}" = {
+      root = self.packages.${pkgs.system}."ashwalker.net";
       extraConfig = ''
         rewrite ^/resume?$ https://signalwalker.github.io/meta.resume permanent;
       '';

@@ -30,7 +30,7 @@
       nodejsFor = pkgs: pkgs.nodejs_22;
     in {
       formatter = std.mapAttrs (system: pkgs: pkgs.default) inputs.alejandra.packages;
-      nixosModules.default = import ./nixos-module.nix {overlay = self.overlays.default;};
+      nixosModules.default = import ./nixos-module.nix {inherit self;};
       packages =
         std.mapAttrs (system: pkgs: let
           std = pkgs.lib;
@@ -45,9 +45,37 @@
             nativeBuildInputs =
               []
               ++ (with pkgs; [
-                lightningcss
-              ]);
+                ]);
+            npmDepsHash = "sha256-YNVuU9gzveWeXShfKhCRLx9bO+XDzwXX9wONzqXmL0A=";
+            postBuild = ''
+              mkdir $out
+
+              mv -t $out _site/*
+            '';
+
+            dontNpmInstall = true;
           };
+          "ashwalker.net-env" = pkgs.buildNpmPackage {
+            pname = "ashwalker.net-eleventy";
+            inherit (self.packages.${system}."ashwalker.net") version;
+            src = ./.;
+            inherit nodejs;
+            nativeBuildInputs =
+              []
+              ++ (with pkgs; [
+                ]);
+            npmDepsHash = "sha256-YNVuU9gzveWeXShfKhCRLx9bO+XDzwXX9wONzqXmL0A=";
+            dontNpmBuild = true;
+            postInstall = let
+            in ''
+            '';
+          };
+          "ashwalker.net-build-script" = pkgs.writeShellScriptBin "build-ashwalker-net" (let
+            env = self.packages.${system}."ashwalker.net-env";
+            nm = "${env}/lib/node_modules/ashwalker-net/node_modules";
+          in ''
+            env NODE_PATH=${nm}:$NODE_PATH ${nodejs}/bin/node ${nm}/.bin/eleventy "$@"
+          '');
           default = self.packages.${system}."ashwalker.net";
         })
         nixpkgsFor;

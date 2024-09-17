@@ -13,13 +13,3 @@ mainClass:
         {%- endfor -%}
     </ol>
 </section>
-<section class="project-gallery-container">
-    <h1>Projects</h1>
-    <div class="project-gallery">
-        {%- for project in collections.project -%}
-        <section class="project">
-            {{ project.content | safe }}
-        </section>
-        {%- endfor -%}
-    </div>
-</section>
