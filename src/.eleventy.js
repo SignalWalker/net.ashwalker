@@ -16,12 +16,18 @@ function dateToTimeTag(date, classes = []) {
 
 module.exports = function (eleventyConfig) {
 	var neocities = (process.env.ASHWALKER_NET_NEOCITIES || 0) == 1;
+	var devMode = (process.env.ASHWALKER_NET_DEVMODE || 0) == 1;
 	eleventyConfig.addGlobalData("neocities", neocities);
 	var primaryNav = {
 		"About": "/",
 		"Posts": "/post/",
 		"Resumé": "/resume"
 	};
+	if (devMode) {
+		console.log("Developer mode...");
+	} else {
+		eleventyConfig.ignores.add("**/draft");
+	}
 	if (neocities) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];

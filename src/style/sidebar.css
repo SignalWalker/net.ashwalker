@@ -38,6 +38,10 @@
 	border: double;
 	box-shadow: var(--interface-shadow);
 	background-color: var(--interface-bg);
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 .sidebar>*>* {
@@ -62,9 +66,13 @@ section.project>nav>* {
 	box-shadow: var(--interface-label-shadow);
 	background-color: var(--interface-bg);
 
-	height: 4em;
-	width: 4em;
+	height: 3em;
+	width: 3em;
 	padding: 4px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 nav.icon-nav img,
@@ -77,6 +85,8 @@ section.project>nav img {
 	height: 100%;
 	width: 100%;
 	margin: auto;
+
+	flex-grow: 1;
 }
 
 .sidebar>nav {
