@@ -116,10 +116,10 @@ main > .post:first-child {
 	width: var(--aside-width);
 }
 
-/*.post-content aside.start {*/
-/*	width: var(--aside-width);*/
-/*	float: inline-start;*/
-/*}*/
+.post-content aside.start {
+	width: var(--aside-width);
+	float: inline-start;
+}
 
 .post-content aside[role='note'] {
 	width: fit-content;
