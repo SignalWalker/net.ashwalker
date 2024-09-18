@@ -1,5 +1,6 @@
 .sidebar {
 	min-width: min-content;
+	width: 100%;
 
 	display: block flex;
 	/*grid-auto-rows: 1fr;*/

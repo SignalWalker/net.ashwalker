@@ -1,5 +1,6 @@
 #main-display {
-	display: block;
+	display: flex;
+	flex-direction: column;
 
 	border: double;
 	background-color: var(--interface-bg);
@@ -7,6 +8,8 @@
 	position: relative;
 
 	width: 100%;
+
+	flex-grow: 1;
 }
 
 /* this is to allow the inset shadow to display over the inner content, so it looks nice when scrolling */
@@ -47,6 +50,8 @@ main {
 	background-position: center;
 
 	padding: var(--interface-gap);
+
+	flex-grow: 1;
 }
 
 main {

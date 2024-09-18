@@ -15,6 +15,8 @@ function dateToTimeTag(date, classes = []) {
 }
 
 module.exports = function (eleventyConfig) {
+	var neocities = (process.env.ASHWALKER_NET_NEOCITIES || 0) == 1;
+
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.addPlugin(directoryOutputPlugin);
 	eleventyConfig.addPlugin(feedPlugin, {
