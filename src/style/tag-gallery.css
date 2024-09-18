@@ -12,7 +12,7 @@
 	max-width: 50%;
 }
 
-.tag-gallery > h1 {
+.tag-gallery>h1 {
 	border: double black;
 	box-shadow: var(--channel-shadow);
 	background-color: var(--channel-bg);
@@ -23,7 +23,7 @@
 	padding: var(--interface-gap);
 }
 
-.tag-gallery > div {
+.tag-gallery>div {
 	display: block flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -41,7 +41,7 @@ section.post-list {
 	max-width: 33em;
 }
 
-section.post-list > h1 {
+section.post-list>h1 {
 	border: double black;
 	box-shadow: var(--msg-shadow);
 	background-color: var(--msg-bg);
@@ -49,12 +49,12 @@ section.post-list > h1 {
 	padding: var(--interface-gap);
 }
 
-section.post-list > ol {
+section.post-list>ol {
 	padding: 0px;
 	margin: 0px;
 }
 
-section.post-list > ol > li {
+section.post-list>ol>li {
 	display: block flex;
 	box-sizing: border-box;
 
@@ -69,7 +69,6 @@ section.post-list > ol > li {
 	padding: var(--interface-gap);
 }
 
-section.post-list > ol > li:active {
-	box-shadow: unset!important;
+section.post-list>ol>li:active {
+	box-shadow: unset !important;
 }
-

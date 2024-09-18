@@ -7,9 +7,9 @@ pagination:
 ---
 
 {%- for post in pagination.items -%}
-<article class="{{ post.data.tags | join(' ') }}">
+<article class="h-entry {{ post.data.tags | join(' ') }}">
 	{% postHeader post.data.title, post.url %}
-	<div class="post-content">
+	<div class="e-content">
 		{{ post.content | safe }}
 	</div>
 	{% postFooter post.data.tags, post.url, post.date %}

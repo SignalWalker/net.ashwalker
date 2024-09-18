@@ -2,6 +2,6 @@
 	"primary_nav": {
 		"About": "/",
 		"Posts": "/post/",
-		"RSS Feed": "/feed.xml"
+		"Resumé": "/resume"
 	}
 }

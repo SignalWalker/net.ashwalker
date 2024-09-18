@@ -1,8 +1,8 @@
-main > .post:first-child {
+main>.h-entry:first-child {
 	margin-top: var(--interface-gap);
 }
 
-.post {
+.h-entry {
 	display: flex;
 	flex-direction: column;
 	align-items: end;
@@ -14,12 +14,19 @@ main > .post:first-child {
 	max-width: 64em;
 }
 
-.post.article {
+@media screen and (max-width: 80em) {
+	.h-entry {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.h-entry.article {
 	align-items: start;
 	align-self: start;
 }
 
-.post > header {
+.h-entry>header {
 	display: block flex;
 	flex-direction: row-reverse;
 	flex-wrap: wrap;
@@ -32,17 +39,17 @@ main > .post:first-child {
 	margin: 0px;
 }
 
-.post.article > header {
+.h-entry.article>header {
 	flex-direction: row;
 }
 
-.post > header > * {
+.h-entry>header>* {
 	box-shadow: var(--msg-shadow);
 	background-color: var(--msg-bg);
 	border: double black;
 }
 
-.post > header > h1 {
+.h-entry>header>h1 {
 	width: fit-content;
 	height: fit-content;
 	margin: 0px;
@@ -51,7 +58,7 @@ main > .post:first-child {
 	z-index: 1;
 }
 
-.post > footer {
+.h-entry>footer {
 	display: block flex;
 	flex-direction: row-reverse;
 	flex-wrap: wrap;
@@ -66,11 +73,11 @@ main > .post:first-child {
 	margin: 0px;
 }
 
-.post.article > footer {
+.h-entry.article>footer {
 	flex-direction: row;
 }
 
-.post > footer > * {
+.h-entry>footer>* {
 	box-shadow: var(--msg-shadow);
 	background-color: var(--msg-bg);
 	border: double black;
@@ -78,7 +85,7 @@ main > .post:first-child {
 	margin: 0px;
 }
 
-.post > .post-content {
+.h-entry>.e-content {
 	border: double black;
 	box-shadow: var(--channel-shadow);
 	background-color: var(--channel-bg);
@@ -93,17 +100,19 @@ main > .post:first-child {
 	content-visibility: auto;
 }
 
-.post-content {
+.e-content {
 	--img-width: 32em;
 	--aside-width: 32em;
+
+	max-width: 100%;
 }
 
-.post-content > * {
+.e-content>* {
 	max-width: 100%;
 	max-height: 100%;
 }
 
-.post-content aside {
+.e-content aside {
 	/*margin-top: var(--interface-gap);*/
 	/*margin-bottom: var(--interface-gap);*/
 	box-shadow: var(--msg-shadow);
@@ -112,22 +121,22 @@ main > .post:first-child {
 	float: inline-end;
 }
 
-.post-content aside.end {
+.e-content aside.end {
 	width: var(--aside-width);
 }
 
-.post-content aside.start {
+.e-content aside.start {
 	width: var(--aside-width);
 	float: inline-start;
 }
 
-.post-content aside[role='note'] {
+.e-content aside[role='note'] {
 	width: fit-content;
 	max-width: var(--aside-width);
 	padding: var(--interface-gap);
 	box-shadow: var(--interface-shadow);
 }
 
-.post-content picture > img {
+.e-content picture>img {
 	width: var(--img-width);
 }

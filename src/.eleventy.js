@@ -6,8 +6,12 @@ const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
 const lightningcss = require('lightningcss');
 
-function dateToTimeTag(date) {
-	return `<time datetime="${date.toISOString()}">${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}</time>`;
+function dateToTimeTag(date, classes = []) {
+	var classAttr = "";
+	if (classes.length > 0) {
+		classAttr = `class="${classes.join(" ")}" `;
+	}
+	return `<time ${classAttr}datetime="${date.toISOString()}">${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}</time>`;
 }
 
 module.exports = function (eleventyConfig) {
@@ -53,12 +57,15 @@ module.exports = function (eleventyConfig) {
 		xhtmlOut: true
 	}).use(markdownItFootnote));
 
-	eleventyConfig.addWatchTarget("**/*.css");
+	//eleventyConfig.addWatchTarget("**/*.css");
 
+	eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 	eleventyConfig.addPassthroughCopy("src/.well-known");
 	eleventyConfig.addPassthroughCopy("src/favicon.ico");
 	eleventyConfig.addPassthroughCopy("src/favicon.svg");
 	eleventyConfig.addPassthroughCopy("src/img");
+	eleventyConfig.addPassthroughCopy("src/style");
+	eleventyConfig.addWatchTarget("");
 	//eleventyConfig.addPassthroughCopy("res");
 	//eleventyConfig.addPassthroughCopy("**/*.png");
 
@@ -93,7 +100,7 @@ module.exports = function (eleventyConfig) {
 		}
 		return `
 		<header>
-			<h1><a href="${url}">${title}</a></h1>
+			<h1 class="p-name"><a class="p-url" href="${url}">${title}</a></h1>
 		</header>
 		`;
 	});
@@ -109,7 +116,7 @@ module.exports = function (eleventyConfig) {
 		});
 		if (tagList.length > 0) {
 			tagStr = tagList.map(function (tag) {
-				return `<a href="/post/tag/${tag}/">#${tag}</a>`;
+				return `<a class="p-category" href="/post/tag/${tag}/">#${tag}</a>`;
 			}).join("\n");
 			//tagStr = `
 			//	${tagStr}
@@ -117,8 +124,8 @@ module.exports = function (eleventyConfig) {
 		}
 		return `
 		<footer>
-			<a href="${url}">#</a>
-			${dateToTimeTag(date)}
+			<a class="p-url" href="${url}">#</a>
+			${dateToTimeTag(date, ["dt-published"])}
 			${tagStr}
 		</footer>
 		`;

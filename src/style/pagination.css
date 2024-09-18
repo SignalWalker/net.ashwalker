@@ -2,7 +2,7 @@
 	justify-self: end;
 }
 
-.pagination > ol {
+.pagination>ol {
 	list-style: none;
 	padding: 0px;
 	display: flex;
@@ -10,7 +10,7 @@
 	gap: var(--interface-gap);
 }
 
-.pagination > ol a {
+.pagination>ol a {
 	box-sizing: border-box;
 	border: double black;
 	box-shadow: var(--channel-shadow);

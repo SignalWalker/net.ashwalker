@@ -6,7 +6,7 @@ section.project-gallery-container {
 	gap: var(--interface-gap);
 }
 
-section.project-gallery-container > h1 {
+section.project-gallery-container>h1 {
 	border: double black;
 	box-shadow: var(--msg-shadow);
 	background-color: var(--msg-bg);
@@ -39,7 +39,8 @@ section.project {
 	text-align: center;
 }
 
-section.project > img, section.project > picture {
+section.project>img,
+section.project>picture {
 	border: double black;
 	box-shadow: var(--interface-shadow);
 	background-color: var(--interface-bg);

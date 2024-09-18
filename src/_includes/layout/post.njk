@@ -3,9 +3,9 @@ layout: layout/main.njk
 tags: []
 ---
 
-<article class="{{ tags | join(" ") }}">
+<article class="h-entry {{ tags | join(" ") }}">
 	{%- postHeader title, page.url -%}
-	<div class="post-content">
+	<div class="e-content">
 		{{ content | safe }}
 	</div>
 	{% postFooter tags, page.url, page.date %}

@@ -1,6 +1,5 @@
-#sidebar {
+.sidebar {
 	min-width: min-content;
-	max-width: 18em;
 
 	display: block flex;
 	/*grid-auto-rows: 1fr;*/
@@ -17,7 +16,19 @@
 /* 	padding: 0.5em; */
 /* } */
 
-#sidebar > * {
+@media screen and (min-width: 80em) {
+	body>header {
+		grid-column: 1 / 2;
+		grid-row: 2 / 3;
+	}
+
+	body>footer {
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+	}
+}
+
+.sidebar>* {
 	min-width: min-content;
 
 	margin: 0px;
@@ -28,46 +39,15 @@
 	background-color: var(--interface-bg);
 }
 
-#sidebar > * > * {
+.sidebar>*>* {
 	border: double black;
 	box-shadow: var(--interface-label-shadow);
 	background-color: var(--interface-bg);
 	padding: var(--interface-gap);
 }
 
-#sidebar aside {
-	text-align: center;
-
-	display: block flex;
-	flex-direction: column;
-	gap: var(--interface-gap);
-	justify-content: center;
-}
-
-#sidebar aside > * {
-	margin: 0px;
-}
-
-#sidebar aside .p-name {
-	text-decoration-line: none;
-}
-
-#sidebar aside > ul {
-	list-style: none;
-	padding: 0px;
-}
-
-#sidebar aside > picture {
-	max-width: 100%;
-
-	border: double;
-	box-shadow: var(--interface-shadow);
-	background-color: var(--interface-bg);
-
-	padding: var(--interface-gap);
-}
-
-nav.icon-nav, section.project > nav {
+nav.icon-nav,
+section.project>nav {
 	display: flex;
 	flex-direction: row;
 	gap: var(--interface-gap);
@@ -75,7 +55,8 @@ nav.icon-nav, section.project > nav {
 	/*align-items: stretch;*/
 }
 
-nav.icon-nav > *, section.project > nav > * {
+nav.icon-nav>*,
+section.project>nav>* {
 	border: double black;
 	box-shadow: var(--interface-label-shadow);
 	background-color: var(--interface-bg);
@@ -85,7 +66,8 @@ nav.icon-nav > *, section.project > nav > * {
 	padding: 4px;
 }
 
-nav.icon-nav img, section.project > nav img {
+nav.icon-nav img,
+section.project>nav img {
 	box-sizing: border-box;
 	object-fit: contain;
 	display: block;
@@ -96,9 +78,21 @@ nav.icon-nav img, section.project > nav img {
 	margin: auto;
 }
 
-#sidebar > nav {
-	display: block flex;
+.sidebar>nav {
+	display: flex;
 	flex-direction: row;
 	gap: var(--interface-gap);
 	justify-content: center;
+	align-items: stretch;
+}
+
+.sidebar>nav>* {
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar>nav img {
+	width: 1em;
+	height: 1em;
+	flex-grow: 1;
 }
