@@ -87,7 +87,8 @@
         in {
           default = (pkgs.mkShell.override {inherit stdenv;}) {
             # inputsFrom = [self.packages.${system}."ashwalker.net"];
-            nativeBuildInputs = [nodejs] ++ (with pkgs; [nodejs_22]);
+            packages = with pkgs; [neocities];
+            nativeBuildInputs = [nodejs];
           };
         })
         nixpkgsFor;

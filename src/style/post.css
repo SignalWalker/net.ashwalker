@@ -112,6 +112,10 @@ main>.h-entry:first-child {
 	max-height: 100%;
 }
 
+.e-content> :first-child {
+	margin-top: 0px;
+}
+
 .e-content aside {
 	/*margin-top: var(--interface-gap);*/
 	/*margin-bottom: var(--interface-gap);*/

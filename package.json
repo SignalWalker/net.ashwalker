@@ -4,7 +4,8 @@
   "description": "Ash Walker's personal website",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy --input=src --config=src/.eleventy.js"
+    "build": "eleventy --input=src --config=src/.eleventy.js",
+    "build-neocities": "env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/.eleventy.js"
   },
   "repository": {
     "type": "git",

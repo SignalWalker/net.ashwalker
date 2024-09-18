@@ -52,6 +52,9 @@ section.post-list>h1 {
 section.post-list>ol {
 	padding: 0px;
 	margin: 0px;
+	display: flex;
+	flex-direction: column;
+	gap: var(--interface-gap);
 }
 
 section.post-list>ol>li {

@@ -15,7 +15,7 @@ Because [Cohost is shutting down](https://cohost.org/staff/post/7611443-cohost-t
 
 I hadn't been using any sort of site generator for this website -- the whole thing was entirely manual, which involved a lot of copy-and-pasting and would've made something like an RSS feed a Sisyphean effort.
 
-<aside class="end"><img src="/post/ashwalker.net_old.png" alt="A screenshot of the old version of this website." title="The old version of this website." /></aside>
+<aside class="end"><img src="/post/article/ashwalker.net_old.png" alt="A screenshot of the old version of this website." title="The old version of this website." /></aside>
 
 Ideally, I'd have written some sort of bespoke HTTP server in Rust, with on-demand page generation, image processing, and ActivityPub support, but I, unfortunately, have a life outside of yak shaving trivial projects, so, instead, I'm just using [Eleventy](https://www.11ty.dev/).
 
@@ -27,5 +27,5 @@ Eleventy is pretty simple to use, so most of the work here has been in wrangling
 
 There are a couple extra things I'd like to get to (like CSS for mobile & a dark theme), but this is good enough for now -- I've been at this long enough that I'm typing `;` instead of `.` at the end of my sentences, so I think it's time to work on something else.
 
-[Here's the source code](https://git.ashwalker.net/ashwalker.net/src/tag/v2.0.0), if anyone's interested.
+[Here's the source code](https://git.ashwalker.net/Ash/ashwalker.net/src/tag/v2.0.0), if anyone's interested.
 

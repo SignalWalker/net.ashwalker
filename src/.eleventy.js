@@ -16,6 +16,24 @@ function dateToTimeTag(date, classes = []) {
 
 module.exports = function (eleventyConfig) {
 	var neocities = (process.env.ASHWALKER_NET_NEOCITIES || 0) == 1;
+	eleventyConfig.addGlobalData("neocities", neocities);
+	var primaryNav = {
+		"About": "/",
+		"Posts": "/post/",
+		"Resumé": "/resume"
+	};
+	if (neocities) {
+		console.log("Building for Neocities...");
+		delete primaryNav['Resumé'];
+		eleventyConfig.ignores.add("resume.njk");
+	} else {
+		eleventyConfig.ignores.add("**/neocities/**");
+	}
+	eleventyConfig.addGlobalData("siteMeta", {
+		primaryNav: primaryNav
+	});
+
+	var fqdn = neocities ? "https://signal-garden.neocities.org/" : "https://ashwalker.net/";
 
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.addPlugin(directoryOutputPlugin);
@@ -24,13 +42,13 @@ module.exports = function (eleventyConfig) {
 		outputPath: 'feed.xml',
 		collection: {
 			name: "article",
-			limit: 0
+			limit: 24
 		},
 		metadata: {
 			language: "en",
-			title: "Signal Garden",
+			title: neocities ? "Signal Cities" : "Signal Garden",
 			subtitle: "Ash Walker's blog",
-			base: "https://ashwalker.net/",
+			base: fqdn,
 			author: {
 				name: "Ash Walker",
 				email: "ashurstwalker@gmail.com"
@@ -141,15 +159,16 @@ module.exports = function (eleventyConfig) {
 		}
 	});
 
-	eleventyConfig.addTransform("minify-css", async function (content) {
-		if (!(this.page.outputPath || "").endsWith(".css")) {
-			return content;
-		}
-		var { code, map } = lightningcss.transform({
-			filename: this.page.outputPath,
-			code: Buffer.from(content),
-			minify: true
-		});
-		return code;
-	});
+	//eleventyConfig.addTransform("minify-css", async function (content) {
+	//	if (!(this.page.outputPath || "").endsWith(".css")) {
+	//		return content;
+	//	}
+	//	var { code, map } = lightningcss.transform({
+	//		filename: this.page.outputPath,
+	//		code: Buffer.from(content),
+	//		minify: true
+	//	});
+	//	if
+	//	return code;
+	//});
 };
