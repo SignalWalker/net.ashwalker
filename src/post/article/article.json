@@ -1,3 +1,3 @@
 {
-	"permalink": "/post/{{ title }}"
+	"permalink": "/post/{{ title | slugify }}/"
 }
