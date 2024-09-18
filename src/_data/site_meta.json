@@ -1,6 +1,7 @@
 {
 	"primary_nav": {
 		"About": "/",
-		"Posts": "/post/"
+		"Posts": "/post/",
+		"RSS Feed": "/feed.xml"
 	}
 }

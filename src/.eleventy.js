@@ -55,10 +55,10 @@ module.exports = function (eleventyConfig) {
 
 	eleventyConfig.addWatchTarget("**/*.css");
 
-	eleventyConfig.addPassthroughCopy(".well-known");
-	eleventyConfig.addPassthroughCopy("favicon.ico");
-	eleventyConfig.addPassthroughCopy("favicon.svg");
-	eleventyConfig.addPassthroughCopy("img");
+	eleventyConfig.addPassthroughCopy("src/.well-known");
+	eleventyConfig.addPassthroughCopy("src/favicon.ico");
+	eleventyConfig.addPassthroughCopy("src/favicon.svg");
+	eleventyConfig.addPassthroughCopy("src/img");
 	//eleventyConfig.addPassthroughCopy("res");
 	//eleventyConfig.addPassthroughCopy("**/*.png");
 
