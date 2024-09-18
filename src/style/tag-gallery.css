@@ -70,6 +70,8 @@ section.post-list>ol>li {
 	width: 100%;
 
 	padding: var(--interface-gap);
+
+	gap: var(--interface-gap);
 }
 
 section.post-list>ol>li:active {
