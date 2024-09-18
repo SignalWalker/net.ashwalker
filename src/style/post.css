@@ -103,6 +103,8 @@ main>.h-entry:first-child {
 .e-content {
 	--img-width: 32em;
 	--aside-width: 32em;
+	--code-fg: #ffffff;
+	--code-bg: #3c212f;
 
 	max-width: 100%;
 }
@@ -143,4 +145,13 @@ main>.h-entry:first-child {
 
 .e-content picture>img {
 	width: var(--img-width);
+}
+
+.e-content>pre {
+	border: double var(--code-fg);
+	color: var(--code-fg);
+	background-color: var(--code-bg);
+	max-width: 80em;
+	overflow-x: auto;
+	padding: var(--interface-gap);
 }

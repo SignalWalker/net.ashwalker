@@ -47,7 +47,7 @@ module.exports = function (eleventyConfig) {
 		type: 'atom',
 		outputPath: 'feed.xml',
 		collection: {
-			name: "article",
+			name: "feedPosts",
 			limit: 24
 		},
 		metadata: {
@@ -101,7 +101,17 @@ module.exports = function (eleventyConfig) {
 			if (!Object.hasOwn(item.data, 'tags')) {
 				return false;
 			}
-			return item.data.tags.some((tag) => tag == "article" || tag == "post");
+			return item.data.tags.some((tag) => tag == "article" || tag == "post" || (neocities && tag == "fiction"));
+		});
+		return result;
+	});
+
+	eleventyConfig.addCollection("feedPosts", function (collectionApi) {
+		var result = collectionApi.getAllSorted().filter(function (item) {
+			if (!Object.hasOwn(item.data, 'tags')) {
+				return false;
+			}
+			return item.data.tags.some((tag) => (tag == "article" || (neocities && tag == "fiction")));
 		});
 		return result;
 	});
