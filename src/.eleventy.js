@@ -34,6 +34,7 @@ module.exports = function (eleventyConfig) {
 		eleventyConfig.ignores.add("**/resume.njk");
 	} else {
 		eleventyConfig.ignores.add("**/neocities/**");
+		eleventyConfig.ignores.add("**/fiction/**");
 	}
 	eleventyConfig.addGlobalData("siteMeta", {
 		primaryNav: primaryNav
