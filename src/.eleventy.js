@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
 	if (neocities) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];
-		eleventyConfig.ignores.add("resume.njk");
+		eleventyConfig.ignores.add("**/resume.njk");
 	} else {
 		eleventyConfig.ignores.add("**/neocities/**");
 	}
