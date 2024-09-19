@@ -1,6 +1,6 @@
 ---
 title: Neocities
-date: "2024-11-18"
+date: "2024-09-18"
 tags:
   - article
   - post

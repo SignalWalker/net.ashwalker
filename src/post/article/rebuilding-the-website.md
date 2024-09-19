@@ -8,7 +8,7 @@ tags:
   - eleventy
   - javascript
   - systemd
-date: 2024-11-17
+date: 2024-09-17
 ---
 
 Because [Cohost is shutting down](https://cohost.org/staff/post/7611443-cohost-to-shut-down), I decided to rebuild my whole website so I could use it as a blog. I already have an [ActivityPub server](https://social.ashwalker.net/Ash), but the software running it ([Akkoma](https://akkoma.dev/AkkomaGang/akkoma/)) doesn't really work well for long-form posting.
@@ -28,4 +28,3 @@ Eleventy is pretty simple to use, so most of the work here has been in wrangling
 There are a couple extra things I'd like to get to (like CSS for mobile & a dark theme), but this is good enough for now -- I've been at this long enough that I'm typing `;` instead of `.` at the end of my sentences, so I think it's time to work on something else.
 
 [Here's the source code](https://git.ashwalker.net/Ash/ashwalker.net/src/tag/v2.0.0), if anyone's interested.
-

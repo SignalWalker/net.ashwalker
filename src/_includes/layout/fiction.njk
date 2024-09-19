@@ -1,0 +1,13 @@
+---
+layout: "layout/main.njk"
+tags: []
+series: ""
+---
+
+<article class="{{tags | postClasses}}">
+	{%- postHeader title, page.url -%}
+	<div class="e-content">
+		{{ content | safe }}
+	</div>
+	{% postFooter tags, page.url, page.date %}
+</article>
