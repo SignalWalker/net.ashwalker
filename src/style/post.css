@@ -21,7 +21,8 @@ main>.h-entry:first-child {
 	}
 }
 
-.h-entry.article, .h-entry.fiction {
+.h-entry.article,
+.h-entry.fiction {
 	align-items: start;
 	align-self: start;
 }
@@ -39,7 +40,8 @@ main>.h-entry:first-child {
 	margin: 0px;
 }
 
-.h-entry.article>header, .h-entry.fiction>header {
+.h-entry.article>header,
+.h-entry.fiction>header {
 	flex-direction: row;
 }
 
@@ -54,7 +56,7 @@ main>.h-entry:first-child {
 	height: fit-content;
 	margin: 0px;
 	padding: var(--interface-gap);
-	text-align: center;
+	text-align: start;
 	z-index: 1;
 }
 
@@ -73,7 +75,8 @@ main>.h-entry:first-child {
 	margin: 0px;
 }
 
-.h-entry.article>footer, .h-entry.fiction>footer {
+.h-entry.article>footer,
+.h-entry.fiction>footer {
 	flex-direction: row;
 }
 
