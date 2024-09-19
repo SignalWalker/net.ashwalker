@@ -12,7 +12,7 @@
 /* 	position: absolute; */
 /* 	z-index: 1; */
 /* 	background-color: white; */
-/* 	border: double; */
+/* 	border: double var(--border-color); */
 /* 	box-shadow: var(--outset-shadow); */
 /* 	padding: 0.5em; */
 /* } */
@@ -35,7 +35,7 @@
 	margin: 0px;
 	padding: var(--interface-gap);
 
-	border: double;
+	border: double var(--border-color);
 	box-shadow: var(--inset-shadow);
 	background-color: var(--content-bg);
 
@@ -45,7 +45,7 @@
 }
 
 .sidebar>*>* {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	padding: var(--interface-gap);
@@ -62,7 +62,7 @@ section.project>nav {
 
 nav.icon-nav>*,
 section.project>nav>* {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 

@@ -34,7 +34,7 @@
 .h-card>picture {
 	max-width: 100%;
 
-	border: double;
+	border: double var(--border-color);
 	box-shadow: var(--inset-shadow);
 	background-color: var(--content-bg);
 

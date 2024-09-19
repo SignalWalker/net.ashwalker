@@ -7,7 +7,7 @@ section.project-gallery-container {
 }
 
 section.project-gallery-container>h1 {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	padding: var(--interface-gap);
@@ -22,7 +22,7 @@ section.project-gallery-container>h1 {
 }
 
 section.project {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 
@@ -41,7 +41,7 @@ section.project {
 
 section.project>img,
 section.project>picture {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--inset-shadow);
 	background-color: var(--content-bg);
 	padding: var(--interface-gap);

@@ -13,10 +13,13 @@
 /*		url("/assets/fonts/degheest/woff/Latitude-Regular.woff") format("woff");*/
 /*}*/
 
-
 :root {
+	--text-fg: #000000;
+	--code-fg: #ffffff;
+
 	--empty-bg: #ffe4c4;
 	--content-bg: #ffffff;
+	--code-bg: #3c212f;
 
 	--outset-shadow: 4px 4px rgba(0, 0, 0, 0.5);
 	--inset-shadow: 4px 4px rgba(0, 0, 0, 0.5) inset;
@@ -25,7 +28,35 @@
 
 	--link-fg: #993d6d;
 	--link-visited-fg: #2d1320;
+
+	--border-color: var(--text-fg);
+
+	color: var(--text-fg);
 }
+
+/*@media (prefers-color-scheme: dark) {*/
+/*	:root {*/
+/*		--text-fg: #fff9f2;*/
+/*		--code-fg: #fff9f2;*/
+/**/
+/*		--empty-bg: #3c212f;*/
+/*		--content-bg: #000000;*/
+/*		--code-bg: #1f1f1f;*/
+/**/
+/*		--shadow-color: rgb(55, 55, 55);*/
+/*		--outset-shadow: 4px 4px var(--shadow-color);*/
+/*		--inset-shadow: 4px 4px var(--shadow-color) inset;*/
+/**/
+/*		--channel-bg-img: url("/img/bg.jpg");*/
+/**/
+/*		--link-fg: #d55497;*/
+/*		--link-visited-fg: #9d6581;*/
+/**/
+/*		--border-color: #c8c8c8;*/
+/**/
+/*		color: var(--text-fg);*/
+/*	}*/
+/*}*/
 
 /** {*/
 /*	image-rendering: pixelated;*/
@@ -34,7 +65,7 @@
 
 html {
 	background-color: var(--content-bg);
-	border: double;
+	border: double var(--border-color);
 	box-sizing: border-box;
 }
 

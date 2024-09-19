@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 
-	border: double;
+	border: double var(--border-color);
 	background-color: var(--content-bg);
 
 	position: relative;
@@ -69,7 +69,7 @@ main.center {
 }
 
 main>h1.not-found {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	padding: var(--interface-gap);

@@ -12,7 +12,7 @@
 
 .pagination>ol a {
 	box-sizing: border-box;
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: white;
 	padding: var(--interface-gap);

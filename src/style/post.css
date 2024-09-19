@@ -48,7 +48,7 @@ main>.h-entry:first-child {
 .h-entry>header>* {
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
-	border: double black;
+	border: double var(--border-color);
 }
 
 .h-entry>header>h1 {
@@ -83,13 +83,13 @@ main>.h-entry:first-child {
 .h-entry>footer>* {
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
-	border: double black;
+	border: double var(--border-color);
 	padding: var(--interface-gap);
 	margin: 0px;
 }
 
 .h-entry>.e-content {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 
@@ -106,8 +106,6 @@ main>.h-entry:first-child {
 .e-content {
 	--img-width: 32em;
 	--aside-width: 32em;
-	--code-fg: #ffffff;
-	--code-bg: #3c212f;
 
 	max-width: 100%;
 }
@@ -125,7 +123,7 @@ main>.h-entry:first-child {
 	/*margin-top: var(--interface-gap);*/
 	/*margin-bottom: var(--interface-gap);*/
 	box-shadow: var(--outset-shadow);
-	border: double black;
+	border: double var(--border-color);
 	background-color: var(--content-bg);
 	float: inline-end;
 }
@@ -151,7 +149,7 @@ main>.h-entry:first-child {
 }
 
 .e-content>pre {
-	border: double var(--code-fg);
+	border: double var(--border-color);
 	color: var(--code-fg);
 	background-color: var(--code-bg);
 	max-width: 80em;

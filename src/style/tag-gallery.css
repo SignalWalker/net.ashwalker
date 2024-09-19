@@ -13,7 +13,7 @@
 }
 
 .tag-gallery>h1 {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 
@@ -42,7 +42,7 @@ section.post-list {
 }
 
 section.post-list>h1 {
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	margin: auto;
@@ -61,7 +61,7 @@ section.post-list>ol>li {
 	display: block flex;
 	box-sizing: border-box;
 
-	border: double black;
+	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 
