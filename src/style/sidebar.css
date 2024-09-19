@@ -13,7 +13,7 @@
 /* 	z-index: 1; */
 /* 	background-color: white; */
 /* 	border: double; */
-/* 	box-shadow: var(--channel-shadow); */
+/* 	box-shadow: var(--outset-shadow); */
 /* 	padding: 0.5em; */
 /* } */
 
@@ -36,8 +36,8 @@
 	padding: var(--interface-gap);
 
 	border: double;
-	box-shadow: var(--interface-shadow);
-	background-color: var(--interface-bg);
+	box-shadow: var(--inset-shadow);
+	background-color: var(--content-bg);
 
 	display: flex;
 	flex-direction: row;
@@ -46,8 +46,8 @@
 
 .sidebar>*>* {
 	border: double black;
-	box-shadow: var(--interface-label-shadow);
-	background-color: var(--interface-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 	padding: var(--interface-gap);
 }
 
@@ -63,8 +63,8 @@ section.project>nav {
 nav.icon-nav>*,
 section.project>nav>* {
 	border: double black;
-	box-shadow: var(--interface-label-shadow);
-	background-color: var(--interface-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 
 	height: 3em;
 	width: 3em;

@@ -35,8 +35,8 @@
 	max-width: 100%;
 
 	border: double;
-	box-shadow: var(--interface-shadow);
-	background-color: var(--interface-bg);
+	box-shadow: var(--inset-shadow);
+	background-color: var(--content-bg);
 
 	padding: var(--interface-gap);
 }

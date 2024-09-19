@@ -41,7 +41,7 @@ input[type="file"]::file-selector-button:active,
 button:active {
 	border: inset;
 	background-color: white;
-	box-shadow: var(--interface-shadow);
+	box-shadow: var(--inset-shadow);
 }
 
 video {

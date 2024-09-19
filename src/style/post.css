@@ -46,8 +46,8 @@ main>.h-entry:first-child {
 }
 
 .h-entry>header>* {
-	box-shadow: var(--msg-shadow);
-	background-color: var(--msg-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 	border: double black;
 }
 
@@ -81,8 +81,8 @@ main>.h-entry:first-child {
 }
 
 .h-entry>footer>* {
-	box-shadow: var(--msg-shadow);
-	background-color: var(--msg-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 	border: double black;
 	padding: var(--interface-gap);
 	margin: 0px;
@@ -90,8 +90,8 @@ main>.h-entry:first-child {
 
 .h-entry>.e-content {
 	border: double black;
-	box-shadow: var(--channel-shadow);
-	background-color: var(--channel-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 
 	width: fit-content;
 	height: fit-content;
@@ -124,9 +124,9 @@ main>.h-entry:first-child {
 .e-content aside {
 	/*margin-top: var(--interface-gap);*/
 	/*margin-bottom: var(--interface-gap);*/
-	box-shadow: var(--msg-shadow);
+	box-shadow: var(--outset-shadow);
 	border: double black;
-	background-color: var(--msg-bg);
+	background-color: var(--content-bg);
 	float: inline-end;
 }
 
@@ -143,7 +143,7 @@ main>.h-entry:first-child {
 	width: fit-content;
 	max-width: var(--aside-width);
 	padding: var(--interface-gap);
-	box-shadow: var(--interface-shadow);
+	box-shadow: var(--inset-shadow);
 }
 
 .e-content picture>img {

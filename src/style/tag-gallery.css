@@ -14,8 +14,8 @@
 
 .tag-gallery>h1 {
 	border: double black;
-	box-shadow: var(--channel-shadow);
-	background-color: var(--channel-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 
 	text-align: center;
 	margin: 0px;
@@ -43,8 +43,8 @@ section.post-list {
 
 section.post-list>h1 {
 	border: double black;
-	box-shadow: var(--msg-shadow);
-	background-color: var(--msg-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 	margin: auto;
 	padding: var(--interface-gap);
 }
@@ -62,8 +62,8 @@ section.post-list>ol>li {
 	box-sizing: border-box;
 
 	border: double black;
-	box-shadow: var(--channel-shadow);
-	background-color: var(--channel-bg);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
 
 	justify-content: space-between;
 	align-items: first baseline;
