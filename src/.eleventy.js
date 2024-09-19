@@ -23,6 +23,32 @@ module.exports = function (eleventyConfig) {
 		"Posts": "/post/",
 		"Resumé": "/resume"
 	};
+	var hCardNav = {
+		activitypub: {
+			href: "https://social.ashwalker.net/Ash",
+			img: {
+				src: "/res/img/logos/activitypub.svg",
+				alt: "ActivityPub",
+				title: "ActivityPub"
+			}
+		},
+		github: {
+			href: "https://github.com/SignalWalker",
+			img: {
+				src: "/res/img/logos/git.svg",
+				alt: "Github",
+				title: "Github"
+			}
+		},
+		personalGit: {
+			href: "https://git.ashwalker.net/Ash",
+			img: {
+				src: "/favicon.svg",
+				alt: "Personal Code Forge",
+				title: "Personal Code Forge"
+			}
+		}
+	};
 	if (devMode) {
 		console.log("Developer mode...");
 	} else {
@@ -32,13 +58,41 @@ module.exports = function (eleventyConfig) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];
 		eleventyConfig.ignores.add("**/resume.njk");
+		delete hCardNav['github'];
+		delete hCardNav['personalGit'];
+		hCardNav['neocities'] = {
+			href: "https://neocities.org/site/signal-garden",
+			img: {
+				src: "/res/img/logos/neocities.png",
+				alt: "Neocities",
+				title: "Neocities"
+			}
+		};
+		hCardNav['ao3'] = {
+			href: "https://archiveofourown.org/users/SignalWalker",
+			img: {
+				src: "/res/img/logos/ao3.png",
+				alt: "Archive of Our Own",
+				title: "Archive of Our Own"
+			}
+		};
+		hCardNav['tumblr'] = {
+			href: "https://www.tumblr.com/blog/signalwalker",
+			img: {
+				src: "/res/img/logos/tumblr.svg",
+				alt: "Tumblr",
+				title: "Tumblr"
+			}
+		};
 	} else {
 		eleventyConfig.ignores.add("**/neocities/**");
 		eleventyConfig.ignores.add("**/fiction/**");
 	}
 	eleventyConfig.addGlobalData("siteMeta", {
-		primaryNav: primaryNav
+		primaryNav: primaryNav,
 	});
+	console.log(hCardNav);
+	eleventyConfig.addGlobalData("hCardNav", hCardNav);
 
 	var fqdn = neocities ? "https://signal-garden.neocities.org/" : "https://ashwalker.net/";
 
@@ -122,13 +176,29 @@ module.exports = function (eleventyConfig) {
 			if (!Object.hasOwn(item.data, 'tags')) {
 				return false;
 			}
-			return item.data.tags.includes("post") && !item.data.tags.includes("article");
+			var isPost = false;
+			for (const tag of item.data.tags) {
+				if (tag == "article" || tag == "fiction") {
+					return false;
+				} else if (tag == "post") {
+					isPost = true;
+				}
+			}
+			return isPost;
 		});
 	});
 
 	eleventyConfig.addFilter("debug", function(value) {
 		console.log(value);
 		return "";
+	})
+
+	eleventyConfig.addFilter("postClasses", function(tags) {
+		var classes = ["h-entry"];
+		if (tags.some((tag) => tag == 'article' || tag == 'fiction')) {
+			classes.push("article");
+		}
+		return classes.join(" ");
 	})
 
 	eleventyConfig.addShortcode("postHeader", function(title, url) {
@@ -145,6 +215,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("toTimeTag", function(date) {
 		return dateToTimeTag(date);
 	});
+
 
 	eleventyConfig.addShortcode("postFooter", function(tags, url, date) {
 		var tagStr = "";

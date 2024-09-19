@@ -8,10 +8,10 @@
 			  <li><a class="u-email" href="mailto:ash@ashwalker.net" rel="me">ash@ashwalker.net</a></li>
 		 </ul>
 		 <nav class="icon-nav">
-			  <a class="u-url" href="https://social.ashwalker.net/users/Ash" rel="me external"><img src="/res/img/logos/activitypub.svg" alt="Fediverse"/></a>
-			  <a class="u-url" href="https://github.com/SignalWalker" rel="me external"><img src="/res/img/logos/git.svg" alt="Git"/></a>
-			  <a class="u-url" href="https://git.ashwalker.net/Ash" rel="me external"><img src="/favicon.svg" alt="Git (personal)"/></a>
-			  {%- if neocities -%}<a class="u-url" href="https://archiveofourown.org/users/SignalWalker" rel="me external"><img src="/res/img/logos/ao3.png" alt="Archive of Our Own" /></a>{%- endif -%}
+			 {%- asyncEach cName, cNav in hCardNav -%}
+			 {{ cNav | debug }}
+			 <a class="u-url" href="{{ cNav.href }}" rel="me external"><img src="{{ cNav.img.src }}" alt="{{ cNav.img.alt }}" title="{{ cNav.img.title }}" /></a>
+			 {%- endeach -%}
 		 </nav>
 	 </div>
 </aside>
