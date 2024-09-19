@@ -53,6 +53,7 @@ module.exports = function (eleventyConfig) {
 		console.log("Developer mode...");
 	} else {
 		eleventyConfig.ignores.add("**/draft");
+		eleventyConfig.ignores.add("**/project");
 	}
 	if (neocities) {
 		console.log("Building for Neocities...");
@@ -91,7 +92,6 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addGlobalData("siteMeta", {
 		primaryNav: primaryNav,
 	});
-	console.log(hCardNav);
 	eleventyConfig.addGlobalData("hCardNav", hCardNav);
 
 	var fqdn = neocities ? "https://signal-garden.neocities.org/" : "https://ashwalker.net/";
