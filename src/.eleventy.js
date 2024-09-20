@@ -147,7 +147,6 @@ module.exports = function (eleventyConfig) {
 		xhtmlOut: true
 	}).use(markdownItFootnote).use(markdownItContainer, 'note', {
 		render: function (tokens, idx) {
-			console.log(tokens[idx]);
 			if (tokens[idx].nesting === 1) {
 				return `<aside role="note">\n`;
 			} else {

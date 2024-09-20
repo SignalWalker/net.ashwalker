@@ -2,7 +2,6 @@
 title: "Buttons"
 date: 2024-09-20T15:50
 tags:
-  - article
   - post
   - meta
   - neocities
