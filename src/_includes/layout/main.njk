@@ -6,7 +6,7 @@ mainClass: []
 <header class="sidebar">
     {% include 'nav.njk'%}
 </header>
-<div id="main-display">
+<div id="main-display" class="inset-overflow">
     <main class="{{ mainClass | join(" ") }}">
         {{ content | safe }}
     </main>
@@ -16,3 +16,8 @@ mainClass: []
         {% include 'h-card.njk' %}
     </div>
 </footer>
+{%- if neocities -%}
+<footer class="sidebar buttons">
+    {% include 'buttons.njk' %}
+</footer>
+{%- endif -%}

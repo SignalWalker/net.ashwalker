@@ -106,8 +106,11 @@ main>.h-entry:first-child {
 .e-content {
 	--img-width: 32em;
 	--aside-width: 32em;
+	--aside-gap: 0.5em;
 
 	max-width: 100%;
+
+	text-wrap: pretty;
 }
 
 .e-content>* {
@@ -126,6 +129,11 @@ main>.h-entry:first-child {
 	border: double var(--border-color);
 	background-color: var(--content-bg);
 	float: inline-end;
+	margin-block: var(--aside-gap);
+}
+
+.e-content aside> :first-child {
+	margin-block-start: 0px;
 }
 
 .e-content aside.end {
@@ -141,7 +149,18 @@ main>.h-entry:first-child {
 	width: fit-content;
 	max-width: var(--aside-width);
 	padding: var(--interface-gap);
-	box-shadow: var(--inset-shadow);
+	box-shadow: unset;
+	/*margin-inline-start: var(--aside-gap);*/
+}
+
+.e-content aside[role='note']::before {
+	content: "Note";
+	margin-block: 0px;
+	margin-inline-end: var(--aside-gap);
+	float: inline-start;
+	border: double var(--border-color);
+	/*box-shadow: var(--outset-shadow);*/
+	padding: 4px;
 }
 
 .e-content picture>img {

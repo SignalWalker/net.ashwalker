@@ -3,6 +3,7 @@ const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const Image = require("@11ty/eleventy-img");
 const markdownIt = require("markdown-it");
+const markdownItContainer = require("markdown-it-container");
 const markdownItFootnote = require("markdown-it-footnote");
 const lightningcss = require('lightningcss');
 
@@ -12,6 +13,14 @@ function dateToTimeTag(date, classes = []) {
 		classAttr = `class="${classes.join(" ")}" `;
 	}
 	return `<time ${classAttr}datetime="${date.toISOString()}">${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}</time>`;
+}
+
+function toAttributes(data) {
+	var attrs = [];
+	for (const [key, value] of Object.entries(data)) {
+		attrs.push(`${key}="${value}"`);
+	}
+	return attrs.join(" ");
 }
 
 module.exports = function (eleventyConfig) {
@@ -136,7 +145,16 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.setLibrary("md", markdownIt({
 		html: true,
 		xhtmlOut: true
-	}).use(markdownItFootnote));
+	}).use(markdownItFootnote).use(markdownItContainer, 'note', {
+		render: function (tokens, idx) {
+			console.log(tokens[idx]);
+			if (tokens[idx].nesting === 1) {
+				return `<aside role="note">\n`;
+			} else {
+				return `</aside>\n`;
+			}
+		}
+	}));
 
 	//eleventyConfig.addWatchTarget("**/*.css");
 
@@ -212,10 +230,23 @@ module.exports = function (eleventyConfig) {
 		`;
 	});
 
-	eleventyConfig.addFilter("toTimeTag", function(date) {
-		return dateToTimeTag(date);
-	});
+	eleventyConfig.addFilter("toTimeTag", dateToTimeTag);
 
+	eleventyConfig.addFilter("toAttributes", toAttributes);
+
+	eleventyConfig.addFilter("toButton", function(button) {
+		if (!Object.hasOwn(button.img, "height")) {
+			button.img.width = 88;
+		}
+		if (!Object.hasOwn(button.img, "height")) {
+			button.img.height = 31;
+		}
+		var res = `<img eleventy:ignore decoding="async" fetchpriority="low" loading="lazy" ${toAttributes(button.img)} />`;
+		if (Object.hasOwn(button, "href")) {
+			res = `<a href="${button.href}" target="_blank" rel="external">${res}</a>`;
+		}
+		return res;
+	});
 
 	eleventyConfig.addShortcode("postFooter", function(tags, url, date) {
 		var tagStr = "";

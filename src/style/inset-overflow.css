@@ -1,0 +1,14 @@
+.inset-overflow {
+	position: relative;
+}
+
+.inset-overflow::before {
+	content: "";
+	position: absolute;
+	inset: 0px;
+	pointer-events: none;
+
+	box-shadow: var(--inset-shadow);
+
+	z-index: 1;
+}

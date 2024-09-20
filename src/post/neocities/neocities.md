@@ -6,6 +6,7 @@ tags:
   - post
   - neocities
   - web
+  - meta
 ---
 
 I've been updating [my website](https://ashwalker.net/), which has been... somewhat? mirrored? to Neocities for a while, so now I'm updating the Neocities version, and I'm adding \~*Neocities exclusive content*\~ (i.e. this post, so far).

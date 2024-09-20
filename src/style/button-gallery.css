@@ -1,0 +1,65 @@
+.button-gallery {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	gap: var(--interface-gap);
+
+	image-rendering: pixelated;
+
+	align-content: start;
+
+
+	overflow-x: auto;
+
+	min-width: 0px;
+}
+
+@media print {
+	.sidebar.buttons {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 80em) {
+	.button-gallery {
+		align-self: end;
+		display: grid;
+		grid-template-columns: repeat(3, min-content);
+		grid-auto-rows: min-content;
+		grid-auto-flow: row dense;
+		align-items: start;
+		justify-items: center;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
+
+.button-gallery>* {
+	padding: 0px;
+	margin: 0px;
+	border: double var(--border-color);
+	overflow: clip;
+	text-wrap: nowrap;
+
+	height: min-content;
+	width: min-content;
+}
+
+.button-gallery>a {
+	display: flex;
+	flex-direction: column;
+
+	padding: 0px;
+
+	box-shadow: var(--outset-shadow);
+}
+
+.button-gallery>a>* {
+	display: block;
+	flex-grow: 1;
+	aspect-ratio: auto 88/31;
+	width: auto;
+	height: 31px;
+	max-width: 88px;
+	max-height: 31px;
+}

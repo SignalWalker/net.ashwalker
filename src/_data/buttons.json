@@ -1,0 +1,106 @@
+{
+	"primary": [
+		{
+			"href": "https://brainslushie666.neocities.org/",
+			"img": {
+				"src": "/img/button/brie.gif",
+				"alt": "brainslushie666.neocities.org",
+				"title": "brainslushie666.neocities.org"
+			}
+		}
+	],
+	"secondary": [
+		{
+			"href": "https://cohost.org/SignalWalker",
+			"img": {
+				"src": "/img/button/cohost.gif",
+				"alt": "Cohost",
+				"title": "Cohost"
+			}
+		},
+		{
+			"href": "https://velvetblue.neocities.org/",
+			"img": {
+				"src": "https://files.catbox.moe/vltthb.png",
+				"alt": "Velvet Blue",
+				"title": "Velvet Blue"
+			}
+		},
+		{
+			"href": "https://shishka.neocities.org/",
+			"img": {
+				"src": "https://shishka.neocities.org/shishka/img/shishka-button.gif",
+				"alt": "Shishka",
+				"title": "Shishka"
+			}
+		},
+		{
+			"href": "https://grugcel.love/",
+			"img": {
+				"src": "/img/button/grug.gif",
+				"alt": "Grug",
+				"title": "Grug"
+			}
+		},
+		{
+			"href": "https://ralts.neocities.org/",
+			"img": {
+				"src": "https://ralts.neocities.org/88x31.png",
+				"alt": "Ralts",
+				"title": "Ralts"
+			}
+		},
+		{
+			"href": "https://thilinky.neocities.org/",
+			"img": {
+				"src": "https://thilinky.neocities.org/about/ThilinkyButton.gif",
+				"alt": "Thilinky",
+				"title": "Thilinky"
+			}
+		},
+		{
+			"href": "https://nymphblood.neocities.org/",
+			"img": {
+				"src": "https://nymphblood.neocities.org/images/primordial%20dungeon.gif",
+				"alt": "Primordial Dungeon",
+				"title": "Primordial Dungeon"
+			}
+		},
+		{
+			"href": "https://murid.neocities.org/",
+			"img": {
+				"src": "https://murid.neocities.org/gallery/OCbutton.png",
+				"alt": "Murid",
+				"title": "Murid"
+			}
+		},
+		{
+			"href": "https://goblin-heart.net/",
+			"img": {
+				"src": "https://goblin-heart.net/assets/images/gg-button.gif",
+				"alt": "Goblin-Heart",
+				"title": "Goblin-Heart"
+			}
+		},
+		{
+			"href": "https://substack.net/",
+			"img": {
+				"src": "https://substack.net/favicon.ico",
+				"alt": "Substack",
+				"title": "Substack",
+				"width": 275,
+				"height": 275
+			}
+		},
+		{
+			"href": "https://ultimatewalrus.com",
+			"img": {
+				"src": "https://ultimatewalrus.com/FAVICON.ICO",
+				"alt": "Ultimate Walrus",
+				"title": "Ultimate Walrus",
+				"width": 32,
+				"height": 32
+			}
+		}
+	]
+}

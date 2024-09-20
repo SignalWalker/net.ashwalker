@@ -1,5 +1,5 @@
 .sidebar {
-	min-width: min-content;
+	/*min-width: min-content;*/
 	width: 100%;
 
 	display: block flex;
@@ -27,10 +27,16 @@
 		grid-column: 1 / 2;
 		grid-row: 1 / 2;
 	}
+
+	body>footer.buttons {
+		grid-column: 1 / 2;
+		grid-row: 3 / 4;
+		align-self: end;
+	}
 }
 
 .sidebar>* {
-	min-width: min-content;
+	/*min-width: min-content;*/
 
 	margin: 0px;
 	padding: var(--interface-gap);
@@ -39,12 +45,19 @@
 	box-shadow: var(--inset-shadow);
 	background-color: var(--content-bg);
 
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	/*display: flex;*/
+	/*flex-direction: row;*/
+	/*justify-content: center;*/
 }
 
-.sidebar>*>* {
+/*.sidebar>*>* {*/
+/*	border: double var(--border-color);*/
+/*	box-shadow: var(--outset-shadow);*/
+/*	background-color: var(--content-bg);*/
+/*	padding: var(--interface-gap);*/
+/*}*/
+
+.sidebar>nav>* {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
