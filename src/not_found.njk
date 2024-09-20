@@ -3,7 +3,7 @@ title: "404"
 layout: layout/main.njk
 mainClass:
   - "center"
-permalink: 404.html
+permalink: "{%- if neocities -%}not_found.html{%- else -%}404.html{%- endif -%}"
 ---
 
 <h1 class="not-found">Error 404 - Not Found</h1>
