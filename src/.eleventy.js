@@ -99,7 +99,6 @@ module.exports = function (eleventyConfig) {
 		eleventyConfig.ignores.add("**/neocities/**");
 		eleventyConfig.ignores.add("**/fiction/**");
 	}
-	console.log(primaryNav);
 	eleventyConfig.addGlobalData("siteMeta", {
 		primaryNav: primaryNav,
 	});
@@ -213,10 +212,7 @@ module.exports = function (eleventyConfig) {
 	})
 
 	eleventyConfig.addFilter("postClasses", function(tags) {
-		var classes = ["h-entry"];
-		if (tags.some((tag) => tag == 'article' || tag == 'fiction')) {
-			classes.push("article");
-		}
+		var classes = ["h-entry"].concat(tags.filter((tag) => tag == 'article' || tag == 'fiction'));
 		return classes.join(" ");
 	})
 

@@ -69,6 +69,8 @@ html {
 	background-color: var(--content-bg);
 	border: double var(--border-color);
 	box-sizing: border-box;
+
+	font-family: sans-serif;
 }
 
 html {

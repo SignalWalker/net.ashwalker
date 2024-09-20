@@ -103,6 +103,10 @@ main>.h-entry:first-child {
 	content-visibility: auto;
 }
 
+.h-entry.fiction>.e-content {
+	font-family: serif;
+}
+
 .e-content {
 	--img-width: 32em;
 	--aside-width: 32em;
@@ -111,6 +115,12 @@ main>.h-entry:first-child {
 	max-width: 100%;
 
 	text-wrap: pretty;
+
+	/*font-family: serif;*/
+}
+
+.e-content.fiction {
+	font-family: serif;
 }
 
 .e-content>* {
