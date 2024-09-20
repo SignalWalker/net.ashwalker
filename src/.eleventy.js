@@ -28,7 +28,7 @@ module.exports = function (eleventyConfig) {
 	var devMode = (process.env.ASHWALKER_NET_DEVMODE || 0) == 1;
 	eleventyConfig.addGlobalData("neocities", neocities);
 	var primaryNav = {
-		"About": "/",
+		"Index": "/",
 		"Posts": "/post/",
 		"Resumé": "/resume"
 	};

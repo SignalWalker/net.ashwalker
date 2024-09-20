@@ -21,6 +21,10 @@ main>.h-entry:first-child {
 	}
 }
 
+.h-entry .p-name>a {
+	text-decoration-line: none;
+}
+
 .h-entry.article,
 .h-entry.fiction {
 	align-items: start;

@@ -9,7 +9,7 @@
 		 </ul>
 		 <nav class="icon-nav">
 			 {%- asyncEach cName, cNav in hCardNav -%}
-			 <a class="u-url" href="{{ cNav.href }}" rel="me external"><img src="{{ cNav.img.src }}" alt="{{ cNav.img.alt }}" title="{{ cNav.img.title }}" /></a>
+			 <a class="u-url" href="{{ cNav.href }}" rel="me external"><img {{ cNav.img | toAttributes | safe }} /></a>
 			 {%- endeach -%}
 		 </nav>
 	 </div>
