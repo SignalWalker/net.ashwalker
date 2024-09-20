@@ -67,6 +67,7 @@ module.exports = function (eleventyConfig) {
 	if (neocities) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];
+		primaryNav["Fiction"] = "/post/tag/fiction/";
 		eleventyConfig.ignores.add("**/resume.njk");
 		delete hCardNav['github'];
 		delete hCardNav['personalGit'];
@@ -98,6 +99,7 @@ module.exports = function (eleventyConfig) {
 		eleventyConfig.ignores.add("**/neocities/**");
 		eleventyConfig.ignores.add("**/fiction/**");
 	}
+	console.log(primaryNav);
 	eleventyConfig.addGlobalData("siteMeta", {
 		primaryNav: primaryNav,
 	});
