@@ -1,0 +1,22 @@
+---
+layout: "layout/main.njk"
+title: "Flyover"
+date: 2024-07-22T16:42
+tags:
+  - fiction
+  - gender
+pagination:
+  data: collections.flyover
+  size: 24
+  alias: chapters
+---
+
+{%- for chapter in chapters -%}
+<article class="{{ chapter.data.tags | postClasses }}">
+	{% postHeader chapter.data.title, chapter.url %}
+	<div class="e-content">
+		{{ chapter.content | safe }}
+	</div>
+	{% postFooter chapter.data.tags, chapter.url, chapter.date %}
+</article>
+{%- endfor -%}

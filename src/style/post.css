@@ -130,6 +130,8 @@ main>.h-entry:first-child {
 	background-color: var(--content-bg);
 	float: inline-end;
 	margin-block: var(--aside-gap);
+	margin-inline: var(--aside-gap);
+	max-width: var(--aside-width);
 }
 
 .e-content aside> :first-child {
@@ -137,17 +139,15 @@ main>.h-entry:first-child {
 }
 
 .e-content aside.end {
-	width: var(--aside-width);
+	float: inline-end;
 }
 
 .e-content aside.start {
-	width: var(--aside-width);
 	float: inline-start;
 }
 
 .e-content aside[role='note'] {
 	width: fit-content;
-	max-width: var(--aside-width);
 	padding: var(--interface-gap);
 	box-shadow: unset;
 	/*margin-inline-start: var(--aside-gap);*/
