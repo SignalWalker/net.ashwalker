@@ -55,7 +55,7 @@ main>.h-entry:first-child {
 	border: double var(--border-color);
 }
 
-.h-entry>header>h1 {
+.h-entry>header>h2 {
 	width: fit-content;
 	height: fit-content;
 	margin: 0px;

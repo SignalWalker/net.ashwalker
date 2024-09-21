@@ -6,7 +6,7 @@ section.project-gallery-container {
 	gap: var(--interface-gap);
 }
 
-section.project-gallery-container>h1 {
+section.project-gallery-container>h2 {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);

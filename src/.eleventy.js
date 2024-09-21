@@ -229,7 +229,7 @@ module.exports = function (eleventyConfig) {
 		}
 		return `
 		<header>
-			<h1 class="p-name"><a class="p-url" href="${url}">${title}</a></h1>
+			<h2 class="p-name"><a class="p-url" href="${url}">${title}</a></h2>
 		</header>
 		`;
 	});

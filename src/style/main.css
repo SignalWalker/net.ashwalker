@@ -54,7 +54,7 @@ main.center {
 	align-items: center;
 }
 
-main>h1.not-found {
+main>h2.not-found {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);

@@ -12,7 +12,7 @@
 	max-width: 50%;
 }
 
-.tag-gallery>h1 {
+.tag-gallery>h2 {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
@@ -41,7 +41,7 @@ section.post-list {
 	max-width: 33em;
 }
 
-section.post-list>h1 {
+section.post-list>h2 {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);

@@ -1,5 +1,5 @@
 ---
-title: "#{{ tag }}"
+pageTag: tag
 layout: layout/main.njk
 pagination:
   data: collections
@@ -18,7 +18,7 @@ mainClass:
 ---
 
 <section class="post-list">
-	<h1><a href="/post/tag/{{ tag }}" aria-current="page">#{{ tag }}</h1>
+	<h2><a href="/post/tag/{{ tag }}" aria-current="page">#{{ tag }}</h2>
 	<ol role="list">
 		{% set posts = collections[ tag ] %}
 		{%- for post in posts | reverse -%}
