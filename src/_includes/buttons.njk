@@ -1,8 +1,8 @@
-<section class="button-gallery">
+<div class="button-gallery">
 	{%- asyncEach button in buttons.primary -%}
 	{{ button | toButton | safe}}
 	{%- endeach -%}
 	{%- asyncEach button in buttons.secondary -%}
 	{{ button | toButton | safe}}
 	{%- endeach -%}
-</section>
+</div>
