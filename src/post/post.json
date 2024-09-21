@@ -1,3 +1,4 @@
 {
-	"layout": "layout/post.njk"
+	"layout": "layout/post.njk",
+	"permalink": "/post/{{ page.date | toYMD }}_{{ page.fileSlug | slugify }}/"
 }

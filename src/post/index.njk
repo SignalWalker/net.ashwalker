@@ -5,6 +5,7 @@ pagination:
   data: collections.publicPosts
   size: 12
   reverse: true
+permalink: "/post/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 2 }}{% endif %}"
 ---
 
 {%- for post in pagination.items -%}

@@ -1,3 +1,0 @@
-{
-	"permalink": "/post/{{ page.fileSlug | slugify }}/"
-}

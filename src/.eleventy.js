@@ -7,12 +7,16 @@ const markdownItContainer = require("markdown-it-container");
 const markdownItFootnote = require("markdown-it-footnote");
 const lightningcss = require('lightningcss');
 
+function dateToYMD(date) {
+	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+}
+
 function dateToTimeTag(date, classes = []) {
 	var classAttr = "";
 	if (classes.length > 0) {
 		classAttr = `class="${classes.join(" ")}" `;
 	}
-	return `<time ${classAttr}datetime="${date.toISOString()}">${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}</time>`;
+	return `<time ${classAttr}datetime="${date.toISOString()}">${dateToYMD(date)}</time>`;
 }
 
 function toAttributes(data) {
@@ -233,6 +237,8 @@ module.exports = function (eleventyConfig) {
 		</header>
 		`;
 	});
+
+	eleventyConfig.addFilter("toYMD", dateToYMD);
 
 	eleventyConfig.addFilter("toTimeTag", dateToTimeTag);
 

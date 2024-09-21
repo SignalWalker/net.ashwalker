@@ -6,7 +6,7 @@ tags:
   - godot
 date: 2024-09-17
 ---
-<video controls="true">
+<video controls>
     <source src="https://media.social.ashwalker.net/media/901c5e26cd80f044403effa14a6849d1146f42f321b30472765bc9ffcaa28a13.mp4" type="video/mp4" />
     A short video of someone walking around in a pixel-art RPG with a CRT shader.
 </video>
