@@ -74,7 +74,7 @@ module.exports = function (eleventyConfig) {
 		hCardNav['neocities'] = {
 			href: "https://neocities.org/site/signal-garden",
 			img: {
-				src: "https://neocities.org/img/favicon.png",
+				src: "/res/img/logos/neocities.png",
 				alt: "Neocities",
 				title: "Neocities"
 			}
