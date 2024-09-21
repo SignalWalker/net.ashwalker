@@ -66,12 +66,16 @@ section.post-list>ol>li {
 	background-color: var(--content-bg);
 
 	justify-content: space-between;
-	align-items: first baseline;
+	align-items: center;
 	width: 100%;
 
 	padding: var(--interface-gap);
 
 	gap: var(--interface-gap);
+}
+
+section.post-list>ol>li>a {
+	text-wrap: balance;
 }
 
 section.post-list>ol>li:active {
