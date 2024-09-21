@@ -12,7 +12,7 @@ pagination:
     - feedPosts
     - post
     - project
-permalink: /post/tag/{{ tag }}/
+permalink: /post/tag/{{ tag | slugify }}/
 mainClass:
   - "center"
 ---
