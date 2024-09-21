@@ -89,7 +89,6 @@ body {
 	padding: var(--interface-gap);
 	background-color: var(--empty-bg);
 	gap: var(--interface-gap);
-	/*background-image: radial-gradient(black 1px, transparent 0);*/
 }
 
 body {
