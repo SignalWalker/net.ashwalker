@@ -1,6 +1,6 @@
 .button-gallery {
 	display: flex;
-	flex-wrap: nowrap;
+	/*flex-wrap: nowrap;*/
 	flex-direction: row;
 	gap: var(--interface-gap);
 
@@ -43,6 +43,7 @@
 
 	height: min-content;
 	width: min-content;
+	min-width: fit-content;
 }
 
 .button-gallery>a {
