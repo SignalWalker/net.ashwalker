@@ -74,7 +74,7 @@ module.exports = function (eleventyConfig) {
 		hCardNav['neocities'] = {
 			href: "https://neocities.org/site/signal-garden",
 			img: {
-				src: "/res/img/logos/neocities.png",
+				src: "https://neocities.org/img/favicon.png",
 				alt: "Neocities",
 				title: "Neocities"
 			}
@@ -99,12 +99,19 @@ module.exports = function (eleventyConfig) {
 		eleventyConfig.ignores.add("**/neocities/**");
 		eleventyConfig.ignores.add("**/fiction/**");
 	}
-	eleventyConfig.addGlobalData("siteMeta", {
+	var fqdn = neocities ? "https://signal-garden.neocities.org/" : "https://ashwalker.net/";
+	var siteMeta = {
+		fqdn: fqdn,
+		title: neocities ? "Signal Garden" : "Ash Walker",
 		primaryNav: primaryNav,
-	});
+		feed: {
+			title: neocities ? "Signal Cities" : "Signal Garden",
+			subtitle: neocities ? "Signal Garden Blog" : "Ash Walker's Blog"
+		}
+	};
+	eleventyConfig.addGlobalData("siteMeta", siteMeta);
 	eleventyConfig.addGlobalData("hCardNav", hCardNav);
 
-	var fqdn = neocities ? "https://signal-garden.neocities.org/" : "https://ashwalker.net/";
 
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.addPlugin(directoryOutputPlugin);
@@ -117,8 +124,8 @@ module.exports = function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: neocities ? "Signal Cities" : "Signal Garden",
-			subtitle: "Ash Walker's blog",
+			title: siteMeta.feed.title,
+			subtitle: siteMeta.feed.subtitle,
 			base: fqdn,
 			author: {
 				name: "Ash Walker",

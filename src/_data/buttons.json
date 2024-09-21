@@ -3,7 +3,7 @@
 		{
 			"href": "https://brainslushie666.neocities.org/",
 			"img": {
-				"src": "/img/button/brie.gif",
+				"src": "https://brainslushie666.neocities.org/brie_button.gif",
 				"alt": "brainslushie666.neocities.org",
 				"title": "brainslushie666.neocities.org"
 			}
@@ -124,6 +124,22 @@
 				"src": "https://entranceorexit.net/img/eoe_button.2.png",
 				"alt": "entrance or exit",
 				"title": "entrance or exit"
+			}
+		},
+		{
+			"href": "https://dimden.dev/",
+			"img": {
+				"src": "https://dimden.dev/services/images/88x31.gif",
+				"alt": "DIMDEN",
+				"title": "DIMDEN"
+			}
+		},
+		{
+			"href": "https://maritoahike.neocities.org/",
+			"img": {
+				"src": "https://maritoahike.neocities.org/img/maritoahike88x31.gif",
+				"alt": "Mari's Cave",
+				"title": "Mari's Cave"
 			}
 		}
 	]
