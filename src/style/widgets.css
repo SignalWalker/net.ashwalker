@@ -18,6 +18,7 @@ a:visited {
 
 a[aria-current="page"] {
 	box-shadow: unset !important;
+	text-decoration-line: none !important;
 }
 
 a:active {

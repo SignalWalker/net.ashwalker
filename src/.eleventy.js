@@ -166,6 +166,14 @@ module.exports = function (eleventyConfig) {
 				return `</aside>\n`;
 			}
 		}
+	}).use(markdownItContainer, 'small', {
+		render: function (tokens, idx) {
+			if (tokens[idx].nesting === 1) {
+				return `<small>\n`;
+			} else {
+				return `</small>\n`;
+			}
+		}
 	}));
 
 	//eleventyConfig.addWatchTarget("**/*.css");

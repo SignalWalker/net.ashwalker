@@ -5,7 +5,7 @@ pagination:
   data: collections.publicPosts
   size: 12
   reverse: true
-permalink: "/post/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 2 }}{% endif %}"
+permalink: "/post/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 
 {%- for post in pagination.items -%}
@@ -19,8 +19,14 @@ permalink: "/post/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 2
 {%- endfor -%}
 <nav class="pagination">
 	<ol>
+		{%- if pagination.href.previous -%}
+		<li><a href="{{ pagination.href.previous }}" rel="prev"><</a></li>
+		{%- endif %}
 		{%- for entry in pagination.pages -%}
 		<li><a href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
 		{%- endfor -%}
+		{%- if pagination.href.next -%}
+		<li><a href="{{ pagination.href.next }}" rel="next">></a></li>
+		{%- endif %}
 	</ol>
 </nav>
