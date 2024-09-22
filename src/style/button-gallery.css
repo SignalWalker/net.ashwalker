@@ -13,6 +13,13 @@
 
 	min-width: 0px;
 	min-height: 0px;
+
+}
+
+@supports (image-rendering: pixelated) {
+	.button-gallery {
+		image-rendering: pixelated;
+	}
 }
 
 @media print {
@@ -30,6 +37,8 @@
 		grid-auto-flow: row dense;
 		align-items: start;
 		justify-items: center;
+		width: 100%;
+		justify-content: space-evenly;
 		overflow-y: auto;
 		overflow-x: hidden;
 	}

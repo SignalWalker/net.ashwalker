@@ -113,6 +113,12 @@ section.project>nav img {
 	align-items: stretch;
 }
 
+@media print {
+	.sidebar {
+		display: none;
+	}
+}
+
 .sidebar>nav>* {
 	display: flex;
 	flex-direction: column;

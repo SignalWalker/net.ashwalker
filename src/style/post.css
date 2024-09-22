@@ -3,6 +3,7 @@ main>.h-entry:first-child {
 }
 
 .h-entry {
+	--post-flex-direction: row-reverse;
 	display: flex;
 	flex-direction: column;
 	align-items: end;
@@ -12,6 +13,13 @@ main>.h-entry:first-child {
 
 	width: fit-content;
 	max-width: 64em;
+}
+
+.h-entry.article,
+.h-entry.fiction {
+	--post-flex-direction: row;
+	align-items: start;
+	align-self: start;
 }
 
 @media screen and (max-width: 80em) {
@@ -25,15 +33,9 @@ main>.h-entry:first-child {
 	text-decoration-line: none;
 }
 
-.h-entry.article,
-.h-entry.fiction {
-	align-items: start;
-	align-self: start;
-}
-
 .h-entry>header {
 	display: block flex;
-	flex-direction: row-reverse;
+	flex-direction: var(--post-flex-direction);
 	flex-wrap: wrap;
 	align-items: first baseline;
 
@@ -42,11 +44,6 @@ main>.h-entry:first-child {
 	width: fit-content;
 	height: fit-content;
 	margin: 0px;
-}
-
-.h-entry.article>header,
-.h-entry.fiction>header {
-	flex-direction: row;
 }
 
 .h-entry>header>* {
@@ -66,7 +63,7 @@ main>.h-entry:first-child {
 
 .h-entry>footer {
 	display: block flex;
-	flex-direction: row-reverse;
+	flex-direction: var(--post-flex-direction);
 	flex-wrap: wrap;
 	align-items: first baseline;
 
@@ -77,11 +74,6 @@ main>.h-entry:first-child {
 	width: fit-content;
 	height: fit-content;
 	margin: 0px;
-}
-
-.h-entry.article>footer,
-.h-entry.fiction>footer {
-	flex-direction: row;
 }
 
 .h-entry>footer>* {
@@ -121,10 +113,6 @@ main>.h-entry:first-child {
 	text-wrap: pretty;
 
 	/*font-family: serif;*/
-}
-
-.e-content.fiction {
-	font-family: serif;
 }
 
 .e-content>* {

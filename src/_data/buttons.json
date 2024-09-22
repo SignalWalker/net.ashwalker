@@ -27,27 +27,11 @@
 			}
 		},
 		{
-			"href": "https://shishka.neocities.org/",
-			"img": {
-				"src": "https://shishka.neocities.org/shishka/img/shishka-button.gif",
-				"alt": "Shishka",
-				"title": "Shishka"
-			}
-		},
-		{
 			"href": "https://grugcel.love/",
 			"img": {
 				"src": "/img/button/grug.gif",
 				"alt": "Grug",
 				"title": "Grug"
-			}
-		},
-		{
-			"href": "https://ralts.neocities.org/",
-			"img": {
-				"src": "https://ralts.neocities.org/88x31.png",
-				"alt": "Ralts",
-				"title": "Ralts"
 			}
 		},
 		{
@@ -59,27 +43,11 @@
 			}
 		},
 		{
-			"href": "https://nymphblood.neocities.org/",
-			"img": {
-				"src": "https://nymphblood.neocities.org/images/primordial%20dungeon.gif",
-				"alt": "Primordial Dungeon",
-				"title": "Primordial Dungeon"
-			}
-		},
-		{
 			"href": "https://murid.neocities.org/",
 			"img": {
 				"src": "https://murid.neocities.org/gallery/OCbutton.png",
 				"alt": "Murid",
 				"title": "Murid"
-			}
-		},
-		{
-			"href": "https://goblin-heart.net/",
-			"img": {
-				"src": "https://goblin-heart.net/assets/images/gg-button.gif",
-				"alt": "Goblin-Heart",
-				"title": "Goblin-Heart"
 			}
 		},
 		{
@@ -90,16 +58,6 @@
 				"title": "Substack",
 				"width": 275,
 				"height": 275
-			}
-		},
-		{
-			"href": "https://ultimatewalrus.com",
-			"img": {
-				"src": "https://ultimatewalrus.com/FAVICON.ICO",
-				"alt": "Ultimate Walrus",
-				"title": "Ultimate Walrus",
-				"width": 32,
-				"height": 32
 			}
 		},
 		{
@@ -164,6 +122,46 @@
 				"src": "/img/button/sweetfish.png",
 				"alt": "ayu's webhouse",
 				"title": "ayu's webhouse"
+			}
+		},
+		{
+			"href": "https://jkap.io/",
+			"img": {
+				"src": "https://files.crime.team/site/jkap-88x31.gif",
+				"alt": "jae kaplan",
+				"title": "jae kaplan"
+			}
+		},
+		{
+			"href": "https://indietsushin.net/",
+			"img": {
+				"src": "https://indietsushin.net/button.gif",
+				"alt": "Indie Tsushin",
+				"title": "Indie Tsushin"
+			}
+		},
+		{
+			"href": "https://blog.radicaldream.land/",
+			"img": {
+				"src": "https://i.postimg.cc/QxhG798p/dispatchblog-banner.gif",
+				"alt": "Dispatch from the Radical Dreamland",
+				"title": "Dispatch from the Radical Dreamland"
+			}
+		},
+		{
+			"href": "https://blog.aurahack.jp/",
+			"img": {
+				"src": "https://aurahack.neocities.org/88x31.gif",
+				"alt": "Days and Wonder",
+				"title": "Days and Wonder"
+			}
+		},
+		{
+			"href": "https://blog.someplace-else.xyz/",
+			"img": {
+				"src": "https://natclayton.uk/wp-content/uploads/2024/09/elsewhere.gif",
+				"alt": "someplace elsewhere",
+				"title": "someplace elsewhere"
 			}
 		}
 	]

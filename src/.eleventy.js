@@ -72,6 +72,7 @@ module.exports = function (eleventyConfig) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];
 		primaryNav["Fiction"] = "/post/tag/fiction/";
+		//primaryNav["Links"] = "/links/";
 		eleventyConfig.ignores.add("**/resume.njk");
 		delete hCardNav['github'];
 		delete hCardNav['personalGit'];

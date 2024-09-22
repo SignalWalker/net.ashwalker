@@ -29,15 +29,20 @@ main {
 	height: 100%;
 
 	background-color: var(--content-bg);
-	image-rendering: crisp-edges;
-	background-image: var(--channel-bg-img);
-	background-size: cover;
-	background-attachment: fixed;
-	background-position: center;
 
 	padding: var(--interface-gap);
 
 	flex-grow: 1;
+}
+
+@media screen {
+	main {
+		image-rendering: crisp-edges;
+		background-image: var(--channel-bg-img);
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center;
+	}
 }
 
 main {
