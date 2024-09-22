@@ -258,6 +258,10 @@ module.exports = function (eleventyConfig) {
 		return res;
 	});
 
+	eleventyConfig.addShortcode("slice", function(array, start, end) {
+		return array.slice(start, end);
+	});
+
 	eleventyConfig.addShortcode("postFooter", function(tags, url, date) {
 		var tagStr = "";
 		var tagList = tags.filter(function (tag) {

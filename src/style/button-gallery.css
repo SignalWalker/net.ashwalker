@@ -4,7 +4,7 @@
 	flex-direction: row;
 	gap: var(--interface-gap);
 
-	image-rendering: pixelated;
+	image-rendering: crisp-edges;
 
 	align-content: start;
 
@@ -12,6 +12,7 @@
 	overflow-x: auto;
 
 	min-width: 0px;
+	min-height: 0px;
 }
 
 @media print {

@@ -7,4 +7,4 @@ tags:
   - css
 ---
 
-I went out to look for more buttons and I'm begging everyone who has 88x31s or other pixel art on their website: please use `image-rendering: pixelated`
+I went out to look for more buttons and I'm begging everyone who has 88x31s or other pixel art on their website: please use `image-rendering: crisp-edges`

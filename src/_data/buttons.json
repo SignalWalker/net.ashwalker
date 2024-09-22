@@ -141,6 +141,30 @@
 				"alt": "Mari's Cave",
 				"title": "Mari's Cave"
 			}
+		},
+		{
+			"href": "https://renkotsuban.com/",
+			"img": {
+				"src": "http://renkotsuban.com/button.gif",
+				"alt": "Renkon",
+				"title": "Renkon"
+			}
+		},
+		{
+			"href": "https://homestuck.giovanh.com/",
+			"img": {
+				"src": "/img/button/homestuck.png",
+				"alt": "Unofficial Homestuck Collection",
+				"title": "Unnoffical Homestuck Collection"
+			}
+		},
+		{
+			"href": "https://sweetfish.site/",
+			"img": {
+				"src": "/img/button/sweetfish.png",
+				"alt": "ayu's webhouse",
+				"title": "ayu's webhouse"
+			}
 		}
 	]
 }

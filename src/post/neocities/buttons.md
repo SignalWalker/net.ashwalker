@@ -11,7 +11,7 @@ tags:
 Added some buttons to the bottom of each page, since it was free real estate and I want to link to other sites that I like.
 
 ::: note
-If you want to put buttons on your own site, you should probably set [`image-rendering: pixelated`](https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering) in their CSS (or the CSS of an ancestor element), because most 88x31 buttons are pixel art and the default upscaler browsers use for images tends to make pixel art look bad.
+If you want to put buttons on your own site, you should probably set [`image-rendering: crisp-edges`](https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering) in their CSS (or the CSS of an ancestor element), because most 88x31 buttons are pixel art and the default upscaler browsers use for images tends to make pixel art look bad.
 :::
 
 I'll probably make a dedicated page for links to other sites at some point? I might do that immediately after posting this; who knows.

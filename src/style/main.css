@@ -29,7 +29,7 @@ main {
 	height: 100%;
 
 	background-color: var(--content-bg);
-	image-rendering: pixelated;
+	image-rendering: crisp-edges;
 	background-image: var(--channel-bg-img);
 	background-size: cover;
 	background-attachment: fixed;
