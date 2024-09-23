@@ -184,6 +184,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/favicon.svg");
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("src/style");
+	eleventyConfig.addPassthroughCopy("src/88x31.gif");
 	eleventyConfig.addWatchTarget("");
 	//eleventyConfig.addPassthroughCopy("res");
 	//eleventyConfig.addPassthroughCopy("**/*.png");
