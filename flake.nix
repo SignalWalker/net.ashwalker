@@ -36,6 +36,7 @@
           std = pkgs.lib;
           stdenv = stdenvFor pkgs;
           nodejs = nodejsFor pkgs;
+          npmDepsHash = "sha256-mH/+oGlZnbG/vUEpKWybj1mc+BY+cyjB0AV0A4BFDEU=";
         in {
           "ashwalker.net" = pkgs.buildNpmPackage {
             pname = "ashwalker.net";
@@ -46,7 +47,7 @@
               []
               ++ (with pkgs; [
                 ]);
-            npmDepsHash = "sha256-YNVuU9gzveWeXShfKhCRLx9bO+XDzwXX9wONzqXmL0A=";
+            inherit npmDepsHash;
             postBuild = ''
               mkdir $out
 
@@ -64,7 +65,7 @@
               []
               ++ (with pkgs; [
                 ]);
-            npmDepsHash = "sha256-YNVuU9gzveWeXShfKhCRLx9bO+XDzwXX9wONzqXmL0A=";
+            inherit npmDepsHash;
             dontNpmBuild = true;
             postInstall = let
             in ''

@@ -66,6 +66,62 @@ main>h2.not-found {
 	padding: var(--interface-gap);
 }
 
+.self-button {
+	display: flex;
+	flex-direction: column;
+	gap: var(--interface-gap);
+	justify-content: center;
+	align-items: center;
+
+	image-rendering: crisp-edges;
+
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	box-shadow: var(--outset-shadow);
+
+	padding: var(--interface-gap);
+	margin: 0px;
+}
+
+.self-button>img {
+	border: double var(--border-color);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
+	width: 88px;
+	height: 31px;
+	box-sizing: content-box;
+}
+
+.self-button>textarea {
+	max-height: 3em;
+	min-height: 0px;
+}
+
+@supports (image-rendering: pixelated) {
+	.self-button {
+		image-rendering: pixelated;
+	}
+}
+
+@media (max-width: 80em) {
+	.self-button {
+		border: unset;
+		background-color: transparent;
+		box-shadow: unset;
+	}
+
+	.self-button>textarea,
+	.self-button>small {
+		display: none;
+	}
+}
+
+@media print {
+	.self-button {
+		display: none;
+	}
+}
+
 /*main > section {*/
 /*	display: block flex;*/
 /*	flex-direction: column;*/
