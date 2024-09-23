@@ -104,7 +104,7 @@ module.exports = function (eleventyConfig) {
 		eleventyConfig.ignores.add("**/neocities/**");
 		eleventyConfig.ignores.add("**/fiction/**");
 	}
-	var fqdn = neocities ? "https://signal-garden.neocities.org/" : "https://ashwalker.net/";
+	var fqdn = neocities ? "https://signalgarden.net/" : "https://ashwalker.net/";
 	var siteMeta = {
 		fqdn: fqdn,
 		title: neocities ? "Signal Garden" : "Ash Walker",
