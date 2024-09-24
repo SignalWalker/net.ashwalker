@@ -6,6 +6,7 @@ const markdownIt = require("markdown-it");
 const markdownItContainer = require("markdown-it-container");
 const markdownItFootnote = require("markdown-it-footnote");
 const lightningcss = require('lightningcss');
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 function dateToYMD(date) {
 	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -119,6 +120,8 @@ module.exports = function (eleventyConfig) {
 
 
 	eleventyConfig.setQuietMode(true);
+
+	//eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(directoryOutputPlugin);
 	eleventyConfig.addPlugin(feedPlugin, {
 		type: 'atom',

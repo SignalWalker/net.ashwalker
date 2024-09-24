@@ -3,6 +3,7 @@ date: 2024-09-22T17:35
 tags:
   - post
   - musiclog
+  - "laryssa okada"
 ---
 
 been listening to [friend from the internet](https://laryssaokada.bandcamp.com/album/friend-from-the-internet) by laryssa okada; it's really good and it's thematically appropriate for messing with websites
