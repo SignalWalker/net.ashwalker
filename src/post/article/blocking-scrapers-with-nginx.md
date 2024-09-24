@@ -97,3 +97,11 @@ in {
 ```
 
 Because that overrides the submodule used by `virtualHosts.<name>`, this configuration will automatically apply to every vhost, including ones defined by external modules.
+
+## Addendum, 2024-09-24
+
+[I wrote a NixOS module](https://github.com/SignalWalker/nix.nginx.vhost-defaults) implementing this, including automatically getting the block list from [https://github.com/ai-robots-txt/ai-robots-txt].
+
+::: small
+Apparently, the NixOS manual does actually obliquely reference that you can type-merge submodules, in the [documentation for `types.deferredModule`](https://nixos.org/manual/nixos/unstable/#sec-option-types-submodule).
+:::
