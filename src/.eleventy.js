@@ -275,14 +275,16 @@ module.exports = function (eleventyConfig) {
 		return array.slice(start, end);
 	});
 
+
 	eleventyConfig.addShortcode("postFooter", function(tags, url, date) {
+		const slugify = eleventyConfig.getFilter("slugify");
 		var tagStr = "";
 		var tagList = tags.filter(function (tag) {
 			return tag != "post";
 		});
 		if (tagList.length > 0) {
 			tagStr = tagList.map(function (tag) {
-				return `<a class="p-category" href="/post/tag/${tag}/">#${tag}</a>`;
+				return `<a class="p-category" href="/post/tag/${slugify(tag)}/">#${tag}</a>`;
 			}).join("\n");
 			//tagStr = `
 			//	${tagStr}
