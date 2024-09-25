@@ -1,6 +1,7 @@
 ---
 title: "How to Block Scrapers on Every Nginx Virtualhost in NixOS"
 date: 2024-09-18T19:34
+modified: 2024-09-24
 tags:
   - "article"
   - "nix"
