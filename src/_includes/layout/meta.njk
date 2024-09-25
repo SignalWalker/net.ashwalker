@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-	{% include 'meta.njk' %}
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/style/style.css" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+		<link rel="canonical" href="{{ page.url | htmlBaseUrl(siteMeta.fqdn) }}" />
+		<link rel="alternate" type="application/json+xml" title="{{ siteMeta.feed.title }}" href="/feed.json"/>
+		<link rel="alternate" type="application/atom+xml" title="{{ siteMeta.feed.title }}" href="/feed.xml"/>
+		<meta name="generator" content="{{ eleventy.generator }}" />
+		<title>{{ siteMeta.title }}{% if page.url != "/" %} - {{ title | default(page.fileSlug) }}{% endif %}</title>
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="{%- if image -%}{{ image | htmlBaseUrl(siteMeta.fqdn) }}{%- else -%}{{ '/favicon.ico' | htmlBaseUrl(siteMeta.fqdn) }}{%- endif -%}" />
+		{% if summary -%}<meta property="og:description" content="{{ summary }}" />{%- endif %}
+	</head>
 	<body>
 		{{ content | safe }}
 	</body>

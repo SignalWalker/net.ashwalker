@@ -251,7 +251,7 @@ module.exports = function (eleventyConfig) {
 		}
 		return `
 		<header>
-			<h2 class="p-name"><a class="p-url" href="${url}">${title}</a></h2>
+			<h2 class="p-name"><a class="p-url" rel="canonical" href="${url}">${title}</a></h2>
 		</header>
 		`;
 	});
@@ -297,7 +297,7 @@ module.exports = function (eleventyConfig) {
 		}
 		return `
 		<footer>
-			<a class="p-url" href="${url}">#</a>
+			<a class="p-url" rel="canonical" href="${url}">#</a>
 			${dateToTimeTag(date, ["dt-published"])}
 			${tagStr}
 		</footer>
