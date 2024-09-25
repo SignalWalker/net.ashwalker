@@ -1,4 +1,4 @@
-const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
+const feedPlugin = require("@11ty/eleventy-plugin-rss");
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
 const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
 const Image = require("@11ty/eleventy-img");
@@ -111,8 +111,7 @@ module.exports = function (eleventyConfig) {
 		title: neocities ? "Signal Garden" : "Ash Walker",
 		primaryNav: primaryNav,
 		feed: {
-			title: neocities ? "Signal Cities" : "Signal Garden",
-			subtitle: neocities ? "Signal Garden Blog" : "Ash Walker's Blog"
+			title: neocities ? "Signal Garden NEO" : "Signal Garden",
 		}
 	};
 	eleventyConfig.addGlobalData("siteMeta", siteMeta);
@@ -123,24 +122,25 @@ module.exports = function (eleventyConfig) {
 
 	//eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(directoryOutputPlugin);
-	eleventyConfig.addPlugin(feedPlugin, {
-		type: 'atom',
-		outputPath: 'feed.xml',
-		collection: {
-			name: "feedPosts",
-			limit: 24
-		},
-		metadata: {
-			language: "en",
-			title: siteMeta.feed.title,
-			subtitle: siteMeta.feed.subtitle,
-			base: fqdn,
-			author: {
-				name: "Ash Walker",
-				email: "ashurstwalker@gmail.com"
-			}
-		}
-	});
+	eleventyConfig.addPlugin(feedPlugin);
+	//eleventyConfig.addPlugin(feedPlugin, {
+	//	type: 'atom',
+	//	outputPath: 'feed.xml',
+	//	collection: {
+	//		name: "feedPosts",
+	//		limit: 24
+	//	},
+	//	metadata: {
+	//		language: "en",
+	//		title: siteMeta.feed.title,
+	//		subtitle: siteMeta.feed.subtitle,
+	//		base: fqdn,
+	//		author: {
+	//			name: "Ash Walker",
+	//			email: "ashurstwalker@gmail.com"
+	//		}
+	//	}
+	//});
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		extensions: "html",
 		formats: ["avif", "webp", "svg"],
@@ -188,6 +188,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("src/style");
 	eleventyConfig.addPassthroughCopy("src/88x31.gif");
+	eleventyConfig.addPassthroughCopy({"src/res/img/ash.png": "img/avatar.png"});
 	eleventyConfig.addWatchTarget("");
 	//eleventyConfig.addPassthroughCopy("res");
 	//eleventyConfig.addPassthroughCopy("**/*.png");
@@ -238,7 +239,11 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addFilter("postClasses", function(tags) {
 		var classes = ["h-entry"].concat(tags.filter((tag) => tag == 'article' || tag == 'fiction'));
 		return classes.join(" ");
-	})
+	});
+
+	eleventyConfig.addFilter("postTagsJson", function(tags) {
+		return JSON.stringify(tags.filter((tag) => tag != "post"));
+	});
 
 	eleventyConfig.addShortcode("postHeader", function(title, url) {
 		if (title === undefined) {
@@ -297,6 +302,22 @@ module.exports = function (eleventyConfig) {
 			${tagStr}
 		</footer>
 		`;
+	});
+
+	eleventyConfig.addShortcode("postAtomCategories", function(tags) {
+		var tagStr = "";
+		var tagList = tags.filter(function (tag) {
+			return tag != "post";
+		});
+		if (tagList.length > 0) {
+			tagStr = tagList.map(function (tag) {
+				return `<category term="${tag}" />`;
+			}).join("\n");
+			//tagStr = `
+			//	${tagStr}
+			//`;
+		}
+		return tagStr;
 	});
 
 	eleventyConfig.addFilter("postTitle", function(post) {

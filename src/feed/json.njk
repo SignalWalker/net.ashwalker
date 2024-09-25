@@ -1,0 +1,37 @@
+---
+permalink: "/feed.json"
+---
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "{{ metadata.title }}",
+  "home_page_url": "{{ metadata.base | addPathPrefixToFullUrl }}",
+  "feed_url": "{{ permalink | htmlBaseUrl(metadata.base) }}",
+  "description": "{{ metadata.subtitle }}",
+  "user_comment": "hiiiiiii :3",
+  "icon": "{{ metadata.icon | htmlBaseUrl(metadata.base) }}",
+  "favicon": "{{ metadata.icon | htmlBaseUrl(metadata.base) }}",
+  "authors": [
+    {
+      "name": "{{ metadata.author.name }}",
+		"url": "{{ metadata.author.uri }}",
+		"avatar": "{{ metadata.author.avatar | htmlBaseUrl(metadata.base) }}"
+    }
+  ],
+  "language": "{{ metadata.language or page.lang }}",
+  "items": [
+    {%- for post in collections.feedPosts | reverse %}
+    {%- set absolutePostUrl %}{{ post.url | htmlBaseUrl(metadata.base) }}{% endset %}
+    {
+      "id": "{{ absolutePostUrl }}",
+      "url": "{{ absolutePostUrl }}",
+		{%- if post.data.title -%}"title": "{{ post.data.title }}",{%- endif -%}
+      "content_html": {% if post.content %}{{ post.content | renderTransforms(post.data.page, metadata.base) | dump | safe }}{% else %}""{% endif %},
+		{%- if post.data.summary -%}"summary": "{{ post.data.summary }}",{%- endif -%}
+		{%- if post.data.modified -%}"date_modified": "{{ post.data.modified | dateToRfc3339 }}",{%- endif -%}
+		"tags": {{ post.data.tags | postTagsJson | safe }},
+      "date_published": "{{ post.date | dateToRfc3339 }}"
+    }
+    {% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}

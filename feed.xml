@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Signal Garden</title>
+  <subtitle>Ash Walker&#39;s Blog</subtitle>
+  <link href="https://ashwalker.net/feed.xml" rel="self" />
+  <link href="https://ashwalker.net/" />
+  <updated>2024-09-18T19:34:00Z</updated>
+  <id>https://ashwalker.net/</id>
+  <author>
+    <name>Ash Walker</name>    <email>ashurstwalker@gmail.com</email>  </author>  <entry>
+    <title>How to Block Scrapers on Every Nginx Virtualhost in NixOS</title>
+    <link href="https://ashwalker.net/post/2024-9-18_blocking-scrapers-with-nginx/" />
+    <updated>2024-09-18T19:34:00Z</updated>
+    <id>https://ashwalker.net/post/2024-9-18_blocking-scrapers-with-nginx/</id>
+    <content type="html">&lt;p&gt;A couple months ago I realized that a lot of my home bandwidth was being eaten by AI scrapers constantly refreshing the login screen of the &lt;a href=&quot;https://jellyfin.org&quot;&gt;Jellyfin&lt;/a&gt; instance I host for my friends on my home server. Regardless of one&#39;s opinions about the ethicality of LLMs, the scrapers gathering training data for them are bad for the ecosystem and they&#39;re making me pay extra money to Comcast, so: here&#39;s how to block them in &lt;a href=&quot;https://nginx.org/&quot;&gt;Nginx&lt;/a&gt; (as long as you&#39;re using &lt;a href=&quot;https://nixos.org&quot;&gt;NixOS&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;First, &lt;a href=&quot;https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt&quot;&gt;here&lt;/a&gt; is a &lt;code&gt;robots.txt&lt;/code&gt; file containing a list of user agent strings for common scrapers. If you want to add that to a vhost, you can add this to the vhost config:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;location =/robots.txt {
+  alias /path/to/the/robots.txt/file;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Web crawlers are &lt;em&gt;supposed&lt;/em&gt; to respect rules set in &lt;code&gt;robots.txt&lt;/code&gt; files, but they sometimes ignore them (either through malice or by mistake), so it&#39;s also useful to block them entirely.&lt;/p&gt;
+&lt;p&gt;All you have to do to block a specific user agent in Nginx is to add something like this to the server config, where &amp;quot;GPTBot&amp;quot;, &amp;quot;Amazonbot&amp;quot; and &amp;quot;Bytespider&amp;quot; are the user agent strings you want to block:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if ($http_user_agent ~* &amp;quot;(GPTBot|Amazonbot|Bytespider)&amp;quot;) {
+  return 444;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(&amp;quot;444&amp;quot; isn&#39;t a real HTTP status code; &lt;a href=&quot;https://nginx.org/en/docs/http/request_processing.html&quot;&gt;Nginx uses it internally to signal that it should drop the connection without a response.&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Nginx, as far as I know, doesn&#39;t let you set common configuration settings shared by all vhosts, so, if you&#39;ve got more than one vhost, you&#39;ll have to do a lot of copy-and-pasting. &lt;em&gt;Nix&lt;/em&gt;, however, makes that (relatively) simple.&lt;/p&gt;
+&lt;p&gt;The naive way to do this in NixOS would be something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-nix&quot;&gt;services.nginx.virtualHosts = let
+  robots = [&amp;quot;GPTBot&amp;quot; &amp;quot;Amazonbot&amp;quot; &amp;quot;Bytespider&amp;quot;];
+  rules = lib.concatStringsSep &amp;quot;|&amp;quot; robots;
+  robotsTxt = let
+    agentsStr = pkgs.lib.concatStringsSep &amp;quot;&#92;n&amp;quot; (map (agent: &amp;quot;User-agent: ${agent}&amp;quot; robots));
+  in pkgs.writeText &amp;quot;robots.txt&amp;quot; &#39;&#39;
+    ${agentsStr}
+    Disallow: /
+  &#39;&#39;;
+in {
+  &amp;quot;vhost-A&amp;quot; = {
+    # ... other config ...
+    locations.&amp;quot;=/robots.txt&amp;quot;.alias = ${robotsTxt};
+    extraConfig = &#39;&#39;
+      if ($http_user_agent ~* &amp;quot;(${rules})&amp;quot;) {
+        return 444;
+      }
+    &#39;&#39;;
+  };
+  &amp;quot;vhost-B&amp;quot; = {
+    # ... other config ...
+    locations.&amp;quot;=/robots.txt&amp;quot;.alias = ${robotsTxt};
+    extraConfig = &#39;&#39;
+      if ($http_user_agent ~* &amp;quot;(${rules})&amp;quot;) {
+        return 444;
+      }
+    &#39;&#39;;
+  };
+  # ... and so on
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But that gets tedious and it&#39;s easy to forget to add the rules to a specific vhost. Instead, you can override the &lt;code&gt;services.nginx.virtualHosts&lt;/code&gt; module to automatically apply the rules for you:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-nix&quot;&gt;let
+  robots = [&amp;quot;GPTBot&amp;quot; &amp;quot;Amazonbot&amp;quot; &amp;quot;Bytespider&amp;quot;];
+  rules = lib.concatStringsSep &amp;quot;|&amp;quot; robots;
+  robotsTxt = let
+    agentsStr = pkgs.lib.concatStringsSep &amp;quot;&#92;n&amp;quot; (map (agent: &amp;quot;User-agent: ${agent}&amp;quot; robots));
+  in pkgs.writeText &amp;quot;robots.txt&amp;quot; &#39;&#39;
+    ${agentsStr}
+    Disallow: /
+  &#39;&#39;;
+in {
+  options = with lib; {
+    services.nginx.virtualHosts = mkOption {
+      type = types.attrsOf (types.submodule {
+        config = {
+          locations.&amp;quot;=/robots.txt&amp;quot; = lib.mkDefault {
+            alias = robotsTxt;
+          };
+          extraConfig = &#39;&#39;
+            if ($http_user_agent ~* &amp;quot;(${rules})&amp;quot;) {
+              return 444;
+            }
+          &#39;&#39;;
+        };
+      });
+    };
+  };
+  config = {
+    # normal nginx vhost config goes here
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Because that overrides the submodule used by &lt;code&gt;virtualHosts.&amp;lt;name&amp;gt;&lt;/code&gt;, this configuration will automatically apply to every vhost, including ones defined by external modules.&lt;/p&gt;
+&lt;h2&gt;Addendum, 2024-09-24&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/SignalWalker/nix.nginx.vhost-defaults&quot;&gt;I wrote a NixOS module&lt;/a&gt; implementing this, including automatically getting the block list from &lt;a href=&quot;https://github.com/ai-robots-txt/ai.robots.txt&quot;&gt;ai-robots-txt&lt;/a&gt;.&lt;/p&gt;
+&lt;small&gt;
+&lt;p&gt;Apparently, the NixOS manual does actually obliquely reference that you can type-merge submodules, in the &lt;a href=&quot;https://nixos.org/manual/nixos/unstable/#sec-option-types-submodule&quot;&gt;documentation for &lt;code&gt;types.deferredModule&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/small&gt;
+</content>
+  </entry>  <entry>
+    <title>Rebuilding the Website</title>
+    <link href="https://ashwalker.net/post/2024-9-17_rebuilding-the-website/" />
+    <updated>2024-09-17T00:00:00Z</updated>
+    <id>https://ashwalker.net/post/2024-9-17_rebuilding-the-website/</id>
+    <content type="html">&lt;p&gt;Because &lt;a href=&quot;https://cohost.org/staff/post/7611443-cohost-to-shut-down&quot;&gt;Cohost is shutting down&lt;/a&gt;, I decided to rebuild my whole website so I could use it as a blog. I already have an &lt;a href=&quot;https://social.ashwalker.net/Ash&quot;&gt;ActivityPub server&lt;/a&gt;, but the software running it (&lt;a href=&quot;https://akkoma.dev/AkkomaGang/akkoma/&quot;&gt;Akkoma&lt;/a&gt;) doesn&#39;t really work well for long-form posting.&lt;/p&gt;
+&lt;p&gt;I hadn&#39;t been using any sort of site generator for this website -- the whole thing was entirely manual, which involved a lot of copy-and-pasting and would&#39;ve made something like an RSS feed a Sisyphean effort.&lt;/p&gt;
+&lt;aside class=&quot;end&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://ashwalker.net/img/Zcw3a-dUpo-1850.avif 1850w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://ashwalker.net/img/Zcw3a-dUpo-1850.webp&quot; alt=&quot;A screenshot of the old version of this website.&quot; title=&quot;The old version of this website.&quot; width=&quot;1850&quot; height=&quot;1312&quot;&gt;&lt;/picture&gt;&lt;/aside&gt;
+&lt;p&gt;Ideally, I&#39;d have written some sort of bespoke HTTP server in Rust, with on-demand page generation, image processing, and ActivityPub support, but I, unfortunately, have a life outside of yak shaving trivial projects, so, instead, I&#39;m just using &lt;a href=&quot;https://www.11ty.dev/&quot;&gt;Eleventy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This server runs &lt;a href=&quot;https://nixos.org/&quot;&gt;Nix&lt;/a&gt;, though, &lt;s&gt;so I&#39;ve also set up a relatively simple NixOS module defining a couple systemd services to build the site whenever it detects a change to its source folder. (I&#39;m doing it this way instead of just building it once during &lt;code&gt;nixos-rebuild&lt;/code&gt; so that I can post things without having to go in and rebuild the whole system every time.)&lt;/s&gt; Nevermind, I had insomnia last night and I don&#39;t want to deal anymore with trying to get Eleventy to work in a systemd unit installed through Nix; it&#39;s just building in a derivation for now.&lt;/p&gt;
+&lt;p&gt;(Make sure not to use Git LFS in a Nix flake repo; &lt;a href=&quot;https://github.com/NixOS/nix/issues/10079&quot; rel=&quot;external&quot;&gt;it&#39;s illegal as of Nix 2.20.&lt;/a&gt; This has been causing problems for like 2 hours and I only just now discovered why.)&lt;/p&gt;
+&lt;p&gt;Eleventy is pretty simple to use, so most of the work here has been in wrangling Nix and NodeJS to cooperate with each other and in dealing with weird CSS edge cases (like the tiny gap underneath images in posts that I can&#39;t seem to get rid of).&lt;/p&gt;
+&lt;p&gt;There are a couple extra things I&#39;d like to get to (like CSS for mobile &amp;amp; a dark theme), but this is good enough for now -- I&#39;ve been at this long enough that I&#39;m typing &lt;code&gt;;&lt;/code&gt; instead of &lt;code&gt;.&lt;/code&gt; at the end of my sentences, so I think it&#39;s time to work on something else.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://git.ashwalker.net/Ash/ashwalker.net/src/tag/v2.0.0&quot;&gt;Here&#39;s the source code&lt;/a&gt;, if anyone&#39;s interested.&lt;/p&gt;
+</content>
+  </entry></feed>
