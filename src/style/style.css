@@ -74,9 +74,7 @@ html {
 	box-sizing: border-box;
 
 	font-family: sans-serif;
-}
 
-html {
 	width: 100%;
 	max-width: 100vw;
 	overscroll-behavior: contain;
@@ -85,15 +83,12 @@ html {
 }
 
 body {
-
 	flex-grow: 1;
 	margin: 0px;
 	padding: var(--interface-gap);
 	background-color: var(--empty-bg);
 	gap: var(--interface-gap);
-}
 
-body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
