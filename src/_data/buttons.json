@@ -7,9 +7,15 @@
 				"alt": "brainslushie666.neocities.org",
 				"title": "brainslushie666.neocities.org"
 			}
-		}
-	],
-	"secondary": [
+		},
+		{
+			"href": "https://hrtcafe.net/",
+			"img": {
+				"src": "/img/button/hrtcafe.gif",
+				"alt": "HRT Cafe",
+				"title": "HRT Cafe"
+			}
+		},
 		{
 			"href": "https://cohost.org/SignalWalker",
 			"img": {
@@ -17,7 +23,9 @@
 				"alt": "Cohost",
 				"title": "Cohost"
 			}
-		},
+		}
+	],
+	"secondary": [
 		{
 			"href": "https://velvetblue.neocities.org/",
 			"img": {

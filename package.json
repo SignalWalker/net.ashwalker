@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy --input=src --config=src/.eleventy.js",
-    "build-neocities": "env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/.eleventy.js"
+    "build-neocities": "env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/.eleventy.js",
+    "serve-neocities": "rm -r _site; env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/.eleventy.js --serve"
   },
   "repository": {
     "type": "git",
