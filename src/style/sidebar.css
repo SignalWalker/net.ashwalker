@@ -2,13 +2,14 @@
 	/*min-width: min-content;*/
 	width: 100%;
 
-	display: block flex;
+	display: flex;
 	/*grid-auto-rows: 1fr;*/
 	flex-direction: column;
 	gap: var(--interface-gap);
 
-	max-height: 100%;
-	overflow-y: hidden;
+	flex-basis: min-content;
+
+	/*max-height: 100%;*/
 }
 
 /* #navigator:not([open]) { */
@@ -20,38 +21,29 @@
 /* 	padding: 0.5em; */
 /* } */
 
-@media screen and (min-width: 80em) {
-	body>header {
-		grid-column: 1 / 2;
-		grid-row: 2 / 3;
-	}
-
-	body>footer {
-		grid-column: 1 / 2;
-		grid-row: 1 / 2;
-	}
-
-	body>footer.buttons {
-		grid-column: 1 / 2;
-		grid-row: 3 / 4;
-		align-self: end;
-	}
+.window-border {
+	margin: 0px;
+	padding: 0px;
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	box-shadow: var(--outset-shadow);
 }
 
-.sidebar>* {
-	/*min-width: min-content;*/
-
+.window {
 	margin: 0px;
 	padding: var(--interface-gap);
 
-	border: double var(--border-color);
-	box-shadow: var(--inset-shadow);
-	background-color: var(--content-bg);
-
-	/*display: flex;*/
-	/*flex-direction: row;*/
-	/*justify-content: center;*/
+	background-color: var(--empty-bg);
 }
+
+.window>* {
+	margin: 0px;
+	padding: var(--interface-gap);
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	box-shadow: var(--inset-shadow);
+}
+
 
 /*.sidebar>*>* {*/
 /*	border: double var(--border-color);*/
@@ -60,11 +52,38 @@
 /*	padding: var(--interface-gap);*/
 /*}*/
 
-.sidebar>nav>* {
+.window>nav {
+	display: flex;
+	flex-direction: row;
+	gap: var(--interface-gap);
+	justify-content: center;
+	align-items: stretch;
+}
+
+.window>nav img {
+	width: 1em;
+	height: 1em;
+	flex-grow: 1;
+}
+
+@media screen and (min-width: 80em) {
+	.window>nav {
+		flex-direction: column;
+	}
+}
+
+.window>nav>* {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	padding: var(--nav-gap);
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: none;
+	gap: 0.5em;
+	align-items: center;
+	justify-content: center;
 }
 
 nav.icon-nav,
@@ -105,27 +124,9 @@ section.project>nav img {
 	flex-grow: 1;
 }
 
-.sidebar>nav {
-	display: flex;
-	flex-direction: row;
-	gap: var(--interface-gap);
-	justify-content: center;
-	align-items: stretch;
-}
 
 @media print {
 	.sidebar {
 		display: none;
 	}
-}
-
-.sidebar>nav>* {
-	display: flex;
-	flex-direction: column;
-}
-
-.sidebar>nav img {
-	width: 1em;
-	height: 1em;
-	flex-grow: 1;
 }

@@ -12,3 +12,37 @@
 
 	z-index: 1;
 }
+
+@media screen and (max-width: 80em) {
+	#main-display {
+		position: relative;
+	}
+
+	#main-display::before {
+		content: "";
+		position: absolute;
+		inset: 0px;
+		pointer-events: none;
+
+		box-shadow: var(--inset-shadow);
+
+		z-index: 1;
+	}
+}
+
+@media screen and (min-width: 80em) {
+	html {
+		position: relative;
+	}
+
+	html::before {
+		content: "";
+		position: absolute;
+		inset: 0px;
+		pointer-events: none;
+
+		box-shadow: var(--inset-shadow);
+
+		z-index: 1;
+	}
+}
