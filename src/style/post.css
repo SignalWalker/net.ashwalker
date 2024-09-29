@@ -3,13 +3,14 @@ main>.h-entry:first-child {
 }
 
 .h-entry {
-	--post-flex-direction: row-reverse;
+	--post-flex-direction: row;
+	--post-item-alignment: start;
 	display: flex;
 	flex-direction: column;
-	align-items: end;
+	align-items: var(--post-item-alignment);
 	gap: var(--interface-gap);
 
-	align-self: end;
+	align-self: start;
 
 	width: fit-content;
 	max-width: 64em;
@@ -18,8 +19,9 @@ main>.h-entry:first-child {
 .h-entry.article,
 .h-entry.fiction {
 	--post-flex-direction: row;
-	align-items: start;
-	align-self: start;
+	--post-item-alignment: start;
+	align-items: var(--post-item-alignment);
+	/*align-self: start;*/
 }
 
 @media screen and (max-width: 80em) {
