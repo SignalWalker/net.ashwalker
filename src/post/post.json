@@ -1,4 +1,7 @@
 {
 	"layout": "layout/post.njk",
-	"permalink": "/post/{{ page.date | toYMD }}_{{ page.fileSlug | slugify }}/"
+	"permalink": "/post/{{ page.date | toYMD }}_{{ page.fileSlug | slugify }}/",
+	"mainClass": [
+		"post"
+	]
 }

@@ -59,6 +59,10 @@ main.center {
 	align-items: center;
 }
 
+main.post {
+	gap: var(--post-gap);
+}
+
 main>h2.not-found {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
