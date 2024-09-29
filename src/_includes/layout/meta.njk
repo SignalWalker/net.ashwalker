@@ -9,7 +9,7 @@
 		<link rel="canonical" href="{{ page.url | htmlBaseUrl(siteMeta.fqdn) }}" />
 		<link rel="alternate" type="application/json+xml" title="{{ siteMeta.feed.title }}" href="/feed.json"/>
 		<link rel="alternate" type="application/atom+xml" title="{{ siteMeta.feed.title }}" href="/feed.xml"/>
-		<link rel="webmention" href="https://webmention.io/{{ siteMeta.hostName }}/webmention" />
+		<link rel="webmention" href="https://webmention.io/{{ siteMeta.webmention.domain }}/webmention" />
 		<meta name="generator" content="{{ eleventy.generator }}" />
 		<title>{{ siteMeta.title }}{% if page.url != "/" %} - {{ title | default(page.fileSlug) }}{% endif %}</title>
 	</head>

@@ -32,12 +32,13 @@ var neocities = (process.env.ASHWALKER_NET_NEOCITIES || 0) == 1;
 var devMode = (process.env.ASHWALKER_NET_DEVMODE || 0) == 1;
 
 var hostName = neocities ? "signalgarden.net" : "ashwalker.net";
-var webmention_api_token = fs.readFileSync(`secrets/webmention_api_${hostName}.token`, 'utf8').trim();
+var webmentionDomain = neocities ? "signal-garden.neocities.org" : "ashwalker.net";
+var webmentionApiToken = fs.readFileSync(`secrets/webmention_api_${hostName}.token`, 'utf8').trim();
 
 export default async function (eleventyConfig) {
 
 	eleventyConfig.on("eleventy.before", async ({dir, runMode, outputMode}) => {
-		var webmentions = await fetch(`https://webmention.io/api/mentions.jf2?token=${encodeURIComponent(webmention_api_token)}&domain=${hostName}&sort-by=created`)
+		var webmentions = await fetch(`https://webmention.io/api/mentions.jf2?token=${encodeURIComponent(webmentionApiToken)}&domain=${webmentionDomain}&sort-by=created`)
 			.then((response) => response.json())
 			.then((mentions) => mentions);
 		console.log("Webmentions:", webmentions);
@@ -129,7 +130,8 @@ export default async function (eleventyConfig) {
 			title: neocities ? "Signal Garden NEO" : "Signal Garden",
 		},
 		webmention: {
-			api_token: webmention_api_token
+			domain: webmentionDomain,
+			api_token: webmentionApiToken
 		}
 	};
 	eleventyConfig.addGlobalData("siteMeta", siteMeta);
