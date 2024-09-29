@@ -36,15 +36,6 @@ var webmentionDomain = neocities ? "signal-garden.neocities.org" : "ashwalker.ne
 var webmentionApiToken = fs.readFileSync(`secrets/webmention_api_${hostName}.token`, 'utf8').trim();
 
 export default async function (eleventyConfig) {
-
-	eleventyConfig.on("eleventy.before", async ({dir, runMode, outputMode}) => {
-		var webmentions = await fetch(`https://webmention.io/api/mentions.jf2?token=${encodeURIComponent(webmentionApiToken)}&domain=${webmentionDomain}&sort-by=created`)
-			.then((response) => response.json())
-			.then((mentions) => mentions);
-		console.log("Webmentions:", webmentions);
-		eleventyConfig.addGlobalData("webmentions", webmentions);
-	});
-
 	eleventyConfig.addGlobalData("neocities", neocities);
 	var primaryNav = {
 		"Index": "/",
@@ -213,6 +204,40 @@ export default async function (eleventyConfig) {
 	//eleventyConfig.addPassthroughCopy("res");
 	//eleventyConfig.addPassthroughCopy("**/*.png");
 
+	async function fetchWebmentions() {
+		var webmentions = await fetch(`https://webmention.io/api/mentions.jf2?token=${encodeURIComponent(webmentionApiToken)}&domain=${webmentionDomain}&sort-by=created`)
+			.then((response) => response.json())
+			.then((mentions) => mentions);
+		return webmentions.children;
+	}
+	eleventyConfig.addGlobalData("webmentions", await fetchWebmentions());
+
+	eleventyConfig.on("eleventy.before", async ({dir, runMode, outputMode}) => {
+		eleventyConfig.addGlobalData("webmentions", await fetchWebmentions());
+	});
+
+	function getWebmentionsForUrl(webmentions, url) {
+		const allowedTypes = ["mention-of", "in-reply-to"];
+		const hasRequiredFields = entry => {
+			const {author, published, content} = entry;
+			return author.name && published && content;
+		};
+		const sanitize = entry => {
+			const { content } = entry;
+			if (content['content-type'] === 'text/html') {
+				content.value = sanitizeHtml(content.value);
+			}
+			return entry;
+		};
+		return webmentions
+			.filter((entry) => entry["wm-target"] === url)
+			.filter((entry) => allowedTypes.includes(entry["wm-property"]))
+			.filter(hasRequiredFields)
+			.map(sanitize);
+	};
+
+	eleventyConfig.addFilter("getWebmentionsForUrl", getWebmentionsForUrl);
+
 	// all posts tagged with either `article` or `post`
 	eleventyConfig.addCollection("publicPosts", function (collectionApi) {
 		var result = collectionApi.getAllSorted().filter(function (item) {
@@ -301,7 +326,7 @@ export default async function (eleventyConfig) {
 	});
 
 
-	eleventyConfig.addShortcode("postFooter", function(tags, url, date) {
+	eleventyConfig.addShortcode("postFooter", function(tags, url, date, mentions, expandMentions) {
 		const slugify = eleventyConfig.getFilter("slugify");
 		var tagStr = "";
 		var tagList = tags.filter(function (tag) {
@@ -315,10 +340,12 @@ export default async function (eleventyConfig) {
 			//	${tagStr}
 			//`;
 		}
+		var mentionsStr = mentions.length > 0 ? `<a href="${url}#webmentions">${mentions.length} Webmentions</a>` : "";
 		return `
 		<footer>
 			<a class="p-url" rel="canonical" href="${url}">#</a>
 			${dateToTimeTag(date, ["dt-published"])}
+			${mentionsStr}
 			${tagStr}
 		</footer>
 		`;

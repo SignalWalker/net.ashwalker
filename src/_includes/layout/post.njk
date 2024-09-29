@@ -2,11 +2,12 @@
 layout: layout/main.njk
 tags: []
 ---
-
 <article class="{{tags | postClasses}}">
 	{%- postHeader title, page.url -%}
 	<div class="e-content">
 		{{ content | safe }}
 	</div>
-	{% postFooter tags, page.url, page.date %}
+	{%- set absoluteUrl = page.url | htmlBaseUrl(siteMeta.fqdn) -%}
+	{%- set mentions = webmentions | getWebmentionsForUrl(absoluteUrl) -%}
+	{% postFooter tags, page.url, page.date, mentions, true %}
 </article>

@@ -14,7 +14,9 @@ permalink: "/post/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 	<div class="e-content">
 		{{ post.content | safe }}
 	</div>
-	{% postFooter post.data.tags, post.url, post.date %}
+	{%- set absoluteUrl = page.url | htmlBaseUrl(siteMeta.fqdn) -%}
+	{%- set mentions = webmentions | getWebmentionsForUrl(absoluteUrl) -%}
+	{% postFooter post.data.tags, post.url, post.date, mentions, false %}
 </article>
 {%- endfor -%}
 <nav class="pagination">
