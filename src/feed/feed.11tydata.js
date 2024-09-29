@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	eleventyComputed: {
 		eleventyExcludeFromCollections: true,
 		metadata: {

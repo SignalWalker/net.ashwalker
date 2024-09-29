@@ -3,3 +3,4 @@ result-*
 _site/
 .cache/
 node_modules/
+secrets/

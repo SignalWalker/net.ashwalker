@@ -1,12 +1,12 @@
-const feedPlugin = require("@11ty/eleventy-plugin-rss");
-const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
-const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
-const Image = require("@11ty/eleventy-img");
-const markdownIt = require("markdown-it");
-const markdownItContainer = require("markdown-it-container");
-const markdownItFootnote = require("markdown-it-footnote");
-const lightningcss = require('lightningcss');
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+import feedPlugin from "@11ty/eleventy-plugin-rss";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import directoryOutputPlugin from "@11ty/eleventy-plugin-directory-output";
+import Image from "@11ty/eleventy-img";
+import markdownIt from "markdown-it";
+import markdownItContainer from "markdown-it-container";
+import markdownItFootnote from "markdown-it-footnote";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import fs from "node:fs";
 
 function dateToYMD(date) {
 	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -28,9 +28,22 @@ function toAttributes(data) {
 	return attrs.join(" ");
 }
 
-module.exports = function (eleventyConfig) {
-	var neocities = (process.env.ASHWALKER_NET_NEOCITIES || 0) == 1;
-	var devMode = (process.env.ASHWALKER_NET_DEVMODE || 0) == 1;
+var neocities = (process.env.ASHWALKER_NET_NEOCITIES || 0) == 1;
+var devMode = (process.env.ASHWALKER_NET_DEVMODE || 0) == 1;
+
+var hostName = neocities ? "signalgarden.net" : "ashwalker.net";
+var webmention_api_token = fs.readFileSync(`secrets/webmention_api_${hostName}.token`, 'utf8').trim();
+
+export default async function (eleventyConfig) {
+
+	eleventyConfig.on("eleventy.before", async ({dir, runMode, outputMode}) => {
+		var webmentions = await fetch(`https://webmention.io/api/mentions.jf2?token=${encodeURIComponent(webmention_api_token)}&domain=${hostName}&sort-by=created`)
+			.then((response) => response.json())
+			.then((mentions) => mentions);
+		console.log("Webmentions:", webmentions);
+		eleventyConfig.addGlobalData("webmentions", webmentions);
+	});
+
 	eleventyConfig.addGlobalData("neocities", neocities);
 	var primaryNav = {
 		"Index": "/",
@@ -105,13 +118,18 @@ module.exports = function (eleventyConfig) {
 		eleventyConfig.ignores.add("**/neocities/**");
 		eleventyConfig.ignores.add("**/fiction/**");
 	}
-	var fqdn = neocities ? "https://signalgarden.net/" : "https://ashwalker.net/";
+	var fqdn = `https://${hostName}/`
+
 	var siteMeta = {
+		hostName: hostName,
 		fqdn: fqdn,
 		title: neocities ? "Signal Garden" : "Ash Walker",
 		primaryNav: primaryNav,
 		feed: {
 			title: neocities ? "Signal Garden NEO" : "Signal Garden",
+		},
+		webmention: {
+			api_token: webmention_api_token
 		}
 	};
 	eleventyConfig.addGlobalData("siteMeta", siteMeta);
@@ -340,4 +358,4 @@ module.exports = function (eleventyConfig) {
 	//	if
 	//	return code;
 	//});
-};
+}
