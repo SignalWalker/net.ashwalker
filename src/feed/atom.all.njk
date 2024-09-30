@@ -1,0 +1,33 @@
+---
+permalink: "/feed.all.xml"
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ metadata.language or page.lang }}">
+	<title>{{ metadata.title }} (All Posts)</title>
+	<subtitle>{{ metadata.subtitle }}</subtitle>
+	<link href="{{ permalink | htmlBaseUrl(metadata.base) }}" rel="self" />
+	<link href="{{ metadata.base | addPathPrefixToFullUrl }}" />
+	<updated>{{ collections.publicPosts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+	<id>{{ metadata.base | addPathPrefixToFullUrl }}</id>
+	<author>
+		<name>{{ metadata.author.name }}</name>
+		<email>{{ metadata.author.email }}</email>
+		<uri>{{ metadata.author.uri }}</uri>
+	</author>
+	<generator>{{ eleventy.generator }}</generator>
+	<icon>{{ metadata.icon | htmlBaseUrl(metadata.base) }}</icon>
+	{%- for post in collections.publicPosts | reverse -%}
+	{%- set absolutePostUrl -%}{{ post.url | htmlBaseUrl(metadata.base) }}{%- endset -%}
+	<entry>
+		<title>{{ post.data.title or post.fileSlug }}</title>
+		<link href="{{ absolutePostUrl }}" />
+		<published>{{ post.date | dateToRfc3339 }}</published>
+		<updated>{{ post.data.modified or post.date | dateToRfc3339 }}</updated>
+		<id>{{ absolutePostUrl }}</id>
+		{%- if post.data.summary -%}<summary>{{ post.data.summary }}</summary>{%- endif -%}
+		<content type="html">{{ post.content | renderTransforms(post.data.page, metadata.base) }}</content>
+		{%- postAtomCategories post.data.tags -%}
+	</entry>
+	{%- endfor -%}
+</feed>
+

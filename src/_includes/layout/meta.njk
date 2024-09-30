@@ -7,8 +7,10 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
 		<link rel="canonical" href="{{ page.url | htmlBaseUrl(siteMeta.fqdn) }}" />
-		<link rel="alternate" type="application/json+xml" title="{{ siteMeta.feed.title }}" href="/feed.json"/>
-		<link rel="alternate" type="application/atom+xml" title="{{ siteMeta.feed.title }}" href="/feed.xml"/>
+		<link rel="alternate" type="application/atom+xml" title="{{ siteMeta.feed.title }} (Articles)" href="/feed.xml"/>
+		<link rel="alternate" type="application/atom+xml" title="{{ siteMeta.feed.title }} (All Posts)" href="/feed.all.xml"/>
+		<link rel="alternate" type="application/json+xml" title="{{ siteMeta.feed.title }} (Articles)" href="/feed.json"/>
+		<link rel="alternate" type="application/json+xml" title="{{ siteMeta.feed.title }} (All Posts)" href="/feed.all.json"/>
 		<link rel="webmention" href="https://webmention.io/{{ siteMeta.webmention.domain }}/webmention" />
 		<meta name="generator" content="{{ eleventy.generator }}" />
 		<title>{{ siteMeta.title }}{% if page.url != "/" %} - {{ title | default(page.fileSlug) }}{% endif %}</title>
