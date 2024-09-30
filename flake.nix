@@ -36,7 +36,7 @@
           std = pkgs.lib;
           stdenv = stdenvFor pkgs;
           nodejs = nodejsFor pkgs;
-          npmDepsHash = "sha256-lCWTpZgs6RPgVI2P9jEb5qFWwRe10tnGdrnXC7yrEEE=";
+          npmDepsHash = "sha256-3Oj62wnObIsKb8HCw7NTsa2RDb9QnmtdTrsN/ZRuHY4=";
         in {
           "ashwalker.net" = pkgs.buildNpmPackage {
             pname = "ashwalker.net";
@@ -53,6 +53,10 @@
 
               mv -t $out _site/*
             '';
+
+            env = {
+              "ASHWALKER_NET_OFFLINE" = 1;
+            };
 
             dontNpmInstall = true;
           };
