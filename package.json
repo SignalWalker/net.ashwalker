@@ -5,10 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "eleventy --input=src --config=src/eleventy.js",
-    "build-neocities": "env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/eleventy.js",
-    "serve": "rm -r _site; eleventy --input=src --config=src/eleventy.js --serve",
-    "serve-neocities": "rm -r _site; env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/eleventy.js --serve"
+    "build": "eleventy --input=src --config=src/eleventy.config.mjs",
+    "build-neocities": "env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/eleventy.config.mjs",
+    "serve": "rm -r _site; eleventy --input=src --config=src/eleventy.config.mjs --serve",
+    "serve-neocities": "rm -r _site; env ASHWALKER_NET_NEOCITIES=1 eleventy --input=src --config=src/eleventy.config.mjs --serve"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "@11ty/eleventy-plugin-directory-output": "^1.0.1",
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
     "lightningcss": "^1.27.0",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0",

@@ -48,6 +48,14 @@
 		flex-direction: column;
 		justify-content: space-between;
 	}
+
+	/*.sidebar>nav {*/
+	/*	flex-grow: 1;*/
+	/*}*/
+	/**/
+	/*.sidebar>nav>.secondary-nav {*/
+	/*	margin-top: auto;*/
+	/*}*/
 }
 
 /*.sidebar>*>* {*/

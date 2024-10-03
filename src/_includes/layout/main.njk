@@ -2,9 +2,9 @@
 layout: 'layout/meta.njk'
 mainClass: []
 ---
-
 <header class="sidebar">
     {%- include 'nav.njk' -%}
+    {%- include 'header-widgets.webc' -%}
 </header>
 <div id="main-display">
     <main class="{{ mainClass | join(" ") }}">

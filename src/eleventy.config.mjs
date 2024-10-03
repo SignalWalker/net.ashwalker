@@ -7,6 +7,10 @@ import markdownItContainer from "markdown-it-container";
 import markdownItFootnote from "markdown-it-footnote";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import fs from "node:fs";
+import pluginWebc from "@11ty/eleventy-plugin-webc";
+import { EleventyRenderPlugin } from "@11ty/eleventy";
+
+import localPlugin from "./_config/main.mjs";
 
 function dateToYMD(date) {
 	return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -36,7 +40,8 @@ var hostName = neocities ? "signalgarden.net" : "ashwalker.net";
 var webmentionDomain = neocities ? "signal-garden.neocities.org" : "ashwalker.net";
 var webmentionApiToken = offline ? "" : fs.readFileSync(`secrets/webmention_api_${hostName}.token`, 'utf8').trim();
 
-export default async function (eleventyConfig) {
+export default async function(eleventyConfig) {
+	eleventyConfig.addPlugin(localPlugin);
 	eleventyConfig.addGlobalData("neocities", neocities);
 	var primaryNav = {
 		"Index": "/",
@@ -137,6 +142,10 @@ export default async function (eleventyConfig) {
 	eleventyConfig.setQuietMode(true);
 
 	//eleventyConfig.addPlugin(syntaxHighlight);
+	eleventyConfig.addPlugin(pluginWebc, {
+		components: "src/_includes/components/**/*.webc"
+	});
+	eleventyConfig.addPlugin(EleventyRenderPlugin);
 	eleventyConfig.addPlugin(directoryOutputPlugin);
 	eleventyConfig.addPlugin(feedPlugin);
 	//eleventyConfig.addPlugin(feedPlugin, {
@@ -178,7 +187,7 @@ export default async function (eleventyConfig) {
 		html: true,
 		xhtmlOut: true
 	}).use(markdownItFootnote).use(markdownItContainer, 'note', {
-		render: function (tokens, idx) {
+		render: function(tokens, idx) {
 			if (tokens[idx].nesting === 1) {
 				return `<aside role="note">\n`;
 			} else {
@@ -186,7 +195,7 @@ export default async function (eleventyConfig) {
 			}
 		}
 	}).use(markdownItContainer, 'small', {
-		render: function (tokens, idx) {
+		render: function(tokens, idx) {
 			if (tokens[idx].nesting === 1) {
 				return `<small>\n`;
 			} else {
@@ -204,8 +213,9 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("src/style");
 	eleventyConfig.addPassthroughCopy("src/88x31.gif");
-	eleventyConfig.addPassthroughCopy({"src/res/img/ash.png": "img/avatar.png"});
+	eleventyConfig.addPassthroughCopy({ "src/res/img/ash.png": "img/avatar.png" });
 	eleventyConfig.addWatchTarget("");
+	eleventyConfig.ignores.add("_config");
 	//eleventyConfig.addPassthroughCopy("res");
 	//eleventyConfig.addPassthroughCopy("**/*.png");
 
@@ -220,14 +230,14 @@ export default async function (eleventyConfig) {
 	}
 	eleventyConfig.addGlobalData("webmentions", await fetchWebmentions());
 
-	eleventyConfig.on("eleventy.before", async ({dir, runMode, outputMode}) => {
+	eleventyConfig.on("eleventy.before", async ({ dir, runMode, outputMode }) => {
 		eleventyConfig.addGlobalData("webmentions", await fetchWebmentions());
 	});
 
 	function getWebmentionsForUrl(webmentions, url) {
 		const allowedTypes = ["mention-of", "in-reply-to"];
 		const hasRequiredFields = entry => {
-			const {author, published, content} = entry;
+			const { author, published, content } = entry;
 			return author.name && published && content;
 		};
 		const sanitize = entry => {
@@ -247,8 +257,8 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addFilter("getWebmentionsForUrl", getWebmentionsForUrl);
 
 	// all posts tagged with either `article` or `post`
-	eleventyConfig.addCollection("publicPosts", function (collectionApi) {
-		var result = collectionApi.getAllSorted().filter(function (item) {
+	eleventyConfig.addCollection("publicPosts", function(collectionApi) {
+		var result = collectionApi.getAllSorted().filter(function(item) {
 			if (!Object.hasOwn(item.data, 'tags')) {
 				return false;
 			}
@@ -257,8 +267,8 @@ export default async function (eleventyConfig) {
 		return result;
 	});
 
-	eleventyConfig.addCollection("feedPosts", function (collectionApi) {
-		var result = collectionApi.getAllSorted().filter(function (item) {
+	eleventyConfig.addCollection("feedPosts", function(collectionApi) {
+		var result = collectionApi.getAllSorted().filter(function(item) {
 			if (!Object.hasOwn(item.data, 'tags')) {
 				return false;
 			}
@@ -267,8 +277,8 @@ export default async function (eleventyConfig) {
 		return result;
 	});
 
-	eleventyConfig.addCollection("ephemera", function (collectionApi) {
-		return collectionApi.getAllSorted().filter(function (item) {
+	eleventyConfig.addCollection("ephemera", function(collectionApi) {
+		return collectionApi.getAllSorted().filter(function(item) {
 			if (!Object.hasOwn(item.data, 'tags')) {
 				return false;
 			}
@@ -337,11 +347,11 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addShortcode("postFooter", function(tags, url, date, mentions, expandMentions) {
 		const slugify = eleventyConfig.getFilter("slugify");
 		var tagStr = "";
-		var tagList = tags.filter(function (tag) {
+		var tagList = tags.filter(function(tag) {
 			return tag != "post";
 		});
 		if (tagList.length > 0) {
-			tagStr = tagList.map(function (tag) {
+			tagStr = tagList.map(function(tag) {
 				return `<a class="p-category" href="/post/tag/${slugify(tag)}/">#${tag}</a>`;
 			}).join("\n");
 			//tagStr = `
@@ -361,11 +371,11 @@ export default async function (eleventyConfig) {
 
 	eleventyConfig.addShortcode("postAtomCategories", function(tags) {
 		var tagStr = "";
-		var tagList = tags.filter(function (tag) {
+		var tagList = tags.filter(function(tag) {
 			return tag != "post";
 		});
 		if (tagList.length > 0) {
-			tagStr = tagList.map(function (tag) {
+			tagStr = tagList.map(function(tag) {
 				return `<category term="${tag}" />`;
 			}).join("\n");
 			//tagStr = `
