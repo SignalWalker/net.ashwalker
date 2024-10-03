@@ -1,7 +1,3 @@
-main>.h-entry:first-child {
-	margin-top: var(--interface-gap);
-}
-
 .h-entry {
 	--post-flex-direction: row;
 	--post-item-alignment: start;
@@ -16,6 +12,7 @@ main>.h-entry:first-child {
 	max-width: 64em;
 }
 
+
 .h-entry.article,
 .h-entry.fiction {
 	--post-flex-direction: row;
@@ -25,10 +22,20 @@ main>.h-entry:first-child {
 }
 
 @media screen and (max-width: 80em) {
+	main>.h-entry:first-child {
+		margin-top: var(--interface-gap);
+	}
+
 	.h-entry {
 		width: 100%;
 		max-width: 100%;
 	}
+}
+
+@media screen and (min-width: 80em) {
+	/*.h-entry {*/
+	/*	flex-direction: var(--post-flex-direction);*/
+	/*}*/
 }
 
 .h-entry .p-name>a {

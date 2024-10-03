@@ -48,6 +48,8 @@
 	padding: 0px;
 	margin: 0px;
 	border: double var(--border-color);
+	background-color: var(--content-bg);
+	box-shadow: var(--outset-shadow);
 	overflow: clip;
 	text-wrap: nowrap;
 
@@ -62,7 +64,6 @@
 
 	padding: 0px;
 
-	box-shadow: var(--outset-shadow);
 }
 
 .button-gallery>a>* {

@@ -1,6 +1,6 @@
 <nav class="button-nav">
-	<a rel="alternate" type="application/atom+xml" title="Signal Garden" href="/feed.xml"><img src="/res/img/logos/rss.svg" alt="RSS Feed" title="RSS Feed"/>Feed</a>
 	{% for title, url in siteMeta.primaryNav %}
 	<a href="{{ url }}"{% if page.url == url %} aria-current="page"{% endif %}>{{ title }}</a>
 	{% endfor %}
+	{%- include 'secondary-nav.njk' -%}
 </nav>

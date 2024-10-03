@@ -4,11 +4,7 @@ mainClass: []
 ---
 
 <header class="sidebar">
-    <div class="window-border">
-        <div class="window">
-            {% include 'nav.njk'%}
-        </div>
-    </div>
+    {%- include 'nav.njk' -%}
 </header>
 <div id="main-display">
     <main class="{{ mainClass | join(" ") }}">
@@ -16,18 +12,10 @@ mainClass: []
     </main>
 </div>
 <footer class="sidebar">
-    <div class="window-border">
-        <div class="window">
-            <div>
-            {% include 'h-card.njk' %}
-            </div>
-        </div>
+    <div>
+        {% include 'h-card.njk' %}
     </div>
     {%- if neocities -%}
-    <div class="window-border">
-        <div class="window">
-            {% include 'buttons.njk' %}
-        </div>
-    </div>
+    {% include 'buttons.njk' %}
     {%- endif -%}
 </footer>

@@ -118,6 +118,9 @@ export default async function (eleventyConfig) {
 		fqdn: fqdn,
 		title: neocities ? "Signal Garden" : "Ash Walker",
 		primaryNav: primaryNav,
+		secondaryNav: {
+
+		},
 		feed: {
 			title: neocities ? "Signal Garden NEO" : "Signal Garden",
 		},

@@ -7,6 +7,17 @@
 	flex-grow: 1;
 }
 
+main {
+	width: 100%;
+	height: 100%;
+
+	/*background-color: var(--content-bg);*/
+
+	padding: var(--interface-gap);
+
+	flex-grow: 1;
+}
+
 @media screen and (max-width: 80em) {
 	#main-display {
 		border: double var(--border-color);
@@ -21,19 +32,8 @@
 	}
 
 	main {
-		padding: 0px var(--interface-gap) var(--interface-gap);
+		padding: 0px;
 	}
-}
-
-main {
-	width: 100%;
-	height: 100%;
-
-	/*background-color: var(--content-bg);*/
-
-	padding: var(--interface-gap);
-
-	flex-grow: 1;
 }
 
 @media screen and (max-width: 80em) {

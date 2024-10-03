@@ -171,6 +171,14 @@
 				"alt": "someplace elsewhere",
 				"title": "someplace elsewhere"
 			}
+		},
+		{
+			"href": "https://candlelitsmiles.neocities.org/",
+			"img": {
+				"src": "https://candlelitsmiles.neocities.org/candlebuttonone.png",
+				"alt": "candlelitsmiles",
+				"title": "candlelitsmiles"
+			}
 		}
 	]
 }

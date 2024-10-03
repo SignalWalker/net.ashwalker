@@ -21,43 +21,34 @@
 /* 	padding: 0.5em; */
 /* } */
 
-.window-border {
-	margin: 0px;
-	padding: 0px;
-}
-
-.window {
-	margin: 0px;
-	padding: 0px;
+@media screen and (max-width: 80em) {
+	.sidebar>* {
+		padding: var(--interface-gap);
+		margin: 0px;
+		border: double var(--border-color);
+		background-color: var(--content-bg);
+		box-shadow: var(--inset-shadow);
+	}
 }
 
 @media screen and (min-width: 80em) {
+	.sidebar {
+		--window-flex-direction: row;
+	}
+
+	footer.sidebar {
+		--window-flex-direction: row-reverse;
+	}
+
 	header.sidebar {
 		position: sticky;
 		top: 0px;
-	}
 
-	.window-border {
-		border: double var(--border-color);
-		background-color: var(--content-bg);
-		box-shadow: var(--outset-shadow);
-	}
-
-	.window {
-		padding: var(--interface-gap);
-		background-color: var(--empty-bg);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 }
-
-
-.window>* {
-	margin: 0px;
-	padding: var(--interface-gap);
-	border: double var(--border-color);
-	background-color: var(--content-bg);
-	box-shadow: var(--inset-shadow);
-}
-
 
 /*.sidebar>*>* {*/
 /*	border: double var(--border-color);*/
@@ -66,7 +57,7 @@
 /*	padding: var(--interface-gap);*/
 /*}*/
 
-.window>nav {
+.sidebar>nav {
 	display: flex;
 	flex-direction: row;
 	gap: var(--interface-gap);
@@ -74,19 +65,19 @@
 	align-items: stretch;
 }
 
-.window>nav img {
+.sidebar>nav img {
 	width: 1em;
 	height: 1em;
 	flex-grow: 1;
 }
 
 @media screen and (min-width: 80em) {
-	.window>nav {
+	.sidebar>nav {
 		flex-direction: column;
 	}
 }
 
-.window>nav>* {
+.sidebar>nav>* {
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);

@@ -7,8 +7,38 @@
 with builtins; let
   std = pkgs.lib;
   site = config.services."ashwalker-net";
+  elev = config.services."eleventy-site";
 in {
   options = with lib; {
+    services.eleventy-site = {
+      virtualHosts = mkOption {
+        type = types.attrsOf types.submoduleWith {
+          modules = [
+            (
+              {
+                config,
+                pkgs,
+                name,
+                ...
+              }: {
+                enable = (mkEnableOption "this eleventy site vhost") // {default = true;};
+                root = mkOption {
+                  type = types.path;
+                };
+                domain = mkOption {
+                  type = types.str;
+                  default = name;
+                };
+                favicon = mkOption {
+                  type = types.nullOr types.str;
+                  default = null;
+                };
+              }
+            )
+          ];
+        };
+      };
+    };
     services."ashwalker-net" = {
       enable = mkEnableOption "nginx vhost for ashwalker.net";
       src = mkOption {
@@ -55,57 +85,64 @@ in {
   };
   disabledModules = [];
   imports = [];
-  config = lib.mkIf site.enable {
-    users.users.${site.user} = {
-      isSystemUser = true;
-      group = site.group;
-    };
-    users.groups.${site.group} = {};
-    # environment.etc."${site.user}" = {
-    #   user = site.user;
-    #   group = site.group;
-    #   source = site.src;
-    # };
-    # systemd.services = {
-    #   "ashwalker-net-build" = {
-    #     # partOf = ["ashwalker-net-watcher.path"];
-    #     wantedBy = ["multi-user.target"];
-    #     serviceConfig = {
-    #       Type = "oneshot";
-    #       ExecStartPre = "${pkgs.coreutils}/bin/rm -rf ${site.dirs.cache}/*";
-    #       ExecStart = "${site.buildScript}/bin/build-ashwalker-net --output=${site.dirs.cache}";
-    #       WorkingDirectory = site.dirs.configuration;
-    #       ConfigurationDirectory = site.user;
-    #       CacheDirectory = site.user;
-    #       User = site.user;
-    #       Group = site.group;
-    #     };
-    #   };
-    # };
-    # systemd.paths = {
-    #   "ashwalker-net-watcher" = {
-    #     wantedBy = ["multi-user.target"];
-    #     pathConfig = {
-    #       PathModified = site.dirs.configuration;
-    #       Unit = "ashwalker-net-build.service";
-    #       MakeDirectory = true;
-    #       TriggerLimitIntervalSec = "1m";
-    #     };
-    #   };
-    # };
-    services.nginx.virtualHosts."${site.domain}" = {
-      root = self.packages.${pkgs.system}."ashwalker.net";
-      extraConfig = ''
-        rewrite ^/resume?$ https://signalwalker.github.io/meta.resume permanent;
-      '';
-      # locations."=/resume" = {
-      #   proxyPass = "https://signalwalker.github.io";
-      #   extraConfig = ''
-      #     proxy_redirect default;
-      #     rewrite ^/resume?$ /meta.resume permanent;
-      #   '';
+  config = lib.mkMerge [
+    (lib.mkIf site.enable {
+      services.eleventy-site.virtualHosts."${site.domain}" = {
+        enable = true;
+        root = self.packages.${pkgs.system}."ashwalker.net";
+        inherit (site) favicon;
+      };
+      services.nginx.virtualHosts."${site.domain}" = {
+        root = self.packages.${pkgs.system}."ashwalker.net";
+        extraConfig = ''
+          rewrite ^/resume?$ https://signalwalker.github.io/meta.resume permanent;
+        '';
+        # locations."=/resume" = {
+        #   proxyPass = "https://signalwalker.github.io";
+        #   extraConfig = ''
+        #     proxy_redirect default;
+        #     rewrite ^/resume?$ /meta.resume permanent;
+        #   '';
+        # };
+      };
+      # users.users.${site.user} = {
+      #   isSystemUser = true;
+      #   group = site.group;
       # };
-    };
-  };
+      # users.groups.${site.group} = {};
+      # environment.etc."${site.user}" = {
+      #   user = site.user;
+      #   group = site.group;
+      #   source = site.src;
+      # };
+      # systemd.services = {
+      #   "ashwalker-net-build" = {
+      #     # partOf = ["ashwalker-net-watcher.path"];
+      #     wantedBy = ["multi-user.target"];
+      #     serviceConfig = {
+      #       Type = "oneshot";
+      #       ExecStartPre = "${pkgs.coreutils}/bin/rm -rf ${site.dirs.cache}/*";
+      #       ExecStart = "${site.buildScript}/bin/build-ashwalker-net --output=${site.dirs.cache}";
+      #       WorkingDirectory = site.dirs.configuration;
+      #       ConfigurationDirectory = site.user;
+      #       CacheDirectory = site.user;
+      #       User = site.user;
+      #       Group = site.group;
+      #     };
+      #   };
+      # };
+      # systemd.paths = {
+      #   "ashwalker-net-watcher" = {
+      #     wantedBy = ["multi-user.target"];
+      #     pathConfig = {
+      #       PathModified = site.dirs.configuration;
+      #       Unit = "ashwalker-net-build.service";
+      #       MakeDirectory = true;
+      #       TriggerLimitIntervalSec = "1m";
+      #     };
+      #   };
+      # };
+    })
+  ];
   meta = {};
 }

@@ -22,6 +22,15 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+
+		background-color: var(--empty-bg);
+	}
+
+	.h-card>div {
+		width: 100%;
+		padding: var(--interface-gap);
+		border: double var(--border-color);
+		background-color: var(--content-bg);
 	}
 }
 
