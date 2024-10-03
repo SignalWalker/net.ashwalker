@@ -43,6 +43,8 @@ export default async function (eleventyConfig) {
 		"Posts": "/post/",
 		"Resumé": "/resume"
 	};
+	var secondaryNav = {
+	};
 	var hCardNav = {
 		activitypub: {
 			href: "https://social.ashwalker.net/Ash",
@@ -74,12 +76,13 @@ export default async function (eleventyConfig) {
 	} else {
 		eleventyConfig.ignores.add("**/draft");
 		eleventyConfig.ignores.add("**/project");
+		eleventyConfig.ignores.add("**/links");
 	}
 	if (neocities) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];
 		primaryNav["Fiction"] = "/post/tag/fiction/";
-		//primaryNav["Links"] = "/links/";
+		//secondaryNav["Links"] = "/links/";
 		eleventyConfig.ignores.add("**/resume.njk");
 		delete hCardNav['github'];
 		delete hCardNav['personalGit'];
@@ -118,9 +121,7 @@ export default async function (eleventyConfig) {
 		fqdn: fqdn,
 		title: neocities ? "Signal Garden" : "Ash Walker",
 		primaryNav: primaryNav,
-		secondaryNav: {
-
-		},
+		secondaryNav: secondaryNav,
 		feed: {
 			title: neocities ? "Signal Garden NEO" : "Signal Garden",
 		},
