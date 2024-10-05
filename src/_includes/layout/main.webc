@@ -1,0 +1,16 @@
+---
+layout: 'layout/meta.webc'
+mainClass: []
+---
+<header class="sidebar">
+    <sidebar-nav :@pages="siteMeta.primaryNav" :@current="page" :@feed="siteMeta.feed"></sidebar-nav>
+</header>
+<div id="main-display">
+    <main :class="mainClass.join(' ')" @raw="content"></main>
+</div>
+<footer class="sidebar">
+    <div>
+        <h-card :@h-card-nav="hCardNav" :@fqdn="siteMeta.fqdn"></h-card>
+    </div>
+    <button-gallery webc:if="neocities" :@buttons="buttons"></button-gallery>
+</footer>

@@ -1,6 +1,0 @@
-<nav class="button-nav">
-	{% for title, url in siteMeta.primaryNav %}
-	<a href="{{ url }}"{% if page.url == url %} aria-current="page"{% endif %}>{{ title }}</a>
-	{% endfor %}
-	{%- include 'secondary-nav.njk' -%}
-</nav>

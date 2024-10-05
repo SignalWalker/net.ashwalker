@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<title>Widget - Weather</title>
+		<script src="widget-weather/main.js"></script>
 	</head>
 	<body>
-		<div class="widget">
-			weather...
-		</div>
+		Forecasting weather...
 	</body>
 </html>

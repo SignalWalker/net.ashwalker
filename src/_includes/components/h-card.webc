@@ -1,0 +1,13 @@
+<section class="h-card">
+	 <img class="u-logo" src="/res/img/ash.png" alt="Image of Ash Walker, drawn by her sibling." />
+	 <div>
+		 <h1><a class="u-url u-uid p-name" :href="fqdn" rel="me">Ash Walker</a></h1>
+		 <p class="p-gender-identity">She/They</p>
+		 <ul>
+			  <li><a class="u-email" href="mailto:ashurstwalker@gmail.com" rel="me">ashurstwalker@gmail.com</a></li>
+		 </ul>
+		 <nav class="icon-nav">
+			 <a webc:for="(cName, cNav) in hCardNav" class="u-url" :href="cNav.href" rel="me external"><img @attributes="cNav.img" /></a>
+		 </nav>
+	 </div>
+</section>

@@ -212,8 +212,10 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/favicon.svg");
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("src/style");
+	eleventyConfig.addPassthroughCopy("src/script");
 	eleventyConfig.addPassthroughCopy("src/88x31.gif");
 	eleventyConfig.addPassthroughCopy({ "src/res/img/ash.png": "img/avatar.png" });
+	eleventyConfig.addPassthroughCopy({ "src/res/img/logos/rss.svg": "img/logo/rss.svg" });
 	eleventyConfig.addWatchTarget("");
 	eleventyConfig.ignores.add("_config");
 	//eleventyConfig.addPassthroughCopy("res");
@@ -326,17 +328,6 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addFilter("toAttributes", toAttributes);
 
 	eleventyConfig.addFilter("toButton", function(button) {
-		if (!Object.hasOwn(button.img, "height")) {
-			button.img.width = 88;
-		}
-		if (!Object.hasOwn(button.img, "height")) {
-			button.img.height = 31;
-		}
-		var res = `<img eleventy:ignore decoding="async" fetchpriority="low" loading="lazy" ${toAttributes(button.img)} />`;
-		if (Object.hasOwn(button, "href")) {
-			res = `<a href="${button.href}" target="_blank" rel="external">${res}</a>`;
-		}
-		return res;
 	});
 
 	eleventyConfig.addShortcode("slice", function(array, start, end) {

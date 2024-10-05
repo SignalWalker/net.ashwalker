@@ -1,0 +1,78 @@
+---
+permalink: "/style/atom.xsl"
+---
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="3.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:atom="http://www.w3.org/2005/Atom">
+  <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
+  <xsl:template match="/">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <head>
+        <title>
+          <xsl:value-of select="/atom:feed/atom:title"/>
+          | Atom Feed
+        </title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      </head>
+      <body class="feed-preview">
+          <h1 class="flex items-start">
+            <!-- https://commons.wikimedia.org/wiki/File:Feed-icon.svg -->
+            <img src="/img/logo/rss.svg" width="32" height="32"/>
+            Feed Preview
+          </h1>
+          <h2><xsl:value-of select="/atom:feed/atom:title"/></h2>
+          <p>
+            <xsl:value-of select="/atom:feed/atom:subtitle"/>
+          </p>
+          <a>
+            <xsl:attribute name="href">
+              <xsl:value-of select="/atom:feed/atom:link[2]/@href"/>
+            </xsl:attribute>
+            Visit Website &#x2192;
+          </a>
+          <h3>Available Feeds</h3>
+          <ul>
+            <li><a href="/feed.xml">Articles Only</a></li>
+            <li><a href="/feed.all.xml">All Posts</a></li>
+          </ul>
+          <h3>Recent posts</h3>
+          <xsl:for-each select="/atom:feed/atom:entry">
+            <h4>
+              <xsl:value-of select="substring(atom:published, 0, 11)" />
+               »
+              <a>
+                <xsl:attribute name="href">
+                  <xsl:value-of select="atom:link/@href"/>
+                </xsl:attribute>
+                <xsl:value-of select="atom:title"/>
+              </a>
+            </h4>
+            <p><xsl:value-of select="atom:summary"/></p>
+          </xsl:for-each>
+          <hr/>
+          <p>
+          <strong>This is an <a href="https://en.wikipedia.org/wiki/Atom_(web_standard)" rel="external">Atom</a> feed (similar to RSS)</strong>. Subscribe by copying
+          this URL: <a><xsl:attribute name="href"><xsl:value-of select="/atom:feed/atom:link[1]/@href"/></xsl:attribute><xsl:value-of select="/atom:feed/atom:link[1]/@href"/></a> into your news reader.
+          </p>
+          <p>
+          If you don't have a news reader, I like these ones:
+          <ul>
+            <li>Desktop:<ul>
+              <li><a href="https://hyliu.me/fluent-reader/" rel="external">Fluent Reader</a></li>
+              <li><a href="https://github.com/martinrotter/rssguard" rel="external">RSS Guard</a></li>
+            </ul></li>
+            <li>Mobile:<ul>
+              <li><a href="https://hyliu.me/fluent-reader-lite/">Fluent Reader Lite</a></li>
+              <li><a href="https://github.com/Ashinch/ReadYou">Read You</a></li>
+            </ul></li>
+          </ul>
+          </p>
+          <p>Visit <a
+            href="https://aboutfeeds.com" rel="external">About Feeds
+          </a> to learn more and get started.</p>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>

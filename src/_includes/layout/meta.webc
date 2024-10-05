@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link webc:keep rel="stylesheet" href="/style/style.css" />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="32x32" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+		<link rel="canonical" :href="new URL(page.url, siteMeta.fqdn)" />
+		<link rel="alternate" type="application/atom+xml" :title="`${siteMeta.feed.title} (Articles)`" href="/feed.xml"/>
+		<link rel="alternate" type="application/atom+xml" :title="`${siteMeta.feed.title} (All Posts)`" href="/feed.all.xml"/>
+		<link rel="alternate" type="application/json+xml" :title="`${siteMeta.feed.title} (Articles)`" href="/feed.json"/>
+		<link rel="alternate" type="application/json+xml" :title="`${siteMeta.feed.title} (All Posts)`" href="/feed.all.json"/>
+		<link rel="webmention" :href="`https://webmention.io/${siteMeta.webmention.domain}/webmention`" />
+		<script webc:keep defer type="module" :src="getBundleFileUrl('js')"></script>
+		<meta name="generator" :content="eleventy.generator" />
+		<title @text="`${siteMeta.title}${page.url != '/' ? ` - ${title || page.fileSlug}` : ''}`"></title>
+	</head>
+	<body @raw="content">
+	</body>
+</html>

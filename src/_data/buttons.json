@@ -1,184 +1,180 @@
-{
-	"primary": [
-		{
-			"href": "https://brainslushie666.neocities.org/",
-			"img": {
-				"src": "https://brainslushie666.neocities.org/brie_button.gif",
-				"alt": "brainslushie666.neocities.org",
-				"title": "brainslushie666.neocities.org"
-			}
-		},
-		{
-			"href": "https://hrtcafe.net/",
-			"img": {
-				"src": "/img/button/hrtcafe.gif",
-				"alt": "HRT Cafe",
-				"title": "HRT Cafe"
-			}
-		},
-		{
-			"href": "https://cohost.org/SignalWalker",
-			"img": {
-				"src": "/img/button/cohost.gif",
-				"alt": "Cohost",
-				"title": "Cohost"
-			}
+[
+	{
+		"href": "https://brainslushie666.neocities.org/",
+		"img": {
+			"src": "https://brainslushie666.neocities.org/brie_button.gif",
+			"alt": "brainslushie666.neocities.org",
+			"title": "brainslushie666.neocities.org"
 		}
-	],
-	"secondary": [
-		{
-			"href": "https://velvetblue.neocities.org/",
-			"img": {
-				"src": "https://files.catbox.moe/vltthb.png",
-				"alt": "Velvet Blue",
-				"title": "Velvet Blue"
-			}
-		},
-		{
-			"href": "https://grugcel.love/",
-			"img": {
-				"src": "/img/button/grug.gif",
-				"alt": "Grug",
-				"title": "Grug"
-			}
-		},
-		{
-			"href": "https://thilinky.neocities.org/",
-			"img": {
-				"src": "https://thilinky.neocities.org/about/ThilinkyButton.gif",
-				"alt": "Thilinky",
-				"title": "Thilinky"
-			}
-		},
-		{
-			"href": "https://murid.neocities.org/",
-			"img": {
-				"src": "https://murid.neocities.org/gallery/OCbutton.png",
-				"alt": "Murid",
-				"title": "Murid"
-			}
-		},
-		{
-			"href": "https://substack.net/",
-			"img": {
-				"src": "https://substack.net/favicon.ico",
-				"alt": "Substack",
-				"title": "Substack",
-				"width": 275,
-				"height": 275
-			}
-		},
-		{
-			"href": "https://mukkysworld.neocities.org/",
-			"img": {
-				"src": "/img/button/mukkys_world.gif",
-				"alt": "Mukky's World",
-				"title": "Mukky's World"
-			}
-		},
-		{
-			"href": "https://maia.crimew.gay/",
-			"img": {
-				"src": "/img/button/maia.crimew.gay.png",
-				"alt": "maia arson crimew",
-				"title": "maia arson crimew"
-			}
-		},
-		{
-			"href": "https://entranceorexit.net/",
-			"img": {
-				"src": "https://entranceorexit.net/img/eoe_button.2.png",
-				"alt": "entrance or exit",
-				"title": "entrance or exit"
-			}
-		},
-		{
-			"href": "https://dimden.dev/",
-			"img": {
-				"src": "https://dimden.dev/services/images/88x31.gif",
-				"alt": "DIMDEN",
-				"title": "DIMDEN"
-			}
-		},
-		{
-			"href": "https://maritoahike.neocities.org/",
-			"img": {
-				"src": "https://maritoahike.neocities.org/img/maritoahike88x31.gif",
-				"alt": "Mari's Cave",
-				"title": "Mari's Cave"
-			}
-		},
-		{
-			"href": "https://renkotsuban.com/",
-			"img": {
-				"src": "http://renkotsuban.com/button.gif",
-				"alt": "Renkon",
-				"title": "Renkon"
-			}
-		},
-		{
-			"href": "https://homestuck.giovanh.com/",
-			"img": {
-				"src": "/img/button/homestuck.png",
-				"alt": "Unofficial Homestuck Collection",
-				"title": "Unnoffical Homestuck Collection"
-			}
-		},
-		{
-			"href": "https://sweetfish.site/",
-			"img": {
-				"src": "/img/button/sweetfish.png",
-				"alt": "ayu's webhouse",
-				"title": "ayu's webhouse"
-			}
-		},
-		{
-			"href": "https://jkap.io/",
-			"img": {
-				"src": "https://files.crime.team/site/jkap-88x31.gif",
-				"alt": "jae kaplan",
-				"title": "jae kaplan"
-			}
-		},
-		{
-			"href": "https://indietsushin.net/",
-			"img": {
-				"src": "https://indietsushin.net/button.gif",
-				"alt": "Indie Tsushin",
-				"title": "Indie Tsushin"
-			}
-		},
-		{
-			"href": "https://blog.radicaldream.land/",
-			"img": {
-				"src": "https://i.postimg.cc/QxhG798p/dispatchblog-banner.gif",
-				"alt": "Dispatch from the Radical Dreamland",
-				"title": "Dispatch from the Radical Dreamland"
-			}
-		},
-		{
-			"href": "https://blog.aurahack.jp/",
-			"img": {
-				"src": "https://aurahack.neocities.org/88x31.gif",
-				"alt": "Days and Wonder",
-				"title": "Days and Wonder"
-			}
-		},
-		{
-			"href": "https://blog.someplace-else.xyz/",
-			"img": {
-				"src": "https://natclayton.uk/wp-content/uploads/2024/09/elsewhere.gif",
-				"alt": "someplace elsewhere",
-				"title": "someplace elsewhere"
-			}
-		},
-		{
-			"href": "https://candlelitsmiles.neocities.org/",
-			"img": {
-				"src": "https://candlelitsmiles.neocities.org/candlebuttonone.png",
-				"alt": "candlelitsmiles",
-				"title": "candlelitsmiles"
-			}
+	},
+	{
+		"href": "https://hrtcafe.net/",
+		"img": {
+			"src": "/img/button/hrtcafe.gif",
+			"alt": "HRT Cafe",
+			"title": "HRT Cafe"
 		}
-	]
-}
+	},
+	{
+		"href": "https://cohost.org/SignalWalker",
+		"img": {
+			"src": "/img/button/cohost.gif",
+			"alt": "Cohost",
+			"title": "Cohost"
+		}
+	},
+	{
+		"href": "https://velvetblue.neocities.org/",
+		"img": {
+			"src": "https://files.catbox.moe/vltthb.png",
+			"alt": "Velvet Blue",
+			"title": "Velvet Blue"
+		}
+	},
+	{
+		"href": "https://grugcel.love/",
+		"img": {
+			"src": "/img/button/grug.gif",
+			"alt": "Grug",
+			"title": "Grug"
+		}
+	},
+	{
+		"href": "https://thilinky.neocities.org/",
+		"img": {
+			"src": "https://thilinky.neocities.org/about/ThilinkyButton.gif",
+			"alt": "Thilinky",
+			"title": "Thilinky"
+		}
+	},
+	{
+		"href": "https://murid.neocities.org/",
+		"img": {
+			"src": "https://murid.neocities.org/gallery/OCbutton.png",
+			"alt": "Murid",
+			"title": "Murid"
+		}
+	},
+	{
+		"href": "https://substack.net/",
+		"img": {
+			"src": "https://substack.net/favicon.ico",
+			"alt": "Substack",
+			"title": "Substack",
+			"width": 275,
+			"height": 275
+		}
+	},
+	{
+		"href": "https://mukkysworld.neocities.org/",
+		"img": {
+			"src": "/img/button/mukkys_world.gif",
+			"alt": "Mukky's World",
+			"title": "Mukky's World"
+		}
+	},
+	{
+		"href": "https://maia.crimew.gay/",
+		"img": {
+			"src": "/img/button/maia.crimew.gay.png",
+			"alt": "maia arson crimew",
+			"title": "maia arson crimew"
+		}
+	},
+	{
+		"href": "https://entranceorexit.net/",
+		"img": {
+			"src": "https://entranceorexit.net/img/eoe_button.2.png",
+			"alt": "entrance or exit",
+			"title": "entrance or exit"
+		}
+	},
+	{
+		"href": "https://dimden.dev/",
+		"img": {
+			"src": "https://dimden.dev/services/images/88x31.gif",
+			"alt": "DIMDEN",
+			"title": "DIMDEN"
+		}
+	},
+	{
+		"href": "https://maritoahike.neocities.org/",
+		"img": {
+			"src": "https://maritoahike.neocities.org/img/maritoahike88x31.gif",
+			"alt": "Mari's Cave",
+			"title": "Mari's Cave"
+		}
+	},
+	{
+		"href": "https://renkotsuban.com/",
+		"img": {
+			"src": "http://renkotsuban.com/button.gif",
+			"alt": "Renkon",
+			"title": "Renkon"
+		}
+	},
+	{
+		"href": "https://homestuck.giovanh.com/",
+		"img": {
+			"src": "/img/button/homestuck.png",
+			"alt": "Unofficial Homestuck Collection",
+			"title": "Unnoffical Homestuck Collection"
+		}
+	},
+	{
+		"href": "https://sweetfish.site/",
+		"img": {
+			"src": "/img/button/sweetfish.png",
+			"alt": "ayu's webhouse",
+			"title": "ayu's webhouse"
+		}
+	},
+	{
+		"href": "https://jkap.io/",
+		"img": {
+			"src": "https://files.crime.team/site/jkap-88x31.gif",
+			"alt": "jae kaplan",
+			"title": "jae kaplan"
+		}
+	},
+	{
+		"href": "https://indietsushin.net/",
+		"img": {
+			"src": "https://indietsushin.net/button.gif",
+			"alt": "Indie Tsushin",
+			"title": "Indie Tsushin"
+		}
+	},
+	{
+		"href": "https://blog.radicaldream.land/",
+		"img": {
+			"src": "https://i.postimg.cc/QxhG798p/dispatchblog-banner.gif",
+			"alt": "Dispatch from the Radical Dreamland",
+			"title": "Dispatch from the Radical Dreamland"
+		}
+	},
+	{
+		"href": "https://blog.aurahack.jp/",
+		"img": {
+			"src": "https://aurahack.neocities.org/88x31.gif",
+			"alt": "Days and Wonder",
+			"title": "Days and Wonder"
+		}
+	},
+	{
+		"href": "https://blog.someplace-else.xyz/",
+		"img": {
+			"src": "https://natclayton.uk/wp-content/uploads/2024/09/elsewhere.gif",
+			"alt": "someplace elsewhere",
+			"title": "someplace elsewhere"
+		}
+	},
+	{
+		"href": "https://candlelitsmiles.neocities.org/",
+		"img": {
+			"src": "https://candlelitsmiles.neocities.org/candlebuttonone.png",
+			"alt": "candlelitsmiles",
+			"title": "candlelitsmiles"
+		}
+	}
+]

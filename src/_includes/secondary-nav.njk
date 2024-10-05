@@ -1,4 +1,0 @@
-<a class="secondary-nav" rel="alternate" type="application/atom+xml" title="{{ siteMeta.feed.title }}" href="/feed.xml"><img src="/res/img/logos/rss.svg" alt="RSS Feed" title="RSS Feed"/>Feed</a>
-{% for title, url in siteMeta.secondaryNav %}
-<a class="secondary-nav" href="{{ url }}"{% if page.url == url %} aria-current="page"{% endif %}>{{ title }}</a>
-{% endfor %}

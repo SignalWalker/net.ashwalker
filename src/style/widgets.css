@@ -61,3 +61,33 @@ picture>img {
 	object-fit: contain;
 	flex-grow: 1;
 }
+
+.widget {
+	box-shadow: var(--outset-shadow);
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	padding: 0px;
+	/*var(--interface-gap);*/
+	margin: 0px;
+
+	display: flex;
+	flex-direction: column;
+	gap: var(--nav-gap);
+	align-items: center;
+}
+
+.widget>* {
+	margin: 0px;
+}
+
+@media print {
+	.widget {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 80em) {
+	.widget {
+		display: none;
+	}
+}

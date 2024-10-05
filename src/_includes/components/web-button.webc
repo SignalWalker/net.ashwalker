@@ -1,0 +1,13 @@
+<script webc:type="js">
+	if (!Object.hasOwn(button.img, "height")) {
+		button.img.width = 88;
+	}
+	if (!Object.hasOwn(button.img, "height")) {
+		button.img.height = 31;
+	}
+	var res = `<img eleventy:ignore decoding="async" fetchpriority="low" loading="lazy" ${toAttributes(button.img)} />`;
+	if (Object.hasOwn(button, "href")) {
+		res = `<a href="${button.href}" target="_blank" rel="external">${res}</a>`;
+	}
+	res
+</script>

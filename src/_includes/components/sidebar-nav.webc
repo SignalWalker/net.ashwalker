@@ -1,0 +1,4 @@
+<nav class="button-nav">
+	<a webc:for="(title, url) in pages" @attributes="(current.url == url ? ({ 'aria-current': 'page' }) : ({}))" :href="url" @text="title"></a>
+	<a class="secondary-nav" rel="alternate" type="application/atom+xml" :title="feed.title" href="/feed.xml"><img src="/res/img/logos/rss.svg" alt="RSS Feed" title="RSS Feed"/>Feed</a>
+</nav>

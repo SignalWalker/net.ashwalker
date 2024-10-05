@@ -10,6 +10,8 @@
 	flex-basis: min-content;
 
 	/*max-height: 100%;*/
+
+	align-items: stretch;
 }
 
 /* #navigator:not([open]) { */
@@ -34,6 +36,7 @@
 @media screen and (min-width: 80em) {
 	.sidebar {
 		--window-flex-direction: row;
+		align-items: start;
 	}
 
 	footer.sidebar {
@@ -76,7 +79,6 @@
 .sidebar>nav img {
 	width: 1em;
 	height: 1em;
-	flex-grow: 1;
 }
 
 @media screen and (min-width: 80em) {
