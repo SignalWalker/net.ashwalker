@@ -5,6 +5,9 @@
 	width: 100%;
 
 	flex-grow: 1;
+
+	border: double var(--border-color);
+	background-color: var(--content-bg);
 }
 
 main {
@@ -18,15 +21,11 @@ main {
 	flex-grow: 1;
 }
 
-@media screen and (max-width: 80em) {
-	#main-display {
-		border: double var(--border-color);
-		background-color: var(--content-bg);
-	}
-}
-
 @media screen and (min-width: 80em) {
 	#main-display {
+		border: unset;
+		background-color: unset;
+
 		height: 100%;
 		flex-grow: 1;
 	}
@@ -36,7 +35,7 @@ main {
 	}
 }
 
-@media screen and (max-width: 80em) {
+@media not (min-width: 80em) {
 	main {
 		image-rendering: crisp-edges;
 		background-image: var(--channel-bg-img);
@@ -108,7 +107,7 @@ main>h2.not-found {
 	}
 }
 
-@media (max-width: 80em) {
+@media not (min-width: 80em) {
 	.self-button {
 		border: unset;
 		background-color: transparent;

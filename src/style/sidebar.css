@@ -24,16 +24,16 @@
 /* 	padding: 0.5em; */
 /* } */
 
-@media screen and (max-width: 80em) {
+@media not (min-width: 80em) {
 	.sidebar>* {
 		padding: var(--interface-gap);
 		margin: 0px;
 		border: double var(--border-color);
 		background-color: var(--content-bg);
 		box-shadow: var(--inset-shadow);
-
 	}
 }
+
 
 @media screen and (min-width: 80em) {
 	.sidebar {

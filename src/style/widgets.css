@@ -110,18 +110,14 @@ widget-listening>h2::after {
 	}
 }
 
-@media screen and (max-width: 80em) {
-	.widget {
-		display: none;
-		/*flex-direction: row;*/
-		/*overflow-x: auto;*/
-		/*width: 100%;*/
-		/*justify-content: center;*/
-		/*gap: 0.5em;*/
-	}
+.widget {
+	display: none;
 }
 
 @media screen and (min-width: 80em) {
+	.widget {
+		display: flex;
+	}
 
 	/*widget-listening>* {*/
 	/*	display: flex;*/

@@ -8,8 +8,9 @@
 
 	align-self: start;
 
-	width: fit-content;
-	max-width: 64em;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0em;
 }
 
 
@@ -21,21 +22,19 @@
 	/*align-self: start;*/
 }
 
-@media screen and (max-width: 80em) {
-	main>.h-entry:first-child {
-		margin-top: var(--interface-gap);
-	}
-
-	.h-entry {
-		width: 100%;
-		max-width: 100%;
-	}
+main>.h-entry:first-child {
+	margin-top: var(--interface-gap);
 }
 
 @media screen and (min-width: 80em) {
-	/*.h-entry {*/
-	/*	flex-direction: var(--post-flex-direction);*/
-	/*}*/
+	main>.h-entry:first-child {
+		margin-top: 0px;
+	}
+
+	.h-entry {
+		width: fit-content;
+		max-width: 64em;
+	}
 }
 
 .h-entry .p-name>a {

@@ -13,7 +13,7 @@
 	z-index: 1;
 }
 
-@media screen and (max-width: 80em) {
+@media not (min-width: 80em) {
 	#main-display {
 		position: relative;
 	}
