@@ -1,4 +1,5 @@
 .sidebar {
+	--sidebar-alignment: stretch;
 	/*min-width: min-content;*/
 	width: 100%;
 
@@ -11,7 +12,7 @@
 
 	/*max-height: 100%;*/
 
-	align-items: stretch;
+	align-items: var(--sidebar-alignment);
 }
 
 /* #navigator:not([open]) { */
@@ -30,17 +31,23 @@
 		border: double var(--border-color);
 		background-color: var(--content-bg);
 		box-shadow: var(--inset-shadow);
+
 	}
 }
 
 @media screen and (min-width: 80em) {
 	.sidebar {
 		--window-flex-direction: row;
-		align-items: start;
+		--sidebar-alignment: stretch;
+	}
+
+	.sidebar>* {
+		flex-shrink: 0;
 	}
 
 	footer.sidebar {
 		--window-flex-direction: row-reverse;
+		--sidebar-alignment: center;
 	}
 
 	header.sidebar {

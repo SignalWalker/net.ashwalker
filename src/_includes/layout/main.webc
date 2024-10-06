@@ -13,4 +13,5 @@ mainClass: []
         <h-card :@h-card-nav="hCardNav" :@fqdn="siteMeta.fqdn"></h-card>
     </div>
     <button-gallery webc:if="neocities" :@buttons="buttons"></button-gallery>
+    <widget-listening webc:if="neocities" class="widget" user="SignalWalker"></widget-listening>
 </footer>

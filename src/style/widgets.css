@@ -66,18 +66,42 @@ picture>img {
 	box-shadow: var(--outset-shadow);
 	border: double var(--border-color);
 	background-color: var(--content-bg);
-	padding: 0px;
-	/*var(--interface-gap);*/
+	padding: var(--interface-gap);
 	margin: 0px;
 
 	display: flex;
 	flex-direction: column;
-	gap: var(--nav-gap);
 	align-items: center;
+
+	min-width: 0px;
+	min-height: 0px;
+
+	text-align: center;
+	text-wrap: balance;
 }
 
 .widget>* {
 	margin: 0px;
+}
+
+.widget>h2 {
+	font-size: 1em;
+}
+
+widget-listening>h2 {
+	display: flex;
+	gap: 0.5em;
+}
+
+widget-listening>h2::before,
+widget-listening>h2::after {
+	content: "🎜";
+}
+
+@media not (scripting: enabled) {
+	.widget {
+		display: none;
+	}
 }
 
 @media print {
@@ -89,5 +113,21 @@ picture>img {
 @media screen and (max-width: 80em) {
 	.widget {
 		display: none;
+		/*flex-direction: row;*/
+		/*overflow-x: auto;*/
+		/*width: 100%;*/
+		/*justify-content: center;*/
+		/*gap: 0.5em;*/
 	}
+}
+
+@media screen and (min-width: 80em) {
+
+	/*widget-listening>* {*/
+	/*	display: flex;*/
+	/*	flex-direction: row;*/
+	/*	justify-content: space-between;*/
+	/*	align-self: stretch;*/
+	/*	gap: 1em;*/
+	/*}*/
 }

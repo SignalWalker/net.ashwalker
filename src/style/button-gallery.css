@@ -30,17 +30,16 @@
 
 @media screen and (min-width: 80em) {
 	.button-gallery {
-		align-self: end;
 		display: grid;
 		grid-template-columns: repeat(3, min-content);
 		grid-auto-rows: min-content;
 		grid-auto-flow: row dense;
 		align-items: start;
 		justify-items: center;
-		width: 100%;
 		justify-content: space-evenly;
 		overflow-y: auto;
 		overflow-x: hidden;
+		min-height: min-content;
 	}
 }
 
