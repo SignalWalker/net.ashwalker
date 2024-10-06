@@ -39,23 +39,22 @@ class ListeningWidget extends HTMLElement {
 		getListening(user).then((listening) => {
 			this.textContent = "";
 			var nowPlaying = listening.querySelector("main > section > h2");
-			if (nowPlaying !== undefined) {
+			if (nowPlaying != undefined) {
 				var links = nowPlaying.querySelectorAll("a");
 				var title = links[0];
 				var artist = links[1];
 				var artistAnchor = createAnchor(artist.href, artist.innerText.trim())
 				var titleAnchor = createAnchor(title.href, title.innerText.trim());
-				this.appendChild(createText("h2", "Now Playing"));
+				this.appendChild(createText("h2", "Now Listening"));
 				this.appendChild(artistAnchor);
 				this.appendChild(titleAnchor);
 			} else {
-				console.log("Not listening to anything right now...");
 				var links = listening.querySelectorAll("table.tracklist td.name > a")
 				var title = links[0];
 				var artist = links[1];
 				var artistAnchor = createAnchor(artist.href, artist.innerText.trim())
 				var titleAnchor = createAnchor(title.href, title.innerText.trim());
-				this.appendChild(createText("h2", "Recently Played"));
+				this.appendChild(createText("h2", "Recently Listened"));
 				this.appendChild(artistAnchor);
 				this.appendChild(titleAnchor);
 			}
