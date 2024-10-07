@@ -1,4 +1,5 @@
 ---
+title: "Bighorn Sheep"
 date: 2024-10-07T13:20:55-04:00
 tags:
   - post
