@@ -1,0 +1,5 @@
+---
+layout: layout/main.webc
+tags: []
+---
+<h-entry :@tags="tags" :@title="title" :@url="page.url" :@content="content" :@date="page.date"></h-entry>

@@ -1,0 +1,20 @@
+---js
+{
+	title: "Posts",
+	layout: "layout/main.webc",
+	pagination: {
+		data: "collections.publicPosts",
+		size: 12,
+		reverse: true
+	},
+	permalink: function(args) { return `/post/${args.pagination.pageNumber > 0 ? (args.pagination.pageNumber + 1).toString() + '/' : ''}`; }
+}
+---
+<h-entry webc:for="post of pagination.items" :@tags="post.data.tags" :@title="post.data.title" :@url="post.url" :@content="post.content" :@date="post.date"></h-entry>
+<nav class="pagination">
+	<ol>
+		<li webc:if="pagination.href.previous"><a :href="pagination.href.previous" rel="prev">&lt;</a></li>
+		<li webc:for="(entry, index) of pagination.pages"><a :href="pagination.hrefs[index]" @attributes="(page.url == pagination.hrefs[index] ? ({ 'aria-current': 'page' }) : ({}))" @text="index + 1"></a></li>
+		<li webc:if="pagination.href.next"><a :href="pagination.href.next" rel="next">&gt;</a></li>
+	</ol>
+</nav>

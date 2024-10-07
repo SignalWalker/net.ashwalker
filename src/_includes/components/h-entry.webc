@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	</head>
+	<body>
+		<article :class="['h-entry'].concat(tags.filter((tag) => tag == 'article' || tag == 'fiction')).join(' ')">
+			<header webc:if="title != undefined">
+				<h2 class="p-name"><a class="p-url" rel="canonical" :href="url" @text="title"></a></h2>
+			</header>
+			<div class="e-content" @raw="content">
+			</div>
+			<footer>
+				<a class="p-url" rel="canonical" :href="url">#</a>
+				<date-time class="dt-published" :@date="date"></date-time>
+				<a webc:for="tag of tags" class="p-category" :href="`/post/tag/${slugify(tag)}`" @text="`#${tag}`"></a>
+			</footer>
+		</article>
+	</body>
+</html>

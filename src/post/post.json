@@ -1,5 +1,5 @@
 {
-	"layout": "layout/post.njk",
+	"layout": "layout/post.webc",
 	"permalink": "/post/{{ page.date | toYMD }}_{{ page.fileSlug | slugify }}/",
 	"mainClass": [
 		"post"
