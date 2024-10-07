@@ -272,6 +272,16 @@ export default async function(eleventyConfig) {
 			if (!Object.hasOwn(item.data, 'tags')) {
 				return false;
 			}
+			return item.data.tags.some((tag) => (tag == "article" || tag == "photo" || (neocities && tag == "fiction")));
+		});
+		return result;
+	});
+
+	eleventyConfig.addCollection("indexPosts", function(collectionApi) {
+		var result = collectionApi.getAllSorted().filter(function(item) {
+			if (!Object.hasOwn(item.data, 'tags')) {
+				return false;
+			}
 			return item.data.tags.some((tag) => (tag == "article" || (neocities && tag == "fiction")));
 		});
 		return result;

@@ -1,5 +1,6 @@
 ---
 layout: layout/main.webc
 tags: []
+hidePostTitle: false
 ---
-<h-entry :@tags="tags" :@title="title" :@url="page.url" :@content="content" :@date="page.date"></h-entry>
+<h-entry :@tags="tags" :@title="title" :@url="page.url" :@content="content" :@date="page.date" :@hide-post-title="hidePostTitle"></h-entry>

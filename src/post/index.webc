@@ -10,7 +10,7 @@
 	permalink: function(args) { return `/post/${args.pagination.pageNumber > 0 ? (args.pagination.pageNumber + 1).toString() + '/' : ''}`; }
 }
 ---
-<h-entry webc:for="post of pagination.items" :@tags="post.data.tags" :@title="post.data.title" :@url="post.url" :@content="post.content" :@date="post.date"></h-entry>
+<h-entry webc:for="post of pagination.items" :@tags="post.data.tags" :@title="post.data.title" :@url="post.url" :@content="post.content" :@date="post.date" :@hide-post-title="post.data.hidePostTitle || false"></h-entry>
 <nav class="pagination">
 	<ol>
 		<li webc:if="pagination.href.previous"><a :href="pagination.href.previous" rel="prev">&lt;</a></li>

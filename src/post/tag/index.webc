@@ -11,6 +11,7 @@
       "ephemera",
       "publicPosts",
       "feedPosts",
+      "indexPosts",
       "post",
       "project",
       "__entry"

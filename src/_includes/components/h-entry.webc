@@ -4,7 +4,7 @@
 	</head>
 	<body>
 		<article :class="tagsToEntryClass(tags)">
-			<header webc:if="title != undefined">
+			<header webc:if="!hidePostTitle && title != undefined">
 				<h2 class="p-name"><a class="p-url" rel="canonical" :href="url" @text="title"></a></h2>
 			</header>
 			<div class="e-content" @raw="content">

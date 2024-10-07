@@ -7,7 +7,7 @@ mainClass:
 <section class="post-list">
     <h2>Recent Posts</h2>
     <ol role="list">
-        <h-entry-li webc:for="post of collections.feedPosts.toReversed()" :@post="post"></h-entry-li>
+        <h-entry-li webc:for="post of collections.indexPosts.toReversed()" :@post="post"></h-entry-li>
     </ol>
 </section>
 <div webc:if="neocities" class="self-button">
