@@ -70,8 +70,7 @@ li.h-entry-li>a {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	gap: var(--interface-gap);
-	gap: 0px;
+	gap: 1em;
 	padding: var(--interface-gap);
 	margin: 0px;
 	border: double var(--border-color);
