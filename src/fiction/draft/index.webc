@@ -1,0 +1,9 @@
+---
+title: "Fiction"
+date: 2024-10-06T22:51:15-04:00
+layout: "layout/main.webc"
+mainClass:
+  - "center"
+---
+<section webc:for="">
+</section>
