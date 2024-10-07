@@ -6,6 +6,7 @@ tags:
   - "article"
   - "nix"
   - "nginx"
+summary: "Because my bandwidth usage is already too high."
 ---
 
 A couple months ago I realized that a lot of my home bandwidth was being eaten by AI scrapers constantly refreshing the login screen of the [Jellyfin](https://jellyfin.org) instance I host for my friends on my home server. Regardless of one's opinions about the ethicality of LLMs, the scrapers gathering training data for them are bad for the ecosystem and they're making me pay extra money to Comcast, so: here's how to block them in [Nginx](https://nginx.org/) (as long as you're using [NixOS](https://nixos.org)).

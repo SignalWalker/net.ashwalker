@@ -1,1 +1,1 @@
-<li><a :href="post.url" @text="post.data.title || post.fileSlug"></a><date-time :@date="post.date"></date-time></li>
+<li class="h-entry-li"><a :href="post.url"><div><span @text="post.data.title || post.fileSlug"></span><small webc:if="post.data.summary" @text="post.data.summary"></small></div><date-time :@date="post.date"></date-time></a></li>

@@ -10,6 +10,7 @@ tags:
   - javascript
   - systemd
 date: 2024-09-17
+summary: "So long, cohost."
 ---
 
 Because [Cohost is shutting down](https://cohost.org/staff/post/7611443-cohost-to-shut-down), I decided to rebuild my whole website so I could use it as a blog. I already have an [ActivityPub server](https://social.ashwalker.net/Ash), but the software running it ([Akkoma](https://akkoma.dev/AkkomaGang/akkoma/)) doesn't really work well for long-form posting.

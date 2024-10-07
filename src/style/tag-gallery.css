@@ -57,27 +57,46 @@ section.post-list>ol {
 	gap: var(--interface-gap);
 }
 
-section.post-list>ol>li {
-	display: block flex;
-	box-sizing: border-box;
+li.h-entry-li {
+	display: flex;
+	flex-direction: column;
 
+	align-items: stretch;
+	width: 100%;
+}
+
+li.h-entry-li>a {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--interface-gap);
+	gap: 0px;
+	padding: var(--interface-gap);
+	margin: 0px;
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-
-	padding: var(--interface-gap);
-
-	gap: var(--interface-gap);
-}
-
-section.post-list>ol>li>a {
 	text-wrap: balance;
+
+	text-decoration-line: none;
 }
 
-section.post-list>ol>li:active {
-	box-shadow: unset !important;
+
+li.h-entry-li>a>div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+}
+
+li.h-entry-li>a span {
+	text-decoration-line: underline;
+}
+
+li.h-entry-li>a time,
+li.h-entry-li>a small {
+	text-decoration-line: none !important;
+	color: var(--text-fg);
 }

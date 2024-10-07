@@ -7,8 +7,8 @@ tags:
   - neocities
   - web
   - meta
+summary: "A multi-channel website."
 ---
-
 I've been updating [my website](https://ashwalker.net/), which has been... somewhat? mirrored? to Neocities for a while, so now I'm updating the Neocities version, and I'm adding \~*Neocities exclusive content*\~ (i.e. this post, so far).
 
 Not sure how much I want the Neocities version to be different from the main version. I'm planning on posting fiction that I'm written here and I'm a little too embarrassed about that to have it just right up there on the front page of the main site (since that's also gonna be what, like, employers and recruiters and stuff see), but I haven't decided yet whether I want that to be Neocities-*exclusive* or just displayed more prominently on Neocities than on the main site.

@@ -79,8 +79,10 @@
 	display: flex;
 	flex-direction: row;
 	gap: var(--interface-gap);
-	justify-content: center;
+	justify-content: start;
 	align-items: stretch;
+
+	overflow-x: auto;
 }
 
 .sidebar>nav img {

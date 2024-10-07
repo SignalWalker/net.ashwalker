@@ -5,6 +5,7 @@ tags:
   - "fiction"
   - "gender"
 date: "2024-03-18T12:01"
+summary: "A knight fails to slay a dragon."
 ---
 A cabin lies, as promised, warm light melting through fresh snow, in the shadows of the mountain pass. Smoke drifts from its chimney, gently staining the canyon walls. The path here has been buried by snow for months, but you know the way -- your captain ensured it.
 

@@ -42,10 +42,12 @@ main>.h-entry:first-child {
 }
 
 .h-entry>header {
-	display: block flex;
+	display: flex;
 	flex-direction: var(--post-flex-direction);
+	align-items: end;
 	flex-wrap: wrap;
-	align-items: first baseline;
+	justify-content: start;
+	gap: var(--interface-gap);
 
 	min-width: 0px;
 	min-height: 0px;
@@ -58,6 +60,8 @@ main>.h-entry:first-child {
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	border: double var(--border-color);
+
+	padding: var(--interface-gap);
 }
 
 .h-entry>header>h2 {
