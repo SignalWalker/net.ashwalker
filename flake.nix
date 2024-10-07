@@ -46,7 +46,8 @@
             nativeBuildInputs =
               []
               ++ (with pkgs; [
-                ]);
+                mat2
+              ]);
             inherit npmDepsHash;
             postBuild = ''
               mkdir $out
@@ -92,7 +93,7 @@
         in {
           default = (pkgs.mkShell.override {inherit stdenv;}) {
             # inputsFrom = [self.packages.${system}."ashwalker.net"];
-            packages = with pkgs; [neocities];
+            packages = with pkgs; [neocities mat2];
             nativeBuildInputs = [nodejs];
           };
         })
