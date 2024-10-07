@@ -80,8 +80,6 @@ export default async function(eleventyConfig) {
 		console.log("Developer mode...");
 	} else {
 		eleventyConfig.ignores.add("**/draft");
-		eleventyConfig.ignores.add("**/project");
-		eleventyConfig.ignores.add("**/links");
 	}
 	if (neocities) {
 		console.log("Building for Neocities...");

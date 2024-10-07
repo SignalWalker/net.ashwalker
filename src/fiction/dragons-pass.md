@@ -3,10 +3,9 @@ title: "Dragon's Pass"
 tags:
   - "post"
   - "fiction"
-  - gender
+  - "gender"
 date: "2024-03-18T12:01"
 ---
-
 A cabin lies, as promised, warm light melting through fresh snow, in the shadows of the mountain pass. Smoke drifts from its chimney, gently staining the canyon walls. The path here has been buried by snow for months, but you know the way -- your captain ensured it.
 
 A woman watches as you trudge towards her. She draws smoke from her pipe and breathes it back out, unconcerned. You reach the end of the path and catch your breath, just for a moment. Mist clouds your vision.

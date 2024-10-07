@@ -5,8 +5,11 @@ tags:
   - post
   - fiction
   - flyover
+  - __entry
+entry:
+  - series: "flyover"
+  - index: 0
 ---
-
 Nothing ever seems real at three in the morning: neon signs spill radiant puddles over sidewalks, street lamps carve islands out of the dark, and moonlight ossifies the world. You, flying high above the town below, imagine yourself an archaeologist -- or a doctor, maybe, looking for flaws in the structure of the skeleton below you. That is, after all, your job.
 
 You drop yourself onto a roof, quietly; you don't want to wake up the residents.

@@ -12,7 +12,8 @@
       "publicPosts",
       "feedPosts",
       "post",
-      "project"
+      "project",
+      "__entry"
     ]
   },
   permalink: function(args) { return `/post/tag/${this.slugify(args.tag)}/`; },
