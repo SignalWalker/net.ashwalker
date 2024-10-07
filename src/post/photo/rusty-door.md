@@ -1,4 +1,5 @@
 ---
+title: "Asylum Door"
 date: 2024-10-06T23:50:45-04:00
 tags:
   - post
