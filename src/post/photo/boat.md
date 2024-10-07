@@ -6,4 +6,4 @@ tags:
   - photo
   - night
 ---
-![A photograph taken at night of a small boat grounded halfway onto the shore of a lake, with an incandescent light illuminating it from above.](/post/photo/rowboat.jpg)
+![A photograph taken at night of a small boat grounded halfway onto the shore of a lake, with an incandescent light illuminating it from above.](/post/photo/boat.jpg)
