@@ -88,6 +88,10 @@ picture>img {
 	font-size: 1em;
 }
 
+widget-listening {
+	align-self: stretch;
+}
+
 widget-listening>h2 {
 	display: flex;
 	gap: 0.5em;
