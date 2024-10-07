@@ -1,0 +1,18 @@
+---
+title: Links
+date: 2024-10-03T14:04:42-04:00
+layout: layout/main.webc
+mainClass:
+  - "center"
+---
+<section>
+	<h2>Links</h2>
+	<div>
+		<h3>Blogs</h3>
+		<p>Personal websites I like that don't have a button I can put in the sidebar.</p>
+		<ul>
+			<li><a href="https://faultlore.com/blah/" rel="external">Faultlore</a></li>
+			<li><a href="https://xeiaso.net/" rel="external">Xe Iaso</a></li>
+		</ul>
+	</div>
+</section>

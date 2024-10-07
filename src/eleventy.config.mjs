@@ -84,8 +84,9 @@ export default async function(eleventyConfig) {
 	if (neocities) {
 		console.log("Building for Neocities...");
 		delete primaryNav['Resumé'];
+		primaryNav["Links"] = "/links/";
 		primaryNav["Fiction"] = "/post/tag/fiction/";
-		//secondaryNav["Links"] = "/links/";
+		primaryNav["Photo"] = "/post/tag/photo/";
 		eleventyConfig.ignores.add("**/resume.njk");
 		delete hCardNav['github'];
 		delete hCardNav['personalGit'];

@@ -127,6 +127,37 @@ main>h2.not-found {
 	}
 }
 
+main>section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--interface-gap);
+	align-items: center;
+}
+
+main>section>h2 {
+	border: double var(--border-color);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
+	padding: var(--interface-gap);
+	margin: 0px;
+	text-align: center;
+}
+
+main>section>div {
+	margin: 0px;
+	padding: var(--interface-gap);
+	border: double var(--border-color);
+	box-shadow: var(--outset-shadow);
+	background-color: var(--content-bg);
+}
+
+main>section>div>h3,
+main>section>div>h4,
+main>section>div>h5,
+main>section>div>h6 {
+	text-align: center;
+}
+
 /*main > section {*/
 /*	display: block flex;*/
 /*	flex-direction: column;*/
