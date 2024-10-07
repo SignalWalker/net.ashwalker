@@ -5,7 +5,6 @@ layout: layout/main.webc
 mainClass:
   - "center"
 ---
-
 <section>
 	<h2>Links</h2>
 	<div>

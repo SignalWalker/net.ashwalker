@@ -99,6 +99,7 @@ main>h2.not-found {
 .self-button>textarea {
 	max-height: 3em;
 	min-height: 0px;
+	width: 100%;
 }
 
 @supports (image-rendering: pixelated) {

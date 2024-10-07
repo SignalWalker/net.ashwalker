@@ -1,0 +1,1 @@
+<li><a :href="post.url" @text="post.data.title || post.fileSlug"></a><date-time :@date="post.date"></date-time></li>

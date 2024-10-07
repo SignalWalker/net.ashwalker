@@ -1,0 +1,17 @@
+---
+title: Index
+layout: layout/main.webc
+mainClass:
+  - "center"
+---
+<section class="post-list">
+    <h2>Recent Posts</h2>
+    <ol role="list">
+        <h-entry-li webc:for="post of collections.feedPosts.toReversed()" :@post="post"></h-entry-li>
+    </ol>
+</section>
+<div webc:if="neocities" class="self-button">
+    <web-button :@button="({ img: { src: '/88x31.gif', alt: '88x31 button for this website', title: 'Signal Garden' } })"></web-button>
+    <small>hotlink this please i'm probably gonna change it</small>
+    <textarea name="button-code" aria-label="Button code" style="resize: none;"><a href="https://signalgarden.net/" rel="external"><img width="88" height="31" src="https://signalgarden.net/88x31.gif" style="image-rendering: crisp-edges;" alt="Signal Garden" title="Signal Garden" /></a></textarea>
+</div>

@@ -5,5 +5,4 @@ mainClass:
   - "center"
 permalink: "/not_found.html"
 ---
-
 <h2 class="not-found">Error 404 - Not Found</h2>

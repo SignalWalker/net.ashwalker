@@ -1,0 +1,27 @@
+---js
+{
+  pageTag: "tag",
+  layout: "layout/main.webc",
+  pagination: {
+    data: "collections",
+    size: 1,
+    alias: "tag",
+    filter: [
+      "all",
+      "ephemera",
+      "publicPosts",
+      "feedPosts",
+      "post",
+      "project"
+    ]
+  },
+  permalink: function(args) { return `/post/tag/${this.slugify(args.tag)}/`; },
+  mainClass: [ "center" ]
+}
+---
+<section class="post-list">
+  <h2><a :href="`/post/tag/${slugify(tag)}`" aria-current="page" @text="`#${tag}`"></a></h2>
+	<ol role="list">
+    <h-entry-li webc:for="post of collections[tag].toReversed()" :@post="post"></h-entry-li>
+	</ol>
+</section>
