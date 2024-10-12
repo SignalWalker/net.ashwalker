@@ -36,7 +36,7 @@
           std = pkgs.lib;
           stdenv = stdenvFor pkgs;
           nodejs = nodejsFor pkgs;
-          npmDepsHash = "sha256-3Oj62wnObIsKb8HCw7NTsa2RDb9QnmtdTrsN/ZRuHY4=";
+          npmDepsHash = "sha256-8HeXKFxjw/0NR2MuQRbSd36n4NE+7Ou6LlpjF1fPOQU=";
         in {
           "ashwalker.net" = pkgs.buildNpmPackage {
             pname = "ashwalker.net";
