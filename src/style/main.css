@@ -155,6 +155,7 @@ main>section>div>h3,
 main>section>div>h4,
 main>section>div>h5,
 main>section>div>h6 {
+	margin-top: 0px;
 	text-align: center;
 }
 
