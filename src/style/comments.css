@@ -1,0 +1,209 @@
+comentario-comments {
+	align-self: start;
+
+	width: 100%;
+	max-width: 100%;
+	min-width: 0em;
+}
+
+div.comentario-footer {
+	display: none !important;
+}
+
+@media screen and (min-width: 80em) {
+	comentario-comments {
+		min-width: 32em;
+		max-width: 64em;
+		width: fit-content;
+	}
+}
+
+div.comentario-toolbar {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.25em;
+	align-items: end !important;
+}
+
+div.comentario-toolbar-section {
+	display: flex;
+	flex-direction: row;
+	gap: 0.25em;
+	align-items: end !important;
+}
+
+div.comentario-profile-bar .comentario-name {
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	box-shadow: var(--outset-shadow);
+	padding: 2px;
+}
+
+div.comentario-comments {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+div.comentario-card-children,
+div.comentario-card-expand-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+div.comentario-card {
+	margin-top: 0px !important;
+	border-top: unset !important;
+}
+
+div.comentario-card-body {
+	margin: 0px;
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	padding: var(--interface-gap);
+	box-shadow: var(--outset-shadow);
+}
+
+.comentario-card-self {
+	padding-top: 0px !important;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25em;
+	align-items: start;
+}
+
+.comentario-card-header {
+	margin-bottom: 0px !important;
+	display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
+	gap: 0.25em;
+	align-items: end !important;
+	justify-content: start;
+}
+
+.comentario-avatar-img,
+.comentario-avatar {
+	margin: 0px;
+	margin-right: 0px !important;
+	border: double var(--border-color) !important;
+	border-radius: 0px !important;
+	background-color: var(--content-bg);
+	padding: 2px;
+	box-shadow: var(--outset-shadow);
+	box-sizing: content-box;
+}
+
+.comentario-bg-anonymous {
+	display: none !important;
+}
+
+.comentario-name-container {
+	margin: 0px;
+	margin-bottom: 0px !important;
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	padding: 0.2em;
+	box-shadow: var(--outset-shadow);
+	align-items: center;
+
+	max-width: fit-content;
+}
+
+.comentario-name-wrap {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.25em;
+}
+
+.comentario-name-wrap {
+	margin: 0px auto !important;
+}
+
+.comentario-pending {
+	border: unset !important;
+	background-color: unset !important;
+}
+
+.comentario-badge {
+	margin-left: 0px !important;
+	border-radius: 0px !important;
+	border: double var(--border-color);
+	color: var(--text-fg) !important;
+	padding: 2px !important;
+	text-align: center;
+	align-content: center;
+	line-height: unset !important;
+}
+
+.comentario-badge-moderator {
+	background: unset !important;
+}
+
+.comentario-btn {
+	border: double var(--border-color) !important;
+	background-color: var(--content-bg) !important;
+	box-shadow: var(--outset-shadow) !important;
+	border-radius: 0px !important;
+}
+
+.comentario-add-comment-host {
+	border: double var(--border-color) !important;
+	border-radius: 0px !important;
+	box-shadow: var(--outset-shadow);
+}
+
+.comentario-comment-editor {
+	padding: var(--interface-gap);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.comentario-comment-editor .comentario-btn {
+	/*box-shadow: unset !important;*/
+}
+
+.comentario-comment-editor-footer {
+	margin-top: 0px !important;
+}
+
+.comentario-root .comentario-btn-primary {
+	--cmntr-btn-color: #000;
+	--cmntr-btn-hover-color: var(--cmntr-btn-color);
+}
+
+.comentario-root .comentario-btn-secondary {
+	--cmntr-btn-color: #000;
+	--cmntr-btn-hover-color: var(--cmntr-btn-color);
+}
+
+.comentario-root textarea {
+	border-radius: 0px !important;
+	box-shadow: var(--inset-shadow);
+	border: double var(--border-color);
+	transition: unset !important;
+}
+
+.comentario-root textarea:focus {
+	border: double var(--border-color) !important;
+	box-shadow: var(--inset-shadow) !important;
+}
+
+.comentario-moderation-notice {
+	box-shadow: var(--outset-shadow);
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+	/*width: fit-content !important;*/
+	padding: 2px !important;
+	margin: 0px auto;
+}
+
+.comentario-border-2 {
+	border-left: 2px solid var(--empty-bg) !important;
+}

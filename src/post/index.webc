@@ -7,7 +7,8 @@
 		size: 12,
 		reverse: true
 	},
-	permalink: function(args) { return `/post/${args.pagination.pageNumber > 0 ? (args.pagination.pageNumber + 1).toString() + '/' : ''}`; }
+	permalink: function(args) { return `/post/${args.pagination.pageNumber > 0 ? (args.pagination.pageNumber + 1).toString() + '/' : ''}`; },
+	mainClass: [ "posts" ]
 }
 ---
 <h-entry webc:for="post of pagination.items" :@tags="post.data.tags" :@title="post.data.title" :@url="post.url" :@content="post.content" :@date="post.date" :@hide-post-title="post.data.hidePostTitle || false" :@summary="post.data.summary"></h-entry>

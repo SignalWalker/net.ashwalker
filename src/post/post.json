@@ -1,7 +1,4 @@
 {
 	"layout": "layout/post.webc",
-	"permalink": "/post/{{ page.date | toYMD }}_{{ page.fileSlug | slugify }}/",
-	"mainClass": [
-		"post"
-	]
+	"permalink": "/post/{{ page.date | toYMD }}_{{ page.fileSlug | slugify }}/"
 }

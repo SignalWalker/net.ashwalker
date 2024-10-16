@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script webc:keep defer src="https://comments.ashwalker.net/comentario.js"></script>
+		<link webc:keep href="/style/comments.css" rel="stylesheet"></link>
+	</head>
+	<body>
+		<comentario-comments webc:root="override" :page-id="url" no-fonts="true" css-override="/style/comments.css" theme="light"></comentario-comments>
+	</body>
+</html>

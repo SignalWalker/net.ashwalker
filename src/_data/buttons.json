@@ -208,5 +208,13 @@
 			"alt": "House of Nettles",
 			"title": "House of Nettles"
 		}
+	},
+	{
+		"href": "https://tnywndr.cafe/",
+		"img": {
+			"src": "/img/button/tnywndr.gif",
+			"alt": "tiny wanderer",
+			"title": "tiny wanderer"
+		}
 	}
 ]

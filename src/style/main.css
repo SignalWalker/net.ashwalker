@@ -59,7 +59,7 @@ main.center {
 	align-items: center;
 }
 
-main.post {
+main.posts {
 	gap: var(--post-gap);
 }
 
