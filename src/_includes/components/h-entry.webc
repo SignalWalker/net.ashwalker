@@ -12,6 +12,7 @@
 			</div>
 			<footer>
 				<a class="p-url" rel="canonical" :href="url">#</a>
+				<a class="text-icon" :href="`${url}#comments`" alt="Comments" title="Comments">🗩</a>
 				<date-time class="dt-published" :@date="date"></date-time>
 				<a webc:for="tag of tags.filter(isPublicTag)" class="p-category" :href="`/post/tag/${slugify(tag)}`" @text="`#${tag}`"></a>
 			</footer>

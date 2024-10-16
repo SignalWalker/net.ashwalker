@@ -6,4 +6,4 @@ tags:
 ---
 we got comments now, yaaaaay
 
-(click the # on the bottom of a post to comment on it)
+(click the 🗩 on the bottom of a post to comment on it)

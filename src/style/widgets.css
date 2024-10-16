@@ -25,6 +25,10 @@ a:active {
 	box-shadow: unset !important;
 }
 
+.text-icon {
+	font-weight: bold;
+}
+
 [title] {
 	text-decoration-line: underline;
 	text-decoration-style: dotted;

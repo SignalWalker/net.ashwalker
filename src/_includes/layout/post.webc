@@ -5,4 +5,4 @@ hidePostTitle: false
 summary: ""
 ---
 <h-entry :@tags="tags" :@title="title" :@url="page.url" :@content="content" :@date="page.date" :@hide-post-title="hidePostTitle" :@summary="summary"></h-entry>
-<comment-section :@url="page.url"></comment-section>
+<comment-section id="comments" :@url="page.url"></comment-section>
