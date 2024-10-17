@@ -46,8 +46,7 @@
             nativeBuildInputs =
               []
               ++ (with pkgs; [
-                mat2
-              ]);
+                ]);
             inherit npmDepsHash;
             postBuild = ''
               mkdir $out
