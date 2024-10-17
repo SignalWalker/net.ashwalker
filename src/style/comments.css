@@ -181,6 +181,11 @@ div.comentario-card-body {
 	--cmntr-btn-hover-color: var(--cmntr-btn-color);
 }
 
+.comentario-root .comentario-btn-danger {
+	--cmntr-btn-color: #ff5f5f;
+	--cmntr-btn-hover-color: var(--cmntr-btn-color);
+}
+
 .comentario-root textarea {
 	border-radius: 0px !important;
 	box-shadow: var(--inset-shadow);
@@ -194,7 +199,7 @@ div.comentario-card-body {
 }
 
 .comentario-root textarea:invalid {
-	border: double #f03e3e !important;
+	border: double var(--border-color) !important;
 }
 
 .comentario-moderation-notice {
@@ -206,7 +211,7 @@ div.comentario-card-body {
 	margin: 0px auto;
 }
 
-.comentario-border-2 {
+.comentario-root .comentario-border-2 {
 	border-left: 2px solid var(--empty-bg) !important;
 }
 
