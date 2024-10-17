@@ -163,6 +163,7 @@ div.comentario-card-body {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5em;
+	background-color: var(--empty-bg);
 }
 
 .comentario-comment-editor .comentario-btn {
@@ -173,12 +174,9 @@ div.comentario-card-body {
 	margin-top: 0px !important;
 }
 
-.comentario-root .comentario-btn-primary {
-	--cmntr-btn-color: #000;
-	--cmntr-btn-hover-color: var(--cmntr-btn-color);
-}
-
-.comentario-root .comentario-btn-secondary {
+.comentario-root .comentario-btn-primary,
+.comentario-root .comentario-btn-secondary,
+.comentario-root .comentario-btn-github {
 	--cmntr-btn-color: #000;
 	--cmntr-btn-hover-color: var(--cmntr-btn-color);
 }
@@ -195,6 +193,10 @@ div.comentario-card-body {
 	box-shadow: var(--inset-shadow) !important;
 }
 
+.comentario-root textarea:invalid {
+	border: double #f03e3e !important;
+}
+
 .comentario-moderation-notice {
 	box-shadow: var(--outset-shadow);
 	border: double var(--border-color);
@@ -206,4 +208,9 @@ div.comentario-card-body {
 
 .comentario-border-2 {
 	border-left: 2px solid var(--empty-bg) !important;
+}
+
+.comentario-dialog {
+	box-shadow: var(--outset-shadow) !important;
+	border: double var(--border-color) !important;
 }
