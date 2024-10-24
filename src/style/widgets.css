@@ -25,8 +25,24 @@ a:active {
 	box-shadow: unset !important;
 }
 
-.text-icon {
-	font-weight: bold;
+a.icon {
+	padding: 2px !important;
+	display: flex;
+	align-items: center;
+
+	aspect-ratio: 1/1;
+}
+
+a.icon>img {
+	width: 32px;
+	height: 32px;
+	image-rendering: crisp-edges;
+}
+
+@supports (image-rendering: pixelated) {
+	a.icon>img {
+		image-rendering: pixelated;
+	}
 }
 
 [title] {

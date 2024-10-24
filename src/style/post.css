@@ -77,7 +77,7 @@ main>.h-entry:first-child {
 	display: block flex;
 	flex-direction: var(--post-flex-direction);
 	flex-wrap: wrap;
-	align-items: first baseline;
+	align-items: stretch;
 
 	gap: var(--interface-gap);
 
