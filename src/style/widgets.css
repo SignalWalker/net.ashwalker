@@ -30,13 +30,15 @@ a.icon {
 	display: flex;
 	align-items: center;
 
-	aspect-ratio: 1/1;
+	max-height: 100%;
 }
 
 a.icon>img {
 	width: 32px;
-	height: 32px;
+	max-height: 100%;
+	aspect-ratio: 1/1;
 	image-rendering: crisp-edges;
+	object-fit: contain;
 }
 
 @supports (image-rendering: pixelated) {
