@@ -86,8 +86,19 @@
 }
 
 .sidebar>nav img {
-	width: 1em;
-	height: 1em;
+	aspect-ratio: 1/1;
+	object-fit: contain;
+
+	max-width: 1.5em;
+	height: auto;
+
+	image-rendering: crisp-edges;
+}
+
+@supports (image-rendering: pixelated) {
+	.sidebar>nav img {
+		image-rendering: pixelated;
+	}
 }
 
 @media screen and (min-width: 80em) {
@@ -100,12 +111,11 @@
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
-	padding: var(--nav-gap);
+	padding: 0.25em;
 
 	display: flex;
 	flex-direction: row;
 	flex-wrap: none;
-	gap: 0.5em;
 	align-items: center;
 	justify-content: center;
 }

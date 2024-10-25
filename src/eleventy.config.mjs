@@ -86,7 +86,7 @@ export default async function(eleventyConfig) {
 		delete primaryNav['Resumé'];
 		primaryNav["Links"] = "/links/";
 		primaryNav["Fiction"] = "/post/tag/fiction/";
-		primaryNav["Photo"] = "/post/tag/photo/";
+		primaryNav["Photos"] = "/post/tag/photo/";
 		eleventyConfig.ignores.add("**/resume.njk");
 		delete hCardNav['github'];
 		delete hCardNav['personalGit'];
@@ -214,7 +214,6 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/script");
 	eleventyConfig.addPassthroughCopy("src/88x31.gif");
 	eleventyConfig.addPassthroughCopy({ "src/res/img/ash.png": "img/avatar.png" });
-	eleventyConfig.addPassthroughCopy({ "src/res/img/logos/rss.svg": "img/logo/rss.svg" });
 	eleventyConfig.addWatchTarget("");
 	eleventyConfig.ignores.add("_config");
 	//eleventyConfig.addPassthroughCopy("res");
