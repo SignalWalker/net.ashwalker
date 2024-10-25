@@ -7,13 +7,14 @@
 			<header webc:if="!hidePostTitle && title != undefined">
 				<h2 class="p-name"><a class="p-url" rel="canonical" :href="url" @text="title"></a></h2>
 				<small webc:if="summary" class="p-summary" @text="summary"></small>
+				<slot name="header-extra"></slot>
 			</header>
-			<div class="e-content" @raw="content">
-			</div>
+			<div class="e-content" @raw="content"></div>
 			<footer>
 				<a class="p-url" rel="canonical" :href="url">#</a>
 				<a class="icon" :href="`${url}#comments`" alt="Comments" title="Comments"><img eleventy:ignore src="/img/icon/comments.png" width="32" height="32"></a>
 				<date-time class="dt-published" :@date="date"></date-time>
+				<slot name="footer-extra"></slot
 				<a webc:for="tag of tags.filter(isPublicTag)" class="p-category" :href="`/post/tag/${slugify(tag)}`" @text="`#${tag}`"></a>
 			</footer>
 		</article>

@@ -220,6 +220,8 @@ export default async function(eleventyConfig) {
 	//eleventyConfig.addPassthroughCopy("**/*.png");
 
 	async function fetchWebmentions() {
+		// FIX :: webmentions
+		return [];
 		if (offline) {
 			return [];
 		}
