@@ -92,7 +92,7 @@
         in {
           default = (pkgs.mkShell.override {inherit stdenv;}) {
             # inputsFrom = [self.packages.${system}."ashwalker.net"];
-            packages = with pkgs; [neocities mat2];
+            packages = with pkgs; [neocities mat2 imagemagick gifsicle];
             nativeBuildInputs = [nodejs];
           };
         })
