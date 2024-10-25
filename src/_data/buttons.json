@@ -16,6 +16,14 @@
 		}
 	},
 	{
+		"href": "https://swifter.neocities.org/",
+		"img": {
+			"src": "https://swifter.neocities.org/GIFs/buttons/swifter's-button.gif",
+			"alt": "Swifter",
+			"title": "Swifter"
+		}
+	},
+	{
 		"href": "https://hrtcafe.net/",
 		"img": {
 			"src": "/img/button/hrtcafe.gif",
