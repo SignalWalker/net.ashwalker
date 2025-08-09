@@ -94,6 +94,7 @@ main>.h-entry:first-child {
 	border: double var(--border-color);
 	padding: 0.25em;
 	margin: 0px;
+	align-content: center;
 }
 
 .h-entry>.e-content {
