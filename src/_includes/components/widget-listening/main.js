@@ -1,19 +1,65 @@
-async function getListening(user) {
-	const apiUrl = new URL("https://libre.fm/user/");
-	// 'no-cache' means "use cache only if server indicates that the resource has not changed." If you want to
-	// *completely ignore* the cache, use "reload" or "no-store"
-	return await fetch(new URL(user, apiUrl), { cache: "no-cache", priority: "low" }).then((response) => response.text()).then((response) => {
-		const parser = new DOMParser();
-		return parser.parseFromString(response, "text/html");
-	});
+async function lbApi(endpoint) {
+	const apiUrl = new URL("https://api.listenbrainz.org/1/");
+	var url = new URL(endpoint, apiUrl);
+	var headers = new Headers();
+	headers.append("Content-Type", "application/json");
+	return await fetch(url, { cache: "no-cache", priority: "low", mode: "cors", headers: headers })
+		.then((response) => {
+			return response.text();
+		})
+		.then((response) => {
+			return JSON.parse(response);
+		});
 }
 
-function createAnchor(href, text, rel = "external") {
-	var res = document.createElement("a");
-	res.href = href;
-	res.rel = rel;
-	res.innerText = text;
-	return res;
+async function getListensFor(user, count = 25) {
+	return await lbApi(`user/${user}/listens?count=${count}`);
+}
+
+async function getNowPlayingFor(user) {
+	return await lbApi(`user/${user}/playing-now`);
+}
+
+class ListenData {
+	userInfo = null;
+	artistInfo = null;
+	albumInfo = null;
+	trackInfo = null;
+	user = "[unknown]";
+	artist = "[unknown]";
+	album = "[unknown]";
+	track = "[unknown]";
+	current = false;
+	constructor() {}
+
+	static async fromListenBrainz(user) {
+		const LB_URL = "https://listenbrainz.org/";
+		var fetch_results = await Promise.all([getListensFor(user, 1), getNowPlayingFor(user)]);
+		console.log(fetch_results);
+		var data = fetch_results[0].payload.listens[0];
+		var np = fetch_results[1].payload;
+
+		var meta = data.track_metadata;
+		var mbid = meta.mbid_mapping;
+		var res = new ListenData();
+		res.userInfo = new URL(`user/${user}`, LB_URL);
+		if (mbid != undefined) {
+			res.artistInfo = new URL(`artist/${mbid.artist_mbids[0]}`, LB_URL);
+			res.albumInfo = new URL(`release/${mbid.release_mbid}`, LB_URL);
+			res.trackInfo = new URL(`track/${mbid.recording_mbid}`, LB_URL);
+		}
+		res.user = user;
+		res.artist = meta.artist_name;
+		res.album = meta.release_name;
+		res.track = meta.track_name;
+
+		if (np.listens.length >= 1) {
+			var now = np.listens[0].track_metadata;
+			res.current = now.artist_name === res.artist && now.release_name === res.album && now.track_name === res.track;
+		}
+
+		return res;
+	}
 }
 
 function createText(type, text) {
@@ -21,6 +67,18 @@ function createText(type, text) {
 	res.innerText = text;
 	return res;
 }
+
+function createAnchor(href, text, rel = "external") {
+	if (href == null) {
+		return createText("span", text);
+	} else {
+		var res = createText("a", text);
+		res.href = href;
+		res.rel = rel;
+		return res;
+	}
+}
+
 
 class ListeningWidget extends HTMLElement {
 	constructor() {
@@ -36,28 +94,18 @@ class ListeningWidget extends HTMLElement {
 		}
 		var user = this.attributes.getNamedItem("user").nodeValue;
 		console.log("ListeningWidget connected, user:", user);
-		getListening(user).then((listening) => {
+		ListenData.fromListenBrainz(user).then((data) => {
 			this.textContent = "";
-			var nowPlaying = listening.querySelector("main > section > h2");
-			if (nowPlaying != undefined) {
-				var links = nowPlaying.querySelectorAll("a");
-				var title = links[0];
-				var artist = links[1];
-				var artistAnchor = createAnchor(artist.href, artist.innerText.trim())
-				var titleAnchor = createAnchor(title.href, title.innerText.trim());
-				this.appendChild(createText("h2", "Now Listening"));
-				this.appendChild(artistAnchor);
-				this.appendChild(titleAnchor);
-			} else {
-				var links = listening.querySelectorAll("table.tracklist td.name > a")
-				var title = links[0];
-				var artist = links[1];
-				var artistAnchor = createAnchor(artist.href, artist.innerText.trim())
-				var titleAnchor = createAnchor(title.href, title.innerText.trim());
-				this.appendChild(createText("h2", "Recently Listened"));
-				this.appendChild(artistAnchor);
-				this.appendChild(titleAnchor);
-			}
+			var artistAnchor = createAnchor(data.artistInfo, data.artist);
+			var albumAnchor = createAnchor(data.albumInfo, data.album);
+			var titleAnchor = createAnchor(data.trackInfo, data.track);
+			var header = document.createElement("h2");
+			var hAnchor = createAnchor(data.userInfo, data.current ? "Now Listening" : "Recently Listened");
+			header.appendChild(hAnchor);
+			this.appendChild(header);
+			this.appendChild(artistAnchor);
+			this.appendChild(albumAnchor);
+			this.appendChild(titleAnchor);
 		}).catch(error => {
 			console.log("ListeningWidget error: ", error);
 			this.remove();
@@ -71,4 +119,4 @@ class ListeningWidget extends HTMLElement {
 
 window.customElements.define("widget-listening", ListeningWidget, { extends: "section" });
 
-export { getListening, ListeningWidget };
+export { ListenData, ListeningWidget };
