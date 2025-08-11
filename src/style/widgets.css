@@ -127,6 +127,11 @@ widget-listening > .listen-info {
 	padding: 6px;
 	flex-grow: 1;
 	min-width: 13em;
+	gap: 0.5em;
+}
+
+.listen-info > a {
+	line-height: 1em;
 }
 
 widget-listening h2 {
