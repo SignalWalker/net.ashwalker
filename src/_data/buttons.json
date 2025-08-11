@@ -114,14 +114,6 @@
 		}
 	},
 	{
-		"href": "https://maritoahike.neocities.org/",
-		"img": {
-			"src": "https://maritoahike.neocities.org/img/maritoahike88x31.gif",
-			"alt": "Mari's Cave",
-			"title": "Mari's Cave"
-		}
-	},
-	{
 		"href": "https://renkotsuban.com/",
 		"img": {
 			"src": "https://renkotsuban.com/button.gif",
@@ -130,7 +122,7 @@
 		}
 	},
 	{
-		"href": "https://homestuck.giovanh.com/",
+		"href": "https://homestuck.github.io/",
 		"img": {
 			"src": "/img/button/homestuck.png",
 			"alt": "Unofficial Homestuck Collection",
