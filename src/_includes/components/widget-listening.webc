@@ -4,7 +4,9 @@
 		<script src="widget-listening/main.js"></script>
 	</head>
 	<body>
-		<h2>Now Listening</h2>
-		<small>Fetching audio data...</small>
+		<div class="listen-info">
+			<h2>Now Listening</h2>
+			<small>Fetching audio data...</small>
+		</div>
 	</body>
 </html>

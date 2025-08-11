@@ -110,18 +110,46 @@ picture>img {
 	font-size: 1em;
 }
 
-widget-listening {
+widget-listening.widget {
 	align-self: stretch;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 0px;
 }
 
-widget-listening>h2 {
+widget-listening > * {
+	display: flex;
+	flex-direction: column;
+}
+
+widget-listening > .listen-info {
+	padding: 6px;
+	flex-grow: 1;
+	min-width: 13em;
+}
+
+widget-listening h2 {
+	margin: 0px;
+	font-size: 1.2em;
 	display: flex;
 	gap: 0.5em;
+	justify-content: center;
 }
 
-widget-listening>h2::before,
-widget-listening>h2::after {
+widget-listening h2::before,
+widget-listening h2::after {
 	content: "🎜";
+}
+
+widget-listening .cover-art {
+	aspect-ratio: auto;
+	min-width: 0px;
+	min-height: 0px;
+	flex-shrink: 1;
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
 }
 
 @media not (scripting: enabled) {

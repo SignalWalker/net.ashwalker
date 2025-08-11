@@ -1,5 +1,5 @@
 <section class="h-card">
-	 <img class="u-logo" src="/res/img/ash.png" alt="Image of Ash Walker, drawn by her sibling." />
+	 <img class="u-logo" src="/res/img/ash.png" alt="Image of Ash Walker, drawn by her brother." />
 	 <div>
 		 <h1><a class="u-url u-uid p-name" :href="fqdn" rel="me">Ash Walker</a></h1>
 		 <p class="p-gender-identity">She/They</p>
