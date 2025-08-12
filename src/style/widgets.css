@@ -126,7 +126,7 @@ widget-listening > * {
 widget-listening > .listen-info {
 	padding: 6px;
 	flex-grow: 1;
-	min-width: 13em;
+	max-width: 100%;
 	gap: 0.5em;
 }
 
@@ -135,11 +135,13 @@ widget-listening > .listen-info {
 }
 
 widget-listening h2 {
+	max-width: 100%;
 	margin: 0px;
 	font-size: 1.2em;
 	display: flex;
 	gap: 0.5em;
 	justify-content: center;
+	text-wrap: nowrap;
 }
 
 widget-listening h2::before,
