@@ -1,3 +1,15 @@
+.card-border {
+	border: double var(--border-color);
+	background-color: var(--content-bg);
+
+	max-width: 100%;
+	width: fit-content;
+	min-width: 100%;
+
+	display: flex;
+	justify-content: center;
+}
+
 .h-card {
 	text-align: center;
 	gap: var(--interface-gap);
@@ -7,31 +19,15 @@
 	justify-content: center;
 	align-items: center;
 
-	max-width: 32em;
+	max-width: 100%;
+	width: fit-content;
+
+	justify-self: center;
 
 	border: double var(--border-color);
 	box-shadow: var(--outset-shadow);
 	background-color: var(--content-bg);
 	padding: var(--interface-gap);
-
-	margin: auto;
-}
-
-@media screen and (min-width: 80em) {
-	.h-card {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-		background-color: var(--empty-bg);
-	}
-
-	.h-card>div {
-		width: 100%;
-		padding: var(--interface-gap);
-		border: double var(--border-color);
-		background-color: var(--content-bg);
-	}
 }
 
 .h-card * {
@@ -55,4 +51,42 @@
 	background-color: var(--content-bg);
 
 	padding: var(--interface-gap);
+
+	max-height: 100%;
+	height: 8lh;
+	aspect-ratio: 1 / 1;
 }
+
+@media screen and (min-width: 80em) {
+	.card-border {
+		box-shadow: var(--outset-shadow);
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	.h-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		width: 100%;
+
+		background-color: var(--empty-bg);
+
+		box-shadow: none;
+		border: none;
+	}
+
+	.h-card>div {
+		width: 100%;
+		padding: var(--interface-gap);
+		border: double var(--border-color);
+		background-color: var(--content-bg);
+	}
+	
+	.h-card>picture {
+		height: 100%;
+	}
+}
+

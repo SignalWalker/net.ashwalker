@@ -112,10 +112,11 @@ picture>img {
 
 widget-listening.widget {
 	align-self: stretch;
-	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	padding: 0px;
+	flex-shrink: 1;
+	min-height: min-content;
 }
 
 widget-listening > * {
@@ -124,7 +125,7 @@ widget-listening > * {
 }
 
 widget-listening > .listen-info {
-	padding: 6px;
+	padding: 1em;
 	flex-grow: 1;
 	max-width: 100%;
 	gap: 0.5em;
@@ -152,11 +153,13 @@ widget-listening h2::after {
 widget-listening .cover-art {
 	aspect-ratio: auto;
 	min-width: 0px;
-	min-height: 0px;
 	flex-shrink: 1;
 	max-width: 100%;
-	height: auto;
-	object-fit: contain;
+	object-fit: cover;
+	border-style: none none none double;
+	height: 0px;
+	min-height: 100%;
+	max-height: 100%;
 }
 
 @media not (scripting: enabled) {
