@@ -232,5 +232,13 @@
 			"alt": "daikonet",
 			"title": "daikonet"
 		}
+	},
+	{
+		"href": "https://melonland.net/",
+		"img": {
+			"src": "/img/button/melonland.gif",
+			"alt": "melonland",
+			"title": "melonland"
+		}
 	}
 ]
